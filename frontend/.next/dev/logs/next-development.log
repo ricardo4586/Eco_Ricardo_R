@@ -1,1 +1,193 @@
-[00:00:00.819] Server  LOG      ✓ Ready in 555ms
+[00:00:00.785] Server  LOG      ✓ Ready in 523ms
+[00:11:53.598] Server  ERROR   Warning: Each child in a list should have a unique "key" prop.
+
+Check the top-level render call using <div>. See https://reactjs.org/link/warning-keys for more information.
+    at ProductCard (C:\Users\User\ecommerce-project\frontend\components\Product\ProductCard.jsx:7:24)
+    at HomePage (C:\Users\User\ecommerce-project\frontend\pages\index.jsx:5:21)
+    at main
+    at div
+    at AuthProvider (C:\Users\User\ecommerce-project\frontend\context\AuthContext.jsx:9:32)
+    at MyApp (C:\Users\User\ecommerce-project\frontend\pages\_app.jsx:6:33)
+    at StyleRegistry (C:\Users\User\ecommerce-project\frontend\node_modules\styled-jsx\dist\index\index.js:449:36)
+    at PathnameContextProviderAdapter (webpack://next/src/shared/lib/router/adapters.tsx:70:3)
+    at AppContainer (webpack://next/src/server/render.tsx:737:27)
+    at AppContainerWithIsomorphicFiberStructure (webpack://next/src/server/render.tsx:785:11)
+    at div
+    at Body (webpack://next/src/server/render.tsx:1254:19)
+[00:11:53.603] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:53.607] Server  ERROR   TypeError: price.toFixed is not a function
+[00:11:53.609] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:53.611] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
+[00:11:53.613] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:53.616] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
+[00:11:53.918] Browser ERROR   uncaughtError: TypeError: price.toFixed is not a function
+[00:14:24.136] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:14:24.139] Server  ERROR   TypeError: price.toFixed is not a function
+[00:14:24.140] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:14:24.141] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
+[00:14:24.142] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:14:24.145] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
+[00:14:24.225] Browser ERROR   uncaughtError: TypeError: price.toFixed is not a function
+[00:14:24.995] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:14:24.998] Server  ERROR   TypeError: price.toFixed is not a function
+[00:14:24.999] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:14:25.000] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
+[00:14:25.001] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:14:25.003] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
+[00:14:25.076] Browser ERROR   uncaughtError: TypeError: price.toFixed is not a function
+[00:14:25.772] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:14:25.775] Server  ERROR   TypeError: price.toFixed is not a function
+[00:14:25.776] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:14:25.777] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
+[00:14:25.778] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:14:25.780] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
+[00:14:25.863] Browser ERROR   uncaughtError: TypeError: price.toFixed is not a function
+[00:14:26.323] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:14:26.325] Server  ERROR   TypeError: price.toFixed is not a function
+[00:14:26.326] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:14:26.328] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
+[00:14:26.328] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:14:26.330] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
+[00:14:26.403] Browser ERROR   uncaughtError: TypeError: price.toFixed is not a function
+[00:14:26.938] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:14:26.940] Server  ERROR   TypeError: price.toFixed is not a function
+[00:14:26.941] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:14:26.942] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
+[00:14:26.943] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:14:26.945] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
+[00:14:27.015] Browser ERROR   uncaughtError: TypeError: price.toFixed is not a function
+[00:16:26.133] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:16:26.135] Server  ERROR   TypeError: price.toFixed is not a function
+[00:16:26.136] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:16:26.138] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
+[00:16:26.139] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:16:26.141] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
+[00:16:26.216] Browser ERROR   uncaughtError: TypeError: price.toFixed is not a function
+[00:16:26.856] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:16:26.858] Server  ERROR   TypeError: price.toFixed is not a function
+[00:16:26.860] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:16:26.862] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
+[00:16:26.862] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:16:26.864] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
+[00:16:26.939] Browser ERROR   uncaughtError: TypeError: price.toFixed is not a function
+[00:16:27.368] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:16:27.371] Server  ERROR   TypeError: price.toFixed is not a function
+[00:16:27.372] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:16:27.373] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
+[00:16:27.374] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:16:27.376] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
+[00:16:27.448] Browser ERROR   uncaughtError: TypeError: price.toFixed is not a function
+[00:16:47.304] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:16:47.306] Server  ERROR   TypeError: price.toFixed is not a function
+[00:16:47.307] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:16:47.309] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
+[00:16:47.310] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:16:47.312] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
+[00:16:47.386] Browser ERROR   uncaughtError: TypeError: price.toFixed is not a function
+[00:20:44.433] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:20:44.597] Server  LOG      ✓ Compiled in 135ms
+[00:20:45.872] Browser ERROR   Warning: Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.%s 
+
+Check the render method of `HomePage`.  
+    at ProductCard (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:766:22)
+    at HomePage (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:1155:26)
+    at main
+    at div
+    at AuthProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:776:26)
+    at MyApp (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:1477:27)
+    at PathnameContextProviderAdapter (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_shared_lib_9481b9fe._.js:6256:27)
+    at PagesDevOverlayErrorBoundary (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:1292:27)
+    at PagesDevOverlayBridge (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:2170:26)
+    at Container (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3499:27)
+    at AppContainer (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3636:26)
+    at Root (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3862:27)
+[00:26:04.654] Browser ERROR   Warning: Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.%s 
+
+Check the render method of `HomePage`.  
+    at ProductCard (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:766:22)
+    at HomePage (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:1155:26)
+    at main
+    at div
+    at AuthProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:776:26)
+    at MyApp (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:1477:27)
+    at PathnameContextProviderAdapter (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_shared_lib_9481b9fe._.js:6256:27)
+    at PagesDevOverlayErrorBoundary (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:1292:27)
+    at PagesDevOverlayBridge (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:2170:26)
+    at Container (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3499:27)
+    at AppContainer (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3636:26)
+    at Root (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3862:27)
+[00:27:32.415] Browser ERROR   Warning: Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.%s 
+
+Check the render method of `HomePage`.  
+    at ProductCard (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:766:22)
+    at HomePage (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:1155:26)
+    at main
+    at div
+    at AuthProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:776:26)
+    at MyApp (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:1477:27)
+    at PathnameContextProviderAdapter (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_shared_lib_9481b9fe._.js:6256:27)
+    at PagesDevOverlayErrorBoundary (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:1292:27)
+    at PagesDevOverlayBridge (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:2170:26)
+    at Container (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3499:27)
+    at AppContainer (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3636:26)
+    at Root (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3862:27)
+[00:28:26.149] Browser ERROR   Warning: Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.%s 
+
+Check the render method of `HomePage`.  
+    at ProductCard (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:766:22)
+    at HomePage (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:1155:26)
+    at main
+    at div
+    at AuthProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:776:26)
+    at MyApp (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:1477:27)
+    at PathnameContextProviderAdapter (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_shared_lib_9481b9fe._.js:6256:27)
+    at PagesDevOverlayErrorBoundary (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:1292:27)
+    at PagesDevOverlayBridge (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:2170:26)
+    at Container (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3499:27)
+    at AppContainer (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3636:26)
+    at Root (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3862:27)
+[00:54:37.931] Browser ERROR   Warning: Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.%s 
+
+Check the render method of `HomePage`.  
+    at ProductCard (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:766:22)
+    at HomePage (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:1155:26)
+    at main
+    at div
+    at AuthProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:776:26)
+    at MyApp (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:1477:27)
+    at PathnameContextProviderAdapter (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_shared_lib_9481b9fe._.js:6256:27)
+    at PagesDevOverlayErrorBoundary (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:1292:27)
+    at PagesDevOverlayBridge (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:2170:26)
+    at Container (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3499:27)
+    at AppContainer (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3636:26)
+    at Root (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3862:27)
+[01:10:26.594] Browser ERROR   Warning: Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.%s 
+
+Check the render method of `HomePage`.  
+    at ProductCard (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:766:22)
+    at HomePage (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:1155:26)
+    at main
+    at div
+    at AuthProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:776:26)
+    at MyApp (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:1477:27)
+    at PathnameContextProviderAdapter (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_shared_lib_9481b9fe._.js:6256:27)
+    at PagesDevOverlayErrorBoundary (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:1292:27)
+    at PagesDevOverlayBridge (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:2170:26)
+    at Container (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3499:27)
+    at AppContainer (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3636:26)
+    at Root (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3862:27)
+[01:21:55.401] Browser ERROR   Warning: Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.%s 
+
+Check the render method of `HomePage`.  
+    at ProductCard (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:766:22)
+    at HomePage (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:1155:26)
+    at main
+    at div
+    at AuthProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:776:26)
+    at MyApp (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:1477:27)
+    at PathnameContextProviderAdapter (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_shared_lib_9481b9fe._.js:6256:27)
+    at PagesDevOverlayErrorBoundary (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:1292:27)
+    at PagesDevOverlayBridge (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:2170:26)
+    at Container (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3499:27)
+    at AppContainer (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3636:26)
+    at Root (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3862:27)

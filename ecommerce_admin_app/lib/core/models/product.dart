@@ -5,38 +5,72 @@ class Product {
   final int stock;
 
   Product({
-    required this.barcode, 
-    required this.name, 
-    required this.price, 
-    required this.stock
+    required this.barcode,
+    required this.name,
+    required this.price,
+    required this.stock,
   });
 
-  // Método para convertir el objeto Producto a un mapa JSON (para enviar a la API)
-  Map<String, dynamic> toJson() => {
-    'barcode': barcode,
-    'name': name,
-    'price': price,
-    'stock': stock,
-  };
-
-  // Método para crear un objeto Producto a partir de un mapa JSON (para recibir de la API)
   factory Product.fromJson(Map<String, dynamic> json) {
-    // === CORRECCIÓN CLAVE: Mapeamos las claves en español del servidor ===
-    
-    // El nombre lo buscamos bajo la clave 'nombre' del servidor
-    final nameValue = json['nombre'] as String? ?? json['name'] as String? ?? 'Producto Desconocido';
-    
-    // El precio lo buscamos bajo la clave 'precio' del servidor y aseguramos la conversión a double
-    final priceValue = (json['precio'] as num?)?.toDouble() ?? (json['price'] as num?)?.toDouble() ?? 0.0;
-    
-    // El stock lo buscamos bajo la clave 'stock' del servidor y aseguramos la conversión a int
-    final stockValue = (json['stock'] as num?)?.toInt() ?? 0;
-    
     return Product(
-      barcode: json['barcode'] as String? ?? 'N/A',
-      name: nameValue,
-      price: priceValue,
-      stock: stockValue,
+      barcode: json['barcode'] ?? '',
+      name: json['nombre'] ?? json['name'] ?? '',
+      // CORRECCIÓN: Manejo seguro de la conversión del precio
+      price: _safeToDouble(json['precio'] ?? json['price']),
+      // CORRECCIÓN: Manejo seguro de la conversión del stock
+      stock: _safeToInt(json['stock']),
     );
+  }
+
+  // Función helper para convertir seguro a double
+  static double _safeToDouble(dynamic value) {
+    if (value == null) return 0.0;
+    
+    try {
+      if (value is double) return value;
+      if (value is int) return value.toDouble();
+      if (value is String) {
+        // Remover cualquier caracter no numérico excepto punto decimal
+        final cleanString = value.replaceAll(RegExp(r'[^0-9.]'), '');
+        return double.parse(cleanString);
+      }
+      return 0.0;
+    } catch (e) {
+      print('Error convirtiendo a double: $value - $e');
+      return 0.0;
+    }
+  }
+
+  // Función helper para convertir seguro a int
+  static int _safeToInt(dynamic value) {
+    if (value == null) return 0;
+    
+    try {
+      if (value is int) return value;
+      if (value is double) return value.toInt();
+      if (value is String) {
+        // Remover cualquier caracter no numérico
+        final cleanString = value.replaceAll(RegExp(r'[^0-9]'), '');
+        return int.parse(cleanString);
+      }
+      return 0;
+    } catch (e) {
+      print('Error convirtiendo a int: $value - $e');
+      return 0;
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'barcode': barcode,
+      'name': name,
+      'price': price,
+      'stock': stock,
+    };
+  }
+
+  @override
+  String toString() {
+    return 'Product(barcode: $barcode, name: $name, price: $price, stock: $stock)';
   }
 }

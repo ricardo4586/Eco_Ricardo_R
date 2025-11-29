@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const { Pool } = require('pg'); // Cliente de PostgreSQL
+const fs = require('fs').promises; // Para leer el archivo SQL
 require('dotenv').config(); // Para cargar variables de entorno (DB_USER, DB_PASSWORD, etc.)
 
 const app = express();
@@ -26,13 +27,99 @@ const pool = new Pool({
     port: process.env.DB_PORT,
 });
 
-pool.connect((err) => {
-    if (err) {
-        console.error('❌ Error de conexión a PostgreSQL:', err.stack);
-        return;
+// Script SQL para inicializar la base de datos
+const initSQL = `
+-- ----------------------------------------------------
+-- 1. CREAR LA TABLA DE PRODUCTOS
+-- ----------------------------------------------------
+DROP TABLE IF EXISTS productos CASCADE;
+CREATE TABLE productos (
+    id SERIAL PRIMARY KEY,
+    barcode VARCHAR(13) UNIQUE NOT NULL,
+    id_numerico VARCHAR(20),
+    nombre VARCHAR(255) NOT NULL,
+    precio NUMERIC(10, 2) NOT NULL CHECK (precio >= 0),
+    stock INTEGER NOT NULL CHECK (stock >= 0),
+    fecha_registro TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- ----------------------------------------------------
+-- 2. CREAR LA TABLA DE USUARIOS
+-- ----------------------------------------------------
+DROP TABLE IF EXISTS usuarios CASCADE;
+CREATE TABLE usuarios (
+    id SERIAL PRIMARY KEY, 
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(100) NOT NULL, 
+    rol VARCHAR(20) NOT NULL CHECK (rol IN ('admin', 'staff', 'user')),
+    fecha_creacion TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- ----------------------------------------------------
+-- 3. INSERTAR LOS USUARIOS DE PRUEBA
+-- ----------------------------------------------------
+INSERT INTO usuarios (email, password, rol) VALUES
+('admin@ecommerce.com', 'password123', 'admin'),
+('staff@ecommerce.com', 'password456', 'staff')
+ON CONFLICT (email) DO NOTHING;
+
+-- ----------------------------------------------------
+-- 4. INSERTAR PRODUCTOS INICIALES
+-- ----------------------------------------------------
+INSERT INTO productos (barcode, id_numerico, nombre, precio, stock) VALUES
+('7750241000587', '5555555555', 'Inca Kola 500ml', 3.50, 100),
+('7750241000594', '6666666666', 'Gaseosa Coca-Cola 500ml', 3.20, 80)
+ON CONFLICT (barcode) DO NOTHING;
+`;
+
+// Función para inicializar la base de datos
+async function initializeDatabase() {
+    let client;
+    try {
+        client = await pool.connect();
+        console.log('✅ Conexión a PostgreSQL exitosa');
+
+        // Verificar si las tablas ya existen
+        const tableCheck = await client.query(`
+            SELECT table_name 
+            FROM information_schema.tables 
+            WHERE table_schema = 'public' 
+            AND table_name IN ('usuarios', 'productos')
+        `);
+
+        // Si no existen ambas tablas, ejecutar el script de inicialización
+        if (tableCheck.rows.length < 2) {
+            console.log('🔄 Inicializando base de datos...');
+            await client.query(initSQL);
+            console.log('✅ Base de datos inicializada correctamente');
+            
+            // Verificar los datos insertados
+            const usersCount = await client.query('SELECT COUNT(*) FROM usuarios');
+            const productsCount = await client.query('SELECT COUNT(*) FROM productos');
+            
+            console.log(`📊 Usuarios creados: ${usersCount.rows[0].count}`);
+            console.log(`📊 Productos creados: ${productsCount.rows[0].count}`);
+        } else {
+            console.log('✅ Las tablas ya existen, omitiendo inicialización');
+        }
+
+    } catch (err) {
+        console.error('❌ Error de conexión a PostgreSQL:', err.message);
+        
+        // Error específico para tabla no existe
+        if (err.code === '42P01') {
+            console.log('💡 Ejecutando script de creación de tablas...');
+            try {
+                await client.query(initSQL);
+                console.log('✅ Tablas creadas exitosamente');
+            } catch (initError) {
+                console.error('❌ Error al crear tablas:', initError.message);
+            }
+        }
+    } finally {
+        if (client) client.release();
     }
-    console.log('✅ Conexión a PostgreSQL exitosa');
-});
+}
 
 // =======================================================
 // ==================== MIDDLEWARES DE AUTENTICACIÓN ======
@@ -40,23 +127,21 @@ pool.connect((err) => {
 
 /**
  * Función que busca el usuario por token (su ID) en la base de datos.
- * @param {string} token - user-admin o user-normal
+ * @param {number} token - ID del usuario, usado como token simple.
  * @returns {object|null} Objeto de usuario o null
  */
 async function findUserByToken(token) {
     try {
-        // Busca en la tabla 'usuarios'
         const result = await pool.query('SELECT id, email, rol FROM usuarios WHERE id = $1', [token]);
         return result.rows[0] || null;
     } catch (error) {
-        console.error('Error al buscar usuario por token:', error);
+        console.error("Error en findUserByToken:", error.message);
         return null;
     }
 }
 
 /**
  * Middleware para autenticar CUALQUIER usuario (Admin o Staff).
- * Permite acceder a rutas comunes (como la búsqueda de productos para la venta).
  */
 async function authenticateUser(req, res, next) {
     const authHeader = req.headers['authorization'];
@@ -68,7 +153,13 @@ async function authenticateUser(req, res, next) {
     }
 
     const token = authHeader.split(' ')[1];
-    const user = await findUserByToken(token); // Busca en PostgreSQL
+    
+    const userId = parseInt(token, 10);
+    if (isNaN(userId) || userId <= 0) {
+        return res.status(401).json({ success: false, message: 'Token de usuario inválido.' });
+    }
+
+    const user = await findUserByToken(userId);
 
     if (!user) {
         return res.status(401).json({
@@ -77,32 +168,30 @@ async function authenticateUser(req, res, next) {
         });
     }
 
-    req.user = user; // Guarda los datos del usuario en la solicitud
+    req.user = user;
     next();
 }
 
 /**
  * Middleware para autenticar SOLO al Administrador.
- * Permite acceder a rutas críticas (como el registro de productos).
  */
-async function authenticateAdmin(req, res, next) {
-    // Primero autenticamos a cualquier usuario
-    await authenticateUser(req, res, async () => {
-        // Luego verificamos el rol
+function authenticateAdmin(req, res, next) {
+    authenticateUser(req, res, () => {
         if (req.user && req.user.rol === 'admin') {
             next();
         } else {
-            return res.status(403).json({
-                success: false,
-                message: 'Acceso prohibido. Requiere rol de Administrador.'
-            });
+            if (!res.headersSent) {
+                return res.status(403).json({
+                    success: false,
+                    message: 'Acceso prohibido. Requiere rol de Administrador.'
+                });
+            }
         }
     });
 }
 
 // --- FUNCIÓN PARA VALIDAR CÓDIGOS EAN-13 ---
 function validarEAN13(barcode) {
-    // Verifica que sea string, tenga 13 dígitos y todos sean números
     if (typeof barcode !== 'string' || barcode.length !== 13 || !/^\d+$/.test(barcode)) {
         return false;
     }
@@ -113,12 +202,62 @@ function validarEAN13(barcode) {
 // ==================== RUTAS PÚBLICAS =====================
 // =======================================================
 
+// Ruta: GET /api/productos - Catálogo público
+app.get('/api/productos', async (req, res) => {
+    try {
+        const result = await pool.query('SELECT barcode, nombre, precio FROM productos ORDER BY nombre ASC');
+        
+        // CORRECCIÓN: Convertir precios a números
+        const productosConPreciosNumericos = result.rows.map(producto => ({
+            ...producto,
+            precio: Number(producto.precio)
+        }));
+
+        return res.status(200).json({
+            success: true,
+            message: 'Catálogo de productos cargado con éxito.',
+            data: productosConPreciosNumericos
+        });
+    } catch (error) {
+        console.error('❌ ERROR 500 en /api/productos:', error.code || 'Desconocido', error.message);
+        
+        // Si es error de tabla no existe, intentar inicializar
+        if (error.code === '42P01') {
+            console.log('🔄 Intentando inicializar tablas automáticamente...');
+            try {
+                await initializeDatabase();
+                // Reintentar la consulta
+                const retryResult = await pool.query('SELECT barcode, nombre, precio FROM productos ORDER BY nombre ASC');
+                
+                // CORRECCIÓN: También convertir en el reintento
+                const productosRetry = retryResult.rows.map(producto => ({
+                    ...producto,
+                    precio: Number(producto.precio)
+                }));
+
+                return res.status(200).json({
+                    success: true,
+                    message: 'Catálogo de productos cargado con éxito.',
+                    data: productosRetry
+                });
+            } catch (retryError) {
+                console.error('❌ Error al reintentar:', retryError.message);
+            }
+        }
+        
+        return res.status(500).json({ 
+            success: false, 
+            message: 'Error interno del servidor al obtener el catálogo.',
+            errorCode: error.code || '500_DB_FAIL'
+        });
+    }
+});
+
 // Ruta: POST /api/login
 app.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        // Busca usuario por email y password en PostgreSQL
         const result = await pool.query(
             'SELECT id, rol FROM usuarios WHERE email = $1 AND password = $2',
             [email, password]
@@ -128,7 +267,7 @@ app.post('/api/login', async (req, res) => {
         if (user) {
             return res.status(200).json({
                 success: true,
-                token: user.id, // El ID de usuario actúa como token
+                token: user.id.toString(), 
                 rol: user.rol,
                 message: 'Inicio de sesión exitoso.'
             });
@@ -149,7 +288,6 @@ app.post('/api/login', async (req, res) => {
 // =======================================================
 
 // Ruta: GET /api/productos/buscar/:barcode
-// Acceso permitido para Staff (usuario) y Admin (Usa authenticateUser)
 app.get('/api/productos/buscar/:barcode', authenticateUser, async (req, res) => {
     const { barcode } = req.params;
 
@@ -159,23 +297,26 @@ app.get('/api/productos/buscar/:barcode', authenticateUser, async (req, res) => 
             [barcode]
         );
         
-        // --- LOG DE DIAGNÓSTICO ---
-        if (result.rows.length === 0) {
-            console.log(`[DB Búsqueda] Código ${barcode} NO encontrado.`);
-        } else {
-            console.log(`[DB Búsqueda] Código ${barcode} ENCONTRADO:`, result.rows[0]);
-        }
-        // --- FIN LOG ---
-
         const producto = result.rows[0];
 
         if (producto) {
+            // CORRECCIÓN CLAVE: Convertir precio y stock a números
+            const productoFormateado = {
+                barcode: producto.barcode,
+                nombre: producto.nombre,
+                precio: Number(producto.precio),  // ← Convertir a número
+                stock: Number(producto.stock)     // ← Convertir a número
+            };
+
+            console.log(`[DB Búsqueda] Código ${barcode} ENCONTRADO:`, productoFormateado);
+            
             return res.status(200).json({
                 success: true,
                 message: 'Producto encontrado',
-                data: producto
+                data: productoFormateado  // ← Enviar el objeto formateado
             });
         } else {
+            console.log(`[DB Búsqueda] Código ${barcode} NO encontrado.`);
             return res.status(404).json({
                 success: false,
                 message: 'Producto no encontrado en la base de datos'
@@ -192,9 +333,7 @@ app.get('/api/productos/buscar/:barcode', authenticateUser, async (req, res) => 
 // =======================================================
 
 // Ruta: POST /api/productos/registrar
-// Acceso permitido SOLAMENTE para Admin (Usa authenticateAdmin)
 app.post('/api/productos/registrar', authenticateAdmin, async (req, res) => {
-    // Flutter envía: barcode, id_numerico, nombre, precio, stock
     const { barcode, id_numerico, nombre, precio, stock } = req.body;
 
     if (!barcode || !id_numerico || !nombre || !precio || !stock) {
@@ -212,7 +351,6 @@ app.post('/api/productos/registrar', authenticateAdmin, async (req, res) => {
     }
 
     try {
-        // 1. Verificar si ya existe
         const existing = await pool.query('SELECT barcode FROM productos WHERE barcode = $1', [barcode]);
         if (existing.rows.length > 0) {
             return res.status(409).json({
@@ -221,7 +359,10 @@ app.post('/api/productos/registrar', authenticateAdmin, async (req, res) => {
             });
         }
 
-        // 2. Registrar nuevo producto en PostgreSQL
+        // CORRECCIÓN: Asegurar conversión a números
+        const precioNumerico = parseFloat(precio);
+        const stockNumerico = parseInt(stock, 10);
+
         const insertQuery = `
             INSERT INTO productos (barcode, id_numerico, nombre, precio, stock)
             VALUES ($1, $2, $3, $4, $5)
@@ -231,13 +372,14 @@ app.post('/api/productos/registrar', authenticateAdmin, async (req, res) => {
             barcode,
             id_numerico,
             nombre,
-            parseFloat(precio),
-            parseInt(stock, 10)
+            precioNumerico, // ← Ya convertido a número
+            stockNumerico   // ← Ya convertido a número
         ]);
 
         const newProduct = result.rows[0];
 
         console.log(`[DB] Nuevo producto registrado: ${newProduct.nombre} - Código: ${newProduct.barcode}`);
+        console.log(`[DB] Tipo de precio insertado:`, typeof newProduct.precio);
 
         res.status(201).json({
             success: true,
@@ -251,10 +393,6 @@ app.post('/api/productos/registrar', authenticateAdmin, async (req, res) => {
     }
 });
 
-// =======================================================
-// ==================== RUTAS DE PRUEBA ====================
-// =======================================================
-
 // Manejo de rutas no encontradas (404)
 app.use((req, res) => {
     res.status(404).json({
@@ -266,9 +404,20 @@ app.use((req, res) => {
 // =======================================================
 // ======================= INICIO ==========================
 // =======================================================
-app.listen(PORT, () => {
-    console.log(`🚀 Servidor Express ejecutándose en http://localhost:${PORT}`);
-    console.log('\n🔑 Credenciales de prueba (PostgreSQL):');
-    console.log(`  Admin: admin@ecommerce.com / password123`);
-    console.log(`  Staff: staff@ecommerce.com / password456`);
-});
+async function startServer() {
+    await initializeDatabase();
+    
+    app.listen(PORT, () => {
+        console.log(`🚀 Servidor Express ejecutándose en http://localhost:${PORT}`);
+        console.log('\n🔑 Credenciales de prueba (PostgreSQL):');
+        console.log(`  Admin: admin@ecommerce.com / password123`);
+        console.log(`  Staff: staff@ecommerce.com / password456`);
+        console.log('\n📊 Endpoints disponibles:');
+        console.log(`  GET  /api/productos - Catálogo público`);
+        console.log(`  POST /api/login - Iniciar sesión`);
+        console.log(`  GET  /api/productos/buscar/:barcode - Buscar producto (requiere auth)`);
+        console.log(`  POST /api/productos/registrar - Registrar producto (solo admin)`);
+    });
+}
+
+startServer();

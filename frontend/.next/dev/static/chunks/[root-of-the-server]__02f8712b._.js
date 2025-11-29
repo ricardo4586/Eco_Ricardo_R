@@ -764,6 +764,26 @@ var _this = ("TURBOPACK compile-time value", void 0);
 ;
 var ProductCard = function(param) {
     var name = param.name, price = param.price, barcode = param.barcode;
+    // Función segura para formatear el precio
+    var formatPrice = function(priceValue) {
+        if (priceValue === null || priceValue === undefined || priceValue === '') {
+            return 'N/A';
+        }
+        try {
+            // Convertir a número si es string
+            var numericPrice = typeof priceValue === 'number' ? priceValue : parseFloat(priceValue);
+            // Verificar si es un número válido
+            if (isNaN(numericPrice)) {
+                return 'N/A';
+            }
+            // Formatear a 2 decimales
+            return numericPrice.toFixed(2);
+        } catch (error) {
+            console.error('Error formateando precio:', error);
+            return 'N/A';
+        }
+    };
+    var formattedPrice = formatPrice(price);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 overflow-hidden border border-gray-100",
         children: [
@@ -773,7 +793,7 @@ var ProductCard = function(param) {
                 className: "w-full h-48 object-cover"
             }, void 0, false, {
                 fileName: "[project]/ecommerce-project/frontend/components/Product/ProductCard.jsx",
-                lineNumber: 10,
+                lineNumber: 37,
                 columnNumber: 13
             }, _this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -784,18 +804,18 @@ var ProductCard = function(param) {
                         children: name
                     }, void 0, false, {
                         fileName: "[project]/ecommerce-project/frontend/components/Product/ProductCard.jsx",
-                        lineNumber: 16,
+                        lineNumber: 43,
                         columnNumber: 17
                     }, _this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                         className: "text-2xl font-bold text-indigo-700 mb-3",
                         children: [
                             "$",
-                            price ? price.toFixed(2) : 'N/A'
+                            formattedPrice
                         ]
                     }, void 0, true, {
                         fileName: "[project]/ecommerce-project/frontend/components/Product/ProductCard.jsx",
-                        lineNumber: 17,
+                        lineNumber: 45,
                         columnNumber: 17
                     }, _this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -806,7 +826,7 @@ var ProductCard = function(param) {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/ecommerce-project/frontend/components/Product/ProductCard.jsx",
-                        lineNumber: 18,
+                        lineNumber: 46,
                         columnNumber: 17
                     }, _this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -817,26 +837,26 @@ var ProductCard = function(param) {
                                 className: "mr-2"
                             }, void 0, false, {
                                 fileName: "[project]/ecommerce-project/frontend/components/Product/ProductCard.jsx",
-                                lineNumber: 20,
+                                lineNumber: 48,
                                 columnNumber: 21
                             }, _this),
                             "Agregar al Carrito"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/ecommerce-project/frontend/components/Product/ProductCard.jsx",
-                        lineNumber: 19,
+                        lineNumber: 47,
                         columnNumber: 17
                     }, _this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/ecommerce-project/frontend/components/Product/ProductCard.jsx",
-                lineNumber: 15,
+                lineNumber: 42,
                 columnNumber: 13
             }, _this)
         ]
     }, void 0, true, {
         fileName: "[project]/ecommerce-project/frontend/components/Product/ProductCard.jsx",
-        lineNumber: 9,
+        lineNumber: 36,
         columnNumber: 9
     }, _this);
 };
