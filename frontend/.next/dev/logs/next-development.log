@@ -1,12 +1,1 @@
-[00:00:00.739] Server  LOG      ✓ Ready in 484ms
-[00:00:33.411] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:00:46.618] Browser ERROR   unhandledRejection: TypeError: Cannot read properties of undefined (reading 'message')
-[00:02:06.215] Browser LOG     Búsqueda: monitor
-[00:02:07.180] Browser LOG     Búsqueda: monitor
-[00:02:07.887] Browser LOG     Búsqueda: monitor
-[00:02:51.187] Server  LOG      ✓ Compiled in 154ms
-[00:03:01.351] Server  LOG      ✓ Compiled in 18ms
-[00:03:05.621] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:05:22.217] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:05:32.116] Browser ERROR   Error fetching admin data: {}
-[00:05:41.812] Browser ERROR   Error fetching admin data: {}
+[00:00:00.819] Server  LOG      ✓ Ready in 555ms

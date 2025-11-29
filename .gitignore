@@ -1,0 +1,38 @@
+# --------------------
+# Archivos de Next.js (Frontend)
+# --------------------
+# Carpeta de compilación de Next.js. ¡NO DEBE SUBIRSE!
+.next/
+out/
+.vercel/
+
+# --------------------
+# Archivos de Entorno y Node (Backend y Frontend)
+# --------------------
+# Variables de Entorno (Contiene claves y secretos sensibles)
+.env
+.env.local
+.env.development.local
+.env.production.local
+
+# Dependencias (Se pueden reinstalar con 'npm install')
+node_modules/
+/backend/node_modules
+/frontend/node_modules
+
+# Logs y Caché
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --------------------
+# Archivos de Flutter/Dart (ecommerce_admin_app)
+# --------------------
+# Archivos de compilación y herramientas de desarrollo. ¡NO DEBE SUBIRSE!
+.dart_tool/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.metadata

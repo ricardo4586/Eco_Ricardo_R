@@ -930,8 +930,7 @@ if ((0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$
 "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx [client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-// Archivo: pages/admin/dashboard.jsx
-// Panel de Administración (Ruta Protegida: /admin/dashboard).
+// pages/admin/dashboard.jsx - ACTUALIZADO CON CÓDIGOS EAN-13
 __turbopack_context__.s([
     "default",
     ()=>__TURBOPACK__default__export__
@@ -942,8 +941,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$fron
 var __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$tslib$2f$tslib$2e$es6$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__$3c$export__$5f$_generator__as__$5f3e$__ = __turbopack_context__.i("[project]/ecommerce-project/frontend/node_modules/tslib/tslib.es6.mjs [client] (ecmascript) <export __generator as _>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/ecommerce-project/frontend/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/ecommerce-project/frontend/node_modules/react/index.js [client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$context$2f$AuthContext$2e$jsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/ecommerce-project/frontend/context/AuthContext.jsx [client] (ecmascript)"); // Manteniendo la ruta relativa para coincidir con la estructura
-var __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/ecommerce-project/frontend/node_modules/next/router.js [client] (ecmascript)"); // Manteniendo 'next/router' para la convención pages/
+var __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$context$2f$AuthContext$2e$jsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/ecommerce-project/frontend/context/AuthContext.jsx [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/ecommerce-project/frontend/node_modules/next/navigation.js [client] (ecmascript)");
 ;
 ;
 ;
@@ -951,459 +950,824 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$fron
 var _this = ("TURBOPACK compile-time value", void 0);
 ;
 var _s = __turbopack_context__.k.signature();
-"use client"; // Necesario para usar hooks de estado y useRouter
+"use client";
 ;
 ;
 ;
-// Definición de URL API (debe ser accesible desde el navegador)
-var API_BASE_URL = 'http://localhost:3001/api';
-// --- COMPONENTE: Barra de Estadísticas (StatBar) ---
-// En una estructura modular, esto estaría en components/Admin/StatBar.jsx
-var StatBarComponent = function(param) {
-    var item = param.item, maxSales = param.maxSales;
-    var percentage = (item.sales / maxSales * 100).toFixed(0);
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "flex items-center space-x-4",
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                className: "w-1/4 font-medium text-gray-700 truncate",
-                children: item.product
-            }, void 0, false, {
-                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                lineNumber: 19,
-                columnNumber: 13
-            }, _this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex-grow bg-gray-200 rounded-full h-3",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "bg-indigo-500 h-3 rounded-full transition-all duration-500 ease-out",
-                    style: {
-                        width: "".concat(percentage, "%")
-                    }
-                }, void 0, false, {
-                    fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                    lineNumber: 21,
-                    columnNumber: 17
-                }, _this)
-            }, void 0, false, {
-                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                lineNumber: 20,
-                columnNumber: 13
-            }, _this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                className: "w-12 text-right font-bold text-indigo-700",
-                children: item.sales
-            }, void 0, false, {
-                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                lineNumber: 26,
-                columnNumber: 13
-            }, _this)
-        ]
-    }, void 0, true, {
-        fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-        lineNumber: 18,
-        columnNumber: 9
-    }, _this);
-};
-_c = StatBarComponent;
-// --- PÁGINA: Admin Dashboard ---
-var AdminDashboardPage = function() {
+var Dashboard = function() {
     _s();
-    // Nota: API_BASE_URL no se necesita desestructurar de useAuth si se define globalmente
-    var _useAuth = (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$context$2f$AuthContext$2e$jsx__$5b$client$5d$__$28$ecmascript$29$__["useAuth"])(), isAdmin = _useAuth.isAdmin, authToken = _useAuth.authToken, isCheckingAuth = _useAuth.isCheckingAuth;
-    var router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"])();
-    var _useState = (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f40$swc$2f$helpers$2f$esm$2f$_sliced_to_array$2e$js__$5b$client$5d$__$28$ecmascript$29$__["_"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])([]), 2), products = _useState[0], setProducts = _useState[1];
-    var _useState1 = (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f40$swc$2f$helpers$2f$esm$2f$_sliced_to_array$2e$js__$5b$client$5d$__$28$ecmascript$29$__["_"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])([]), 2), stats = _useState1[0], setStats = _useState1[1];
+    var _useAuth = (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$context$2f$AuthContext$2e$jsx__$5b$client$5d$__$28$ecmascript$29$__["useAuth"])(), isAdmin = _useAuth.isAdmin, isCheckingAuth = _useAuth.isCheckingAuth, authToken = _useAuth.authToken;
+    var router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"])();
+    var _useState = (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f40$swc$2f$helpers$2f$esm$2f$_sliced_to_array$2e$js__$5b$client$5d$__$28$ecmascript$29$__["_"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(null), 2), stats = _useState[0], setStats = _useState[1];
+    var _useState1 = (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f40$swc$2f$helpers$2f$esm$2f$_sliced_to_array$2e$js__$5b$client$5d$__$28$ecmascript$29$__["_"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])([]), 2), products = _useState1[0], setProducts = _useState1[1];
     var _useState2 = (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f40$swc$2f$helpers$2f$esm$2f$_sliced_to_array$2e$js__$5b$client$5d$__$28$ecmascript$29$__["_"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(true), 2), loading = _useState2[0], setLoading = _useState2[1];
-    // Redirección de seguridad
+    var _useState3 = (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f40$swc$2f$helpers$2f$esm$2f$_sliced_to_array$2e$js__$5b$client$5d$__$28$ecmascript$29$__["_"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(''), 2), error = _useState3[0], setError = _useState3[1];
+    // Redirigir si no es admin
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "AdminDashboardPage.useEffect": function() {
-            // Si la verificación terminó (no es null) Y no es admin, redirige al login
+        "Dashboard.useEffect": function() {
             if (!isCheckingAuth && !isAdmin) {
-                router.replace('/login');
+                router.push('/login');
             }
         }
-    }["AdminDashboardPage.useEffect"], [
-        isCheckingAuth,
+    }["Dashboard.useEffect"], [
         isAdmin,
+        isCheckingAuth,
         router
     ]);
-    // Función para obtener productos y estadísticas
-    var fetchAdminData = (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useCallback"])({
-        "AdminDashboardPage.useCallback[fetchAdminData]": function() {
-            return (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f40$swc$2f$helpers$2f$esm$2f$_async_to_generator$2e$js__$5b$client$5d$__$28$ecmascript$29$__["_"])({
-                "AdminDashboardPage.useCallback[fetchAdminData]": function() {
-                    var statsResponse, statsResult, productsResponse, productsResult, error;
-                    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$tslib$2f$tslib$2e$es6$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__$3c$export__$5f$_generator__as__$5f3e$__["_"])(this, {
-                        "AdminDashboardPage.useCallback[fetchAdminData]": function(_state) {
-                            switch(_state.label){
-                                case 0:
-                                    setLoading(true);
-                                    if (!authToken) return [
-                                        2
-                                    ];
-                                    _state.label = 1;
-                                case 1:
-                                    _state.trys.push([
-                                        1,
-                                        6,
-                                        7,
-                                        8
-                                    ]);
-                                    return [
-                                        4,
-                                        fetch("".concat(API_BASE_URL, "/estadisticas/top-productos"), {
-                                            headers: {
-                                                Authorization: "Bearer ".concat(authToken)
+    // Cargar datos del dashboard
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "Dashboard.useEffect": function() {
+            if (!isAdmin || !authToken) return;
+            var fetchDashboardData = {
+                "Dashboard.useEffect.fetchDashboardData": function() {
+                    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f40$swc$2f$helpers$2f$esm$2f$_async_to_generator$2e$js__$5b$client$5d$__$28$ecmascript$29$__["_"])({
+                        "Dashboard.useEffect.fetchDashboardData": function() {
+                            var statsResponse, contentType, textResponse, statsData, productsResponse, productsData, err;
+                            return (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$tslib$2f$tslib$2e$es6$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__$3c$export__$5f$_generator__as__$5f3e$__["_"])(this, {
+                                "Dashboard.useEffect.fetchDashboardData": function(_state) {
+                                    switch(_state.label){
+                                        case 0:
+                                            _state.trys.push([
+                                                0,
+                                                7,
+                                                8,
+                                                9
+                                            ]);
+                                            setLoading(true);
+                                            setError('');
+                                            return [
+                                                4,
+                                                fetch('http://localhost:3000/api/estadisticas/top-productos', {
+                                                    headers: {
+                                                        Authorization: "Bearer ".concat(authToken)
+                                                    }
+                                                })
+                                            ];
+                                        case 1:
+                                            statsResponse = _state.sent();
+                                            // Verificar si la respuesta es JSON
+                                            contentType = statsResponse.headers.get('content-type');
+                                            if (!(!contentType || !contentType.includes('application/json'))) return [
+                                                3,
+                                                3
+                                            ];
+                                            return [
+                                                4,
+                                                statsResponse.text()
+                                            ];
+                                        case 2:
+                                            textResponse = _state.sent();
+                                            throw new Error("El servidor devolvió HTML en lugar de JSON. ¿El endpoint existe? Respuesta: ".concat(textResponse.substring(0, 100), "..."));
+                                        case 3:
+                                            if (!statsResponse.ok) {
+                                                throw new Error("Error ".concat(statsResponse.status, ": ").concat(statsResponse.statusText));
                                             }
-                                        })
-                                    ];
-                                case 2:
-                                    statsResponse = _state.sent();
-                                    return [
-                                        4,
-                                        statsResponse.json()
-                                    ];
-                                case 3:
-                                    statsResult = _state.sent();
-                                    if (statsResponse.ok) {
-                                        setStats(statsResult.data);
-                                    } else {
-                                        console.error("Error al cargar estadísticas: ".concat(statsResult.message));
-                                    }
-                                    return [
-                                        4,
-                                        fetch("".concat(API_BASE_URL, "/productos"), {
-                                            headers: {
-                                                Authorization: "Bearer ".concat(authToken)
+                                            return [
+                                                4,
+                                                statsResponse.json()
+                                            ];
+                                        case 4:
+                                            statsData = _state.sent();
+                                            setStats(statsData.data);
+                                            return [
+                                                4,
+                                                fetch('http://localhost:3000/api/productos')
+                                            ];
+                                        case 5:
+                                            productsResponse = _state.sent();
+                                            if (!productsResponse.ok) {
+                                                throw new Error("Error cargando productos: ".concat(productsResponse.status));
                                             }
-                                        })
-                                    ];
-                                case 4:
-                                    productsResponse = _state.sent();
-                                    return [
-                                        4,
-                                        productsResponse.json()
-                                    ];
-                                case 5:
-                                    productsResult = _state.sent();
-                                    if (productsResponse.ok) {
-                                        setProducts(productsResult.data);
-                                    } else {
-                                        console.error("Error al cargar productos: ".concat(productsResult.message));
+                                            return [
+                                                4,
+                                                productsResponse.json()
+                                            ];
+                                        case 6:
+                                            productsData = _state.sent();
+                                            setProducts(productsData.data || []);
+                                            return [
+                                                3,
+                                                9
+                                            ];
+                                        case 7:
+                                            err = _state.sent();
+                                            console.error('Error loading dashboard:', err);
+                                            setError(err.message || 'Error al cargar el dashboard');
+                                            return [
+                                                3,
+                                                9
+                                            ];
+                                        case 8:
+                                            setLoading(false);
+                                            return [
+                                                7
+                                            ];
+                                        case 9:
+                                            return [
+                                                2
+                                            ];
                                     }
-                                    return [
-                                        3,
-                                        8
-                                    ];
-                                case 6:
-                                    error = _state.sent();
-                                    console.error('Error fetching admin data:', error);
-                                    return [
-                                        3,
-                                        8
-                                    ];
-                                case 7:
-                                    setLoading(false);
-                                    return [
-                                        7
-                                    ];
-                                case 8:
-                                    return [
-                                        2
-                                    ];
-                            }
+                                }
+                            }["Dashboard.useEffect.fetchDashboardData"]);
                         }
-                    }["AdminDashboardPage.useCallback[fetchAdminData]"]);
+                    }["Dashboard.useEffect.fetchDashboardData"])();
                 }
-            }["AdminDashboardPage.useCallback[fetchAdminData]"])();
+            }["Dashboard.useEffect.fetchDashboardData"];
+            fetchDashboardData();
         }
-    }["AdminDashboardPage.useCallback[fetchAdminData]"], [
+    }["Dashboard.useEffect"], [
+        isAdmin,
         authToken
     ]);
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "AdminDashboardPage.useEffect": function() {
-            // Solo intenta cargar datos si es admin Y tiene token
-            if (isAdmin && authToken) {
-                fetchAdminData();
-            }
-        }
-    }["AdminDashboardPage.useEffect"], [
-        isAdmin,
-        authToken,
-        fetchAdminData
-    ]);
-    if (isCheckingAuth || !isAdmin) {
-        // Muestra loading mientras verifica
+    if (isCheckingAuth) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "p-8 text-center text-indigo-600 min-h-screen",
-            children: "Verificando acceso al Dashboard..."
-        }, void 0, false, {
+            className: "min-h-screen bg-gray-50 flex items-center justify-center",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "loading-spinner"
+                }, void 0, false, {
+                    fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                    lineNumber: 77,
+                    columnNumber: 17
+                }, _this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                    className: "ml-3 text-gray-600",
+                    children: "Verificando autenticación..."
+                }, void 0, false, {
+                    fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                    lineNumber: 78,
+                    columnNumber: 17
+                }, _this)
+            ]
+        }, void 0, true, {
             fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-            lineNumber: 98,
-            columnNumber: 16
+            lineNumber: 76,
+            columnNumber: 13
         }, _this);
     }
-    if (loading) {
+    if (!isAdmin) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "p-8 text-center text-indigo-600",
-            children: "Cargando datos del Administrador..."
-        }, void 0, false, {
-            fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-            lineNumber: 102,
-            columnNumber: 16
-        }, _this);
-    }
-    // El Dashboard solo se renderiza si isAdmin es true
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "min-h-screen bg-gray-50 p-4 md:p-8",
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex justify-between items-center mb-6 border-b pb-4",
+            className: "min-h-screen bg-gray-50 flex items-center justify-center",
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "text-center",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                        className: "text-3xl font-extrabold text-indigo-700",
-                        children: "Panel de Administración Avanzado"
+                        className: "text-2xl font-bold text-red-600 mb-4",
+                        children: "Acceso Denegado"
                     }, void 0, false, {
                         fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                        lineNumber: 109,
-                        columnNumber: 17
+                        lineNumber: 87,
+                        columnNumber: 21
                     }, _this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                        className: "bg-red-100 text-red-800 text-sm font-medium px-4 py-1.5 rounded-full",
-                        children: "ROL: ADMIN"
-                    }, void 0, false, {
-                        fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                        lineNumber: 110,
-                        columnNumber: 17
-                    }, _this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                lineNumber: 108,
-                columnNumber: 13
-            }, _this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                className: "text-2xl font-bold text-gray-800 mb-4",
-                children: "Gráficos de Ventas Mensuales"
-            }, void 0, false, {
-                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                lineNumber: 114,
-                columnNumber: 13
-            }, _this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "bg-white p-6 rounded-xl shadow-lg mb-8",
-                children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-lg font-semibold mb-3",
-                        children: "Top Productos por Ventas (Noviembre)"
+                        className: "text-gray-600",
+                        children: "No tienes permisos para acceder al panel de administración."
                     }, void 0, false, {
                         fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                        lineNumber: 116,
-                        columnNumber: 17
-                    }, _this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "space-y-3",
-                        children: stats.length > 0 ? stats.map(function(item, index) {
-                            var _stats_;
-                            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(StatBarComponent, {
-                                item: item,
-                                maxSales: ((_stats_ = stats[0]) === null || _stats_ === void 0 ? void 0 : _stats_.sales) || 1
-                            }, index, false, {
-                                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                                lineNumber: 119,
-                                columnNumber: 25
-                            }, _this);
-                        }) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                            className: "text-gray-500",
-                            children: "No hay datos de ventas disponibles."
-                        }, void 0, false, {
-                            fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                            lineNumber: 125,
-                            columnNumber: 25
-                        }, _this)
-                    }, void 0, false, {
-                        fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                        lineNumber: 117,
-                        columnNumber: 17
+                        lineNumber: 88,
+                        columnNumber: 21
                     }, _this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                lineNumber: 115,
-                columnNumber: 13
-            }, _this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                className: "text-2xl font-bold text-gray-800 mb-4",
-                children: "Inventario y Productos Registrados"
-            }, void 0, false, {
-                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                lineNumber: 131,
-                columnNumber: 13
-            }, _this),
+                lineNumber: 86,
+                columnNumber: 17
+            }, _this)
+        }, void 0, false, {
+            fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+            lineNumber: 85,
+            columnNumber: 13
+        }, _this);
+    }
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        className: "min-h-screen bg-gray-50",
+        children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "bg-white rounded-xl shadow-lg overflow-hidden",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
-                    className: "min-w-full divide-y divide-gray-200",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
-                            className: "bg-gray-100",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                className: "bg-white shadow",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex justify-between items-center py-6",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                                        children: "ID"
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                                        className: "text-3xl font-bold text-gray-900",
+                                        children: "Panel de Administración"
                                     }, void 0, false, {
                                         fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                                        lineNumber: 136,
+                                        lineNumber: 101,
                                         columnNumber: 29
                                     }, _this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                                        children: "Nombre"
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "text-gray-600 mt-1",
+                                        children: "Gestión de productos y estadísticas"
                                     }, void 0, false, {
                                         fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                                        lineNumber: 137,
-                                        columnNumber: 29
-                                    }, _this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                                        children: "Precio"
-                                    }, void 0, false, {
-                                        fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                                        lineNumber: 138,
-                                        columnNumber: 29
-                                    }, _this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                                        children: "Stock"
-                                    }, void 0, false, {
-                                        fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                                        lineNumber: 139,
-                                        columnNumber: 29
-                                    }, _this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                                        children: "Barcode"
-                                    }, void 0, false, {
-                                        fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                                        lineNumber: 140,
+                                        lineNumber: 102,
                                         columnNumber: 29
                                     }, _this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                                lineNumber: 135,
+                                lineNumber: 100,
+                                columnNumber: 25
+                            }, _this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex gap-3",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                        onClick: function() {
+                                            return router.push('/');
+                                        },
+                                        className: "btn-secondary",
+                                        children: "Volver a la Tienda"
+                                    }, void 0, false, {
+                                        fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                        lineNumber: 105,
+                                        columnNumber: 29
+                                    }, _this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                        onClick: function() {
+                                            return window.open('http://localhost:3000/api/health', '_blank');
+                                        },
+                                        className: "bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition",
+                                        children: "Probar API"
+                                    }, void 0, false, {
+                                        fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                        lineNumber: 111,
+                                        columnNumber: 29
+                                    }, _this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                lineNumber: 104,
                                 columnNumber: 25
                             }, _this)
-                        }, void 0, false, {
-                            fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                            lineNumber: 134,
-                            columnNumber: 21
-                        }, _this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
-                            className: "bg-white divide-y divide-gray-200",
-                            children: products.length > 0 ? products.map(function(product) {
-                                return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                            className: "px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900",
-                                            children: product.id
-                                        }, void 0, false, {
-                                            fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                                            lineNumber: 146,
-                                            columnNumber: 33
-                                        }, _this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                            className: "px-6 py-4 whitespace-nowrap text-sm text-gray-500",
-                                            children: product.nombre
-                                        }, void 0, false, {
-                                            fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                                            lineNumber: 147,
-                                            columnNumber: 33
-                                        }, _this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                            className: "px-6 py-4 whitespace-nowrap text-sm font-medium text-indigo-600",
-                                            children: [
-                                                "$",
-                                                product.precio.toFixed(2)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                                            lineNumber: 148,
-                                            columnNumber: 33
-                                        }, _this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                            className: "px-6 py-4 whitespace-nowrap text-sm font-bold text-green-600",
-                                            children: product.stock
-                                        }, void 0, false, {
-                                            fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                                            lineNumber: 149,
-                                            columnNumber: 33
-                                        }, _this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                            className: "px-6 py-4 whitespace-nowrap text-sm text-gray-500",
-                                            children: product.barcode
-                                        }, void 0, false, {
-                                            fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                                            lineNumber: 150,
-                                            columnNumber: 33
-                                        }, _this)
-                                    ]
-                                }, product.id, true, {
-                                    fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                                    lineNumber: 145,
-                                    columnNumber: 29
-                                }, _this);
-                            }) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                    colSpan: "5",
-                                    className: "px-6 py-4 text-center text-gray-500",
-                                    children: "No hay productos registrados."
-                                }, void 0, false, {
-                                    fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                                    lineNumber: 154,
-                                    columnNumber: 33
-                                }, _this)
-                            }, void 0, false, {
-                                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                                lineNumber: 153,
-                                columnNumber: 29
-                            }, _this)
-                        }, void 0, false, {
-                            fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                            lineNumber: 143,
-                            columnNumber: 21
-                        }, _this)
-                    ]
-                }, void 0, true, {
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                        lineNumber: 99,
+                        columnNumber: 21
+                    }, _this)
+                }, void 0, false, {
                     fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                    lineNumber: 133,
+                    lineNumber: 98,
                     columnNumber: 17
                 }, _this)
             }, void 0, false, {
                 fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-                lineNumber: 132,
+                lineNumber: 97,
+                columnNumber: 13
+            }, _this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "max-w-7xl mx-auto py-6 sm:px-6 lg:px-8",
+                children: [
+                    error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "error-message mb-6",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                children: "Error:"
+                            }, void 0, false, {
+                                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                lineNumber: 126,
+                                columnNumber: 25
+                            }, _this),
+                            " ",
+                            error,
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "mt-2 text-sm",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        children: "Posibles causas:"
+                                    }, void 0, false, {
+                                        fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                        lineNumber: 128,
+                                        columnNumber: 29
+                                    }, _this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                                        className: "list-disc ml-6 mt-1",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                children: "El backend no está ejecutándose en puerto 3000"
+                                            }, void 0, false, {
+                                                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                lineNumber: 130,
+                                                columnNumber: 33
+                                            }, _this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                children: "El endpoint /api/estadisticas/top-productos no existe"
+                                            }, void 0, false, {
+                                                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                lineNumber: 131,
+                                                columnNumber: 33
+                                            }, _this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                children: "Problema de conexión con el servidor"
+                                            }, void 0, false, {
+                                                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                lineNumber: 132,
+                                                columnNumber: 33
+                                            }, _this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                        lineNumber: 129,
+                                        columnNumber: 29
+                                    }, _this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                lineNumber: 127,
+                                columnNumber: 25
+                            }, _this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                        lineNumber: 125,
+                        columnNumber: 21
+                    }, _this),
+                    loading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "text-center py-12",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "loading-spinner mx-auto"
+                            }, void 0, false, {
+                                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                lineNumber: 140,
+                                columnNumber: 25
+                            }, _this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "mt-3 text-gray-600",
+                                children: "Cargando dashboard..."
+                            }, void 0, false, {
+                                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                lineNumber: 141,
+                                columnNumber: 25
+                            }, _this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                        lineNumber: 139,
+                        columnNumber: 21
+                    }, _this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "space-y-6",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "bg-blue-50 border border-blue-200 rounded-lg p-4",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "flex items-start",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "flex-shrink-0",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "text-2xl",
+                                                children: "📱"
+                                            }, void 0, false, {
+                                                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                lineNumber: 149,
+                                                columnNumber: 37
+                                            }, _this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                            lineNumber: 148,
+                                            columnNumber: 33
+                                        }, _this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "ml-3",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                    className: "text-lg font-semibold text-blue-800",
+                                                    children: "Listo para Flutter"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                    lineNumber: 152,
+                                                    columnNumber: 37
+                                                }, _this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                    className: "text-blue-700 mt-1",
+                                                    children: "Los productos tienen códigos de barras EAN-13 reales para escanear."
+                                                }, void 0, false, {
+                                                    fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                    lineNumber: 153,
+                                                    columnNumber: 37
+                                                }, _this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "mt-2 text-sm text-blue-600",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                                            children: "Endpoints para la app:"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                            lineNumber: 157,
+                                                            columnNumber: 41
+                                                        }, _this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                                                            className: "list-disc ml-5 mt-1",
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("code", {
+                                                                            children: "GET /api/productos/buscar/:barcode"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                                            lineNumber: 159,
+                                                                            columnNumber: 49
+                                                                        }, _this),
+                                                                        " - Buscar producto"
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                                    lineNumber: 159,
+                                                                    columnNumber: 45
+                                                                }, _this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("code", {
+                                                                            children: "POST /api/productos/registrar"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                                            lineNumber: 160,
+                                                                            columnNumber: 49
+                                                                        }, _this),
+                                                                        " - Registrar nuevo producto"
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                                    lineNumber: 160,
+                                                                    columnNumber: 45
+                                                                }, _this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                            lineNumber: 158,
+                                                            columnNumber: 41
+                                                        }, _this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                    lineNumber: 156,
+                                                    columnNumber: 37
+                                                }, _this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                            lineNumber: 151,
+                                            columnNumber: 33
+                                        }, _this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                    lineNumber: 147,
+                                    columnNumber: 29
+                                }, _this)
+                            }, void 0, false, {
+                                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                lineNumber: 146,
+                                columnNumber: 25
+                            }, _this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "grid grid-cols-1 lg:grid-cols-2 gap-6",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "bg-white rounded-lg shadow p-6",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                                className: "text-xl font-semibold mb-4",
+                                                children: "Productos Más Vendidos"
+                                            }, void 0, false, {
+                                                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                lineNumber: 170,
+                                                columnNumber: 33
+                                            }, _this),
+                                            stats && stats.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "space-y-4",
+                                                children: stats.map(function(item, index) {
+                                                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "flex justify-between items-center p-3 bg-gray-50 rounded",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: "font-medium",
+                                                                children: item.product
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                                lineNumber: 175,
+                                                                columnNumber: 49
+                                                            }, _this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: "bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-semibold",
+                                                                children: [
+                                                                    item.sales,
+                                                                    " ventas"
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                                lineNumber: 176,
+                                                                columnNumber: 49
+                                                            }, _this)
+                                                        ]
+                                                    }, index, true, {
+                                                        fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                        lineNumber: 174,
+                                                        columnNumber: 45
+                                                    }, _this);
+                                                })
+                                            }, void 0, false, {
+                                                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                lineNumber: 172,
+                                                columnNumber: 37
+                                            }, _this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                className: "text-gray-500 text-center py-4",
+                                                children: "No hay datos de estadísticas disponibles"
+                                            }, void 0, false, {
+                                                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                lineNumber: 183,
+                                                columnNumber: 37
+                                            }, _this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                        lineNumber: 169,
+                                        columnNumber: 29
+                                    }, _this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "bg-white rounded-lg shadow p-6",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "flex justify-between items-center mb-4",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                                        className: "text-xl font-semibold",
+                                                        children: "Productos en Inventario"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                        lineNumber: 192,
+                                                        columnNumber: 37
+                                                    }, _this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: "bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-medium",
+                                                        children: [
+                                                            products.length,
+                                                            " productos"
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                        lineNumber: 193,
+                                                        columnNumber: 37
+                                                    }, _this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                lineNumber: 191,
+                                                columnNumber: 33
+                                            }, _this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "space-y-4",
+                                                children: products.map(function(product) {
+                                                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors",
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "flex justify-between items-start",
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    className: "flex-1",
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                                            className: "font-semibold text-gray-800",
+                                                                            children: product.nombre
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                                            lineNumber: 203,
+                                                                            columnNumber: 53
+                                                                        }, _this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                            className: "mt-2 space-y-1",
+                                                                            children: [
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                    className: "flex items-center text-sm text-gray-600",
+                                                                                    children: [
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                            className: "font-medium mr-2",
+                                                                                            children: "Código EAN-13:"
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                                                            lineNumber: 206,
+                                                                                            columnNumber: 61
+                                                                                        }, _this),
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("code", {
+                                                                                            className: "bg-gray-100 px-2 py-1 rounded font-mono text-xs",
+                                                                                            children: product.barcode
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                                                            lineNumber: 207,
+                                                                                            columnNumber: 61
+                                                                                        }, _this)
+                                                                                    ]
+                                                                                }, void 0, true, {
+                                                                                    fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                                                    lineNumber: 205,
+                                                                                    columnNumber: 57
+                                                                                }, _this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                    className: "flex items-center text-sm text-gray-600",
+                                                                                    children: [
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                            className: "font-medium mr-2",
+                                                                                            children: "ID:"
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                                                            lineNumber: 212,
+                                                                                            columnNumber: 61
+                                                                                        }, _this),
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                            className: "font-mono",
+                                                                                            children: product.id_numerico
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                                                            lineNumber: 213,
+                                                                                            columnNumber: 61
+                                                                                        }, _this)
+                                                                                    ]
+                                                                                }, void 0, true, {
+                                                                                    fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                                                    lineNumber: 211,
+                                                                                    columnNumber: 57
+                                                                                }, _this)
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                                            lineNumber: 204,
+                                                                            columnNumber: 53
+                                                                        }, _this)
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                                    lineNumber: 202,
+                                                                    columnNumber: 49
+                                                                }, _this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    className: "text-right ml-4",
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                            className: "text-2xl font-bold text-green-600",
+                                                                            children: [
+                                                                                "$",
+                                                                                product.precio
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                                            lineNumber: 218,
+                                                                            columnNumber: 53
+                                                                        }, _this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                            className: "text-sm text-gray-500 mt-1",
+                                                                            children: [
+                                                                                "Stock: ",
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                    className: "font-semibold",
+                                                                                    children: product.stock
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                                                    lineNumber: 220,
+                                                                                    columnNumber: 64
+                                                                                }, _this),
+                                                                                " unidades"
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                                            lineNumber: 219,
+                                                                            columnNumber: 53
+                                                                        }, _this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                            className: "mt-2",
+                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                className: "inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800",
+                                                                                children: product.stock > 20 ? 'Alto stock' : product.stock > 10 ? 'Stock medio' : 'Bajo stock'
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                                                lineNumber: 223,
+                                                                                columnNumber: 57
+                                                                            }, _this)
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                                            lineNumber: 222,
+                                                                            columnNumber: 53
+                                                                        }, _this)
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                                    lineNumber: 217,
+                                                                    columnNumber: 49
+                                                                }, _this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                            lineNumber: 201,
+                                                            columnNumber: 45
+                                                        }, _this)
+                                                    }, product.id, false, {
+                                                        fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                        lineNumber: 200,
+                                                        columnNumber: 41
+                                                    }, _this);
+                                                })
+                                            }, void 0, false, {
+                                                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                lineNumber: 198,
+                                                columnNumber: 33
+                                            }, _this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                        lineNumber: 190,
+                                        columnNumber: 29
+                                    }, _this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                lineNumber: 167,
+                                columnNumber: 25
+                            }, _this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "bg-yellow-50 border border-yellow-200 rounded-lg p-4",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                        className: "text-lg font-semibold text-yellow-800 mb-2",
+                                        children: "📟 Códigos EAN-13 para probar:"
+                                    }, void 0, false, {
+                                        fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                        lineNumber: 237,
+                                        columnNumber: 29
+                                    }, _this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2",
+                                        children: products.slice(0, 6).map(function(product) {
+                                            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "bg-white border border-yellow-200 rounded p-3",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "font-medium text-sm",
+                                                        children: product.nombre
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                        lineNumber: 241,
+                                                        columnNumber: 41
+                                                    }, _this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("code", {
+                                                        className: "text-xs bg-gray-100 px-2 py-1 rounded font-mono block mt-1",
+                                                        children: product.barcode
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                        lineNumber: 242,
+                                                        columnNumber: 41
+                                                    }, _this)
+                                                ]
+                                            }, product.id, true, {
+                                                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                                lineNumber: 240,
+                                                columnNumber: 37
+                                            }, _this);
+                                        })
+                                    }, void 0, false, {
+                                        fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                        lineNumber: 238,
+                                        columnNumber: 29
+                                    }, _this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                                lineNumber: 236,
+                                columnNumber: 25
+                            }, _this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                        lineNumber: 144,
+                        columnNumber: 21
+                    }, _this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
+                lineNumber: 123,
                 columnNumber: 13
             }, _this)
         ]
     }, void 0, true, {
         fileName: "[project]/ecommerce-project/frontend/pages/admin/dashboard.jsx",
-        lineNumber: 107,
+        lineNumber: 95,
         columnNumber: 9
     }, _this);
 };
-_s(AdminDashboardPage, "2dayIX2EgmCti/oIEshiy2KwBlo=", false, function() {
+_s(Dashboard, "57mMF2twgohJVZe6mZmQq2pzEgw=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$context$2f$AuthContext$2e$jsx__$5b$client$5d$__$28$ecmascript$29$__["useAuth"],
-        __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"]
+        __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"]
     ];
 });
-_c1 = AdminDashboardPage;
-const __TURBOPACK__default__export__ = AdminDashboardPage;
-var _c, _c1;
-__turbopack_context__.k.register(_c, "StatBarComponent");
-__turbopack_context__.k.register(_c1, "AdminDashboardPage");
+_c = Dashboard;
+const __TURBOPACK__default__export__ = Dashboard;
+var _c;
+__turbopack_context__.k.register(_c, "Dashboard");
 if ((0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f40$swc$2f$helpers$2f$esm$2f$_type_of$2e$js__$5b$client$5d$__$28$ecmascript$29$__["_"])(globalThis.$RefreshHelpers$) === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
