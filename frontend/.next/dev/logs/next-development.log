@@ -326,3 +326,392 @@ Check the render method of `Dashboard`.
 [03:36:03.395] Browser LOG     📦 Datos: {"barcode":"1322321231322","categoria":"supermercado","descripcion":"Arroz integral de grano largo, perfecto para una alimentación saludable","id_numerico":"0001","imagen":"https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/396e9/MainBefore.jpg","nombre":"Arroz Integral","precio":2.5,"stock":50}
 [03:36:03.395] Browser LOG     📨 Respuesta del servidor: {"success":false,"message":"Endpoint no encontrado: PUT /api/productos/SM001"}
 [03:36:03.395] Browser ERROR   ❌ Error saving product: {}
+[03:41:16.710] Server  LOG     🎨 Renderizando Navbar - categorias: 0 "loading:" true
+[03:41:16.937] Server  LOG     🔄 Cargando productos desde: "http://localhost:3001/api/productos"
+[03:41:17.077] Browser LOG     🎨 Renderizando Navbar - categorias: 0 loading: true
+[03:41:17.077] Browser LOG     🔄 useEffect - Iniciando carga de categorías
+[03:41:17.077] Browser LOG     📡 Fetching categorías...
+[03:41:17.077] Browser LOG     🎨 Renderizando Navbar - categorias: 0 loading: true
+[03:41:17.077] Browser LOG     📊 Response status: 200
+[03:41:17.077] Browser LOG     📦 Datos recibidos de API: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[03:41:17.077] Browser LOG     ✅ 5 categorías cargadas: [{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}]
+[03:41:17.077] Browser LOG     🏁 Loading finalizado
+[03:41:17.077] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:41:17.077] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:41:17.077] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[03:41:17.077] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:41:17.077] Browser LOG     🔍 Iniciando carga de categorías...
+[03:41:17.077] Browser LOG     📡 Respuesta de API: 200
+[03:41:17.077] Browser LOG     📦 Datos recibidos: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[03:41:17.077] Browser LOG     ✅ 5 categorías cargadas
+[03:41:18.360] Server  LOG     🎨 Renderizando Navbar - categorias: 0 "loading:" true
+[03:41:18.477] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:41:18.477] Browser WARN    Endpoint de estadísticas no disponible: 404
+[03:41:18.477] Browser ERROR   Warning: Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.%s 
+
+Check the render method of `Dashboard`.  
+    at div
+    at Dashboard (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__36d11395._.js:959:187)
+    at main
+    at div
+    at CartProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:1043:26)
+    at AuthProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:776:26)
+    at App (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:2444:27)
+    at PathnameContextProviderAdapter (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_shared_lib_9481b9fe._.js:6256:27)
+    at PagesDevOverlayErrorBoundary (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:1292:27)
+    at PagesDevOverlayBridge (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:2170:26)
+    at Container (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3499:27)
+    at AppContainer (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3636:26)
+    at Root (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3862:27)
+[03:41:21.735] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:41:42.489] Browser LOG     🔍 Enviando a: http://localhost:3000/api/productos/7751731006825 Método: PUT
+[03:41:42.489] Browser LOG     📦 Datos: {"barcode":"7751731006825","categoria":"electrodomesticos","descripcion":"","id_numerico":"0011","imagen":"https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/396e9/MainBefore.jpg","nombre":"agua con gas","precio":"5.8","stock":"6"}
+[03:41:42.489] Browser LOG     📨 Respuesta del servidor: {"success":false,"message":"Endpoint no encontrado: PUT /api/productos/7751731006825"}
+[03:41:42.489] Browser ERROR   ❌ Error saving product: {}
+[03:42:33.587] Server  LOG     🎨 Renderizando Navbar - categorias: 0 "loading:" true
+[03:42:33.787] Server  LOG     🔄 Cargando productos desde: "http://localhost:3001/api/productos"
+[03:42:33.921] Browser LOG     🎨 Renderizando Navbar - categorias: 0 loading: true
+[03:42:33.921] Browser LOG     🔄 useEffect - Iniciando carga de categorías
+[03:42:33.921] Browser LOG     📡 Fetching categorías...
+[03:42:33.921] Browser LOG     🎨 Renderizando Navbar - categorias: 0 loading: true
+[03:42:33.921] Browser LOG     📊 Response status: 200
+[03:42:33.921] Browser LOG     📦 Datos recibidos de API: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[03:42:33.921] Browser LOG     ✅ 5 categorías cargadas: [{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}]
+[03:42:33.921] Browser LOG     🏁 Loading finalizado
+[03:42:33.921] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:42:33.921] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:42:33.921] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[03:42:33.921] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:42:33.921] Browser LOG     🔍 Iniciando carga de categorías...
+[03:42:33.921] Browser LOG     📡 Respuesta de API: 200
+[03:42:33.921] Browser LOG     📦 Datos recibidos: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[03:42:33.921] Browser LOG     ✅ 5 categorías cargadas
+[03:42:35.183] Server  LOG     🎨 Renderizando Navbar - categorias: 0 "loading:" true
+[03:42:35.293] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:42:35.293] Browser WARN    Endpoint de estadísticas no disponible: 404
+[03:42:35.293] Browser ERROR   Warning: Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.%s 
+
+Check the render method of `Dashboard`.  
+    at div
+    at Dashboard (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__36d11395._.js:959:187)
+    at main
+    at div
+    at CartProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:1043:26)
+    at AuthProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:776:26)
+    at App (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:2444:27)
+    at PathnameContextProviderAdapter (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_shared_lib_9481b9fe._.js:6256:27)
+    at PagesDevOverlayErrorBoundary (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:1292:27)
+    at PagesDevOverlayBridge (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:2170:26)
+    at Container (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3499:27)
+    at AppContainer (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3636:26)
+    at Root (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3862:27)
+[03:42:36.283] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:43:06.936] Browser LOG     🔍 Enviando a: http://localhost:3000/api/productos/7501056330316 Método: PUT
+[03:43:06.936] Browser LOG     📦 Datos: {"barcode":"7501056330316","categoria":"tecnologia","descripcion":"asdasdasd","id_numerico":"7501056330316","imagen":"https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/396e9/MainBefore.jpg","nombre":"cremaa","precio":"5.4","stock":"6"}
+[03:43:06.936] Browser LOG     📨 Respuesta del servidor: {"success":true,"message":"Producto actualizado correctamente","product":{"id":5,"barcode":"7501056330316","id_numerico":"7501056330316","nombre":"cremaa","precio":"5.40","stock":6,"fecha_registro":"2025-11-30T06:07:48.973Z","categoria":"tecnologia","descripcion":"asdasdasd","imagen":"https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/396e9/MainBefore.jpg"}}
+[03:43:06.936] Browser LOG     ✅ Operación exitosa: {"message":"Producto actualizado correctamente","product":{"barcode":"7501056330316","categoria":"tecnologia","descripcion":"asdasdasd","fecha_registro":"2025-11-30T06:07:48.973Z","id":5,"id_numerico":"7501056330316","imagen":"https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/396e9/MainBefore.jpg","nombre":"cremaa","precio":"5.40","stock":6},"success":true}
+[03:43:11.812] Server  LOG     🔄 Cargando productos desde: "http://localhost:3001/api/productos"
+[03:43:11.942] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:43:11.942] Browser LOG     🔍 Iniciando carga de categorías...
+[03:43:11.942] Browser LOG     📡 Respuesta de API: 200
+[03:43:11.942] Browser LOG     📦 Datos recibidos: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[03:43:11.942] Browser LOG     ✅ 5 categorías cargadas
+[03:43:17.470] Server  LOG     📥 Solicitud para categoría: "supermercado"
+[03:43:17.470] Server  LOG     ✅ Devolviendo 3 productos para supermercado
+[03:43:17.575] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:43:17.575] Browser LOG     🔄 Cargando productos para categoría: supermercado
+[03:43:17.575] Browser LOG     📡 Intentando conectar a API...
+[03:43:17.575] Browser LOG     ✅ Datos recibidos de API: {"categoria":"supermercado","count":3,"data":[{"barcode":"SM001","categoria":"supermercado","descripcion":"Arroz integral de grano largo, perfecto para una alimentación saludable","nombre":"Arroz Integral","precio":2.5,"stock":50},{"barcode":"SM002","categoria":"supermercado","descripcion":"Aceite de oliva extra virgen de primera prensada","nombre":"Aceite de Oliva Extra Virgen","precio":8.99,"stock":30},{"barcode":"SM003","categoria":"supermercado","descripcion":"Pasta de trigo integral, rica en fibra","nombre":"Pasta Integral","precio":1.75,"stock":40}],"success":true}
+[03:43:22.456] Server  LOG     🔄 Cargando productos desde: "http://localhost:3001/api/productos"
+[03:43:22.585] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:43:22.585] Browser LOG     🔍 Iniciando carga de categorías...
+[03:43:22.585] Browser LOG     📡 Respuesta de API: 200
+[03:43:22.585] Browser LOG     📦 Datos recibidos: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[03:43:22.585] Browser LOG     ✅ 5 categorías cargadas
+[03:43:32.246] Server  LOG     📥 Solicitud para categoría: "electrodomesticos"
+[03:43:32.246] Server  LOG     ✅ Devolviendo 2 productos para electrodomesticos
+[03:43:32.355] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:43:32.355] Browser LOG     🔄 Cargando productos para categoría: electrodomesticos
+[03:43:32.356] Browser LOG     📡 Intentando conectar a API...
+[03:43:32.356] Browser LOG     ✅ Datos recibidos de API: {"categoria":"electrodomesticos","count":2,"data":[{"barcode":"EL001","categoria":"electrodomesticos","descripcion":"Licuadora de 600W con 2 velocidades y jarra de vidrio","nombre":"Licuadora Oster","precio":45.99,"stock":15},{"barcode":"EL002","categoria":"electrodomesticos","descripcion":"Microondas digital 1.2 pies cúbicos con grill","nombre":"Microondas Samsung","precio":120,"stock":8}],"success":true}
+[03:43:36.971] Server  LOG     📥 Solicitud para categoría: "supermercado"
+[03:43:36.971] Server  LOG     ✅ Devolviendo 3 productos para supermercado
+[03:43:36.977] Server  LOG     📥 Solicitud para categoría: "electrodomesticos"
+[03:43:36.978] Server  LOG     ✅ Devolviendo 2 productos para electrodomesticos
+[03:43:36.983] Server  LOG     📥 Solicitud para categoría: "jugueteria"
+[03:43:36.983] Server  LOG     ✅ Devolviendo 2 productos para jugueteria
+[03:43:36.989] Server  LOG     📥 Solicitud para categoría: "tecnologia"
+[03:43:36.989] Server  LOG     ✅ Devolviendo 2 productos para tecnologia
+[03:43:36.995] Server  LOG     📥 Solicitud para categoría: "bebidas"
+[03:43:36.995] Server  LOG     ✅ Devolviendo 2 productos para bebidas
+[03:43:37.066] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:43:37.066] Browser LOG     🔄 Cargando categorías para página principal...
+[03:43:37.066] Browser LOG     📦 Categorías recibidas: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[03:43:38.490] Server  LOG     📥 Solicitud para categoría: "bebidas"
+[03:43:38.491] Server  LOG     ✅ Devolviendo 2 productos para bebidas
+[03:43:38.599] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:43:38.599] Browser LOG     🔄 Cargando productos para categoría: bebidas
+[03:43:38.599] Browser LOG     📡 Intentando conectar a API...
+[03:43:38.599] Browser LOG     ✅ Datos recibidos de API: {"categoria":"bebidas","count":2,"data":[{"barcode":"BEB001","categoria":"bebidas","descripcion":"Agua mineral natural 500ml, sin gas","nombre":"Agua Mineral Natural","precio":0.75,"stock":100},{"barcode":"BEB002","categoria":"bebidas","descripcion":"Jugo de naranja 100% natural 1L","nombre":"Jugo de Naranja Natural","precio":3.25,"stock":40}],"success":true}
+[03:43:40.536] Server  LOG     📥 Solicitud para categoría: "supermercado"
+[03:43:40.536] Server  LOG     ✅ Devolviendo 3 productos para supermercado
+[03:43:40.542] Server  LOG     📥 Solicitud para categoría: "electrodomesticos"
+[03:43:40.542] Server  LOG     ✅ Devolviendo 2 productos para electrodomesticos
+[03:43:40.548] Server  LOG     📥 Solicitud para categoría: "jugueteria"
+[03:43:40.548] Server  LOG     ✅ Devolviendo 2 productos para jugueteria
+[03:43:40.554] Server  LOG     📥 Solicitud para categoría: "tecnologia"
+[03:43:40.554] Server  LOG     ✅ Devolviendo 2 productos para tecnologia
+[03:43:40.560] Server  LOG     📥 Solicitud para categoría: "bebidas"
+[03:43:40.560] Server  LOG     ✅ Devolviendo 2 productos para bebidas
+[03:43:40.632] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:43:40.632] Browser LOG     🔄 Cargando categorías para página principal...
+[03:43:40.632] Browser LOG     📦 Categorías recibidas: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[03:43:41.073] Server  LOG     📥 Solicitud para categoría: "jugueteria"
+[03:43:41.073] Server  LOG     ✅ Devolviendo 2 productos para jugueteria
+[03:43:41.176] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:43:41.176] Browser LOG     🔄 Cargando productos para categoría: jugueteria
+[03:43:41.176] Browser LOG     📡 Intentando conectar a API...
+[03:43:41.176] Browser LOG     ✅ Datos recibidos de API: {"categoria":"jugueteria","count":2,"data":[{"barcode":"JUG001","categoria":"jugueteria","descripcion":"Set de construcción Lego con 221 piezas","nombre":"Set Lego Classic","precio":24.99,"stock":35},{"barcode":"JUG002","categoria":"jugueteria","descripcion":"Muñeca Barbie con 3 cambios de vestuario","nombre":"Muñeca Barbie Fashion","precio":19.99,"stock":20}],"success":true}
+[03:43:42.443] Server  LOG     📥 Solicitud para categoría: "supermercado"
+[03:43:42.443] Server  LOG     ✅ Devolviendo 3 productos para supermercado
+[03:43:42.449] Server  LOG     📥 Solicitud para categoría: "electrodomesticos"
+[03:43:42.450] Server  LOG     ✅ Devolviendo 2 productos para electrodomesticos
+[03:43:42.455] Server  LOG     📥 Solicitud para categoría: "jugueteria"
+[03:43:42.456] Server  LOG     ✅ Devolviendo 2 productos para jugueteria
+[03:43:42.461] Server  LOG     📥 Solicitud para categoría: "tecnologia"
+[03:43:42.461] Server  LOG     ✅ Devolviendo 2 productos para tecnologia
+[03:43:42.467] Server  LOG     📥 Solicitud para categoría: "bebidas"
+[03:43:42.468] Server  LOG     ✅ Devolviendo 2 productos para bebidas
+[03:43:42.550] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:43:42.550] Browser LOG     🔄 Cargando categorías para página principal...
+[03:43:42.550] Browser LOG     📦 Categorías recibidas: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[03:43:43.020] Server  LOG     📥 Solicitud para categoría: "electrodomesticos"
+[03:43:43.020] Server  LOG     ✅ Devolviendo 2 productos para electrodomesticos
+[03:43:43.126] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:43:43.126] Browser LOG     🔄 Cargando productos para categoría: electrodomesticos
+[03:43:43.126] Browser LOG     📡 Intentando conectar a API...
+[03:43:43.126] Browser LOG     ✅ Datos recibidos de API: {"categoria":"electrodomesticos","count":2,"data":[{"barcode":"EL001","categoria":"electrodomesticos","descripcion":"Licuadora de 600W con 2 velocidades y jarra de vidrio","nombre":"Licuadora Oster","precio":45.99,"stock":15},{"barcode":"EL002","categoria":"electrodomesticos","descripcion":"Microondas digital 1.2 pies cúbicos con grill","nombre":"Microondas Samsung","precio":120,"stock":8}],"success":true}
+[03:43:44.809] Server  LOG     📥 Solicitud para categoría: "supermercado"
+[03:43:44.809] Server  LOG     ✅ Devolviendo 3 productos para supermercado
+[03:43:44.815] Server  LOG     📥 Solicitud para categoría: "electrodomesticos"
+[03:43:44.815] Server  LOG     ✅ Devolviendo 2 productos para electrodomesticos
+[03:43:44.822] Server  LOG     📥 Solicitud para categoría: "jugueteria"
+[03:43:44.822] Server  LOG     ✅ Devolviendo 2 productos para jugueteria
+[03:43:44.828] Server  LOG     📥 Solicitud para categoría: "tecnologia"
+[03:43:44.828] Server  LOG     ✅ Devolviendo 2 productos para tecnologia
+[03:43:44.834] Server  LOG     📥 Solicitud para categoría: "bebidas"
+[03:43:44.835] Server  LOG     ✅ Devolviendo 2 productos para bebidas
+[03:43:44.906] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:43:44.906] Browser LOG     🔄 Cargando categorías para página principal...
+[03:43:44.906] Browser LOG     📦 Categorías recibidas: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[03:43:45.632] Server  LOG     📥 Solicitud para categoría: "tecnologia"
+[03:43:45.632] Server  LOG     ✅ Devolviendo 2 productos para tecnologia
+[03:43:45.736] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:43:45.736] Browser LOG     🔄 Cargando productos para categoría: tecnologia
+[03:43:45.736] Browser LOG     📡 Intentando conectar a API...
+[03:43:45.736] Browser LOG     ✅ Datos recibidos de API: {"categoria":"tecnologia","count":2,"data":[{"barcode":"TEC001","categoria":"tecnologia","descripcion":"Smartphone Android 128GB, cámara triple 48MP","nombre":"Smartphone Samsung Galaxy","precio":299.99,"stock":25},{"barcode":"TEC002","categoria":"tecnologia","descripcion":"Laptop 15.6\" 8GB RAM, 256GB SSD, Intel i5","nombre":"Laptop HP Pavilion","precio":599.99,"stock":12}],"success":true}
+[03:43:47.289] Server  LOG     📥 Solicitud para categoría: "supermercado"
+[03:43:47.289] Server  LOG     ✅ Devolviendo 3 productos para supermercado
+[03:43:47.295] Server  LOG     📥 Solicitud para categoría: "electrodomesticos"
+[03:43:47.295] Server  LOG     ✅ Devolviendo 2 productos para electrodomesticos
+[03:43:47.301] Server  LOG     📥 Solicitud para categoría: "jugueteria"
+[03:43:47.301] Server  LOG     ✅ Devolviendo 2 productos para jugueteria
+[03:43:47.307] Server  LOG     📥 Solicitud para categoría: "tecnologia"
+[03:43:47.307] Server  LOG     ✅ Devolviendo 2 productos para tecnologia
+[03:43:47.313] Server  LOG     📥 Solicitud para categoría: "bebidas"
+[03:43:47.313] Server  LOG     ✅ Devolviendo 2 productos para bebidas
+[03:43:47.384] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:43:47.384] Browser LOG     🔄 Cargando categorías para página principal...
+[03:43:47.384] Browser LOG     📦 Categorías recibidas: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[03:43:47.791] Server  LOG     📥 Solicitud para categoría: "supermercado"
+[03:43:47.792] Server  LOG     ✅ Devolviendo 3 productos para supermercado
+[03:43:47.896] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:43:47.896] Browser LOG     🔄 Cargando productos para categoría: supermercado
+[03:43:47.896] Browser LOG     📡 Intentando conectar a API...
+[03:43:47.896] Browser LOG     ✅ Datos recibidos de API: {"categoria":"supermercado","count":3,"data":[{"barcode":"SM001","categoria":"supermercado","descripcion":"Arroz integral de grano largo, perfecto para una alimentación saludable","nombre":"Arroz Integral","precio":2.5,"stock":50},{"barcode":"SM002","categoria":"supermercado","descripcion":"Aceite de oliva extra virgen de primera prensada","nombre":"Aceite de Oliva Extra Virgen","precio":8.99,"stock":30},{"barcode":"SM003","categoria":"supermercado","descripcion":"Pasta de trigo integral, rica en fibra","nombre":"Pasta Integral","precio":1.75,"stock":40}],"success":true}
+[03:43:49.595] Server  LOG     🎨 Renderizando Navbar - categorias: 0 "loading:" true
+[03:43:49.701] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:43:49.701] Browser WARN    Endpoint de estadísticas no disponible: 404
+[03:43:51.208] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:44:01.976] Server  LOG     🎨 Renderizando Navbar - categorias: 0 "loading:" true
+[03:44:02.088] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:44:02.088] Browser WARN    Endpoint de estadísticas no disponible: 404
+[03:44:57.012] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:45:40.139] Server  LOG     🔄 Cargando productos desde: "http://localhost:3001/api/productos"
+[03:45:40.273] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:45:40.273] Browser LOG     🔍 Iniciando carga de categorías...
+[03:45:40.273] Browser LOG     📡 Respuesta de API: 200
+[03:45:40.273] Browser LOG     📦 Datos recibidos: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[03:45:40.273] Browser LOG     ✅ 5 categorías cargadas
+[03:45:42.788] Server  LOG     📥 Solicitud para categoría: "jugueteria"
+[03:45:42.788] Server  LOG     ✅ Devolviendo 2 productos para jugueteria
+[03:45:42.890] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:45:42.891] Browser LOG     🔄 Cargando productos para categoría: jugueteria
+[03:45:42.891] Browser LOG     📡 Intentando conectar a API...
+[03:45:42.891] Browser LOG     ✅ Datos recibidos de API: {"categoria":"jugueteria","count":2,"data":[{"barcode":"JUG001","categoria":"jugueteria","descripcion":"Set de construcción Lego con 221 piezas","nombre":"Set Lego Classic","precio":24.99,"stock":35},{"barcode":"JUG002","categoria":"jugueteria","descripcion":"Muñeca Barbie con 3 cambios de vestuario","nombre":"Muñeca Barbie Fashion","precio":19.99,"stock":20}],"success":true}
+[03:46:39.806] Server  LOG     🔄 Cargando productos desde: "http://localhost:3001/api/productos"
+[03:46:39.929] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:46:39.929] Browser LOG     🔍 Iniciando carga de categorías...
+[03:46:39.929] Browser LOG     📡 Respuesta de API: 200
+[03:46:39.929] Browser LOG     📦 Datos recibidos: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[03:46:39.929] Browser LOG     ✅ 5 categorías cargadas
+[03:58:01.834] Server  LOG      ✓ Compiled in 148ms
+[03:58:25.034] Server  LOG     🎨 Renderizando Navbar - categorias: 0 "loading:" true
+[03:58:25.155] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:58:25.155] Browser WARN    Endpoint de estadísticas no disponible: 404
+[03:58:30.157] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:58:40.673] Server  LOG     🔄 Cargando productos desde: "http://localhost:3001/api/productos"
+[03:58:40.804] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:58:40.804] Browser LOG     🔍 Iniciando carga de categorías...
+[03:58:40.804] Browser LOG     📡 Respuesta de API: 200
+[03:58:40.804] Browser LOG     📦 Datos recibidos: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[03:58:40.804] Browser LOG     ✅ 5 categorías cargadas
+[03:58:41.462] Browser LOG     🖱️ Click en CATEGORÍAS, estado actual: false
+[03:58:41.462] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:58:43.447] Browser LOG     🎯 Click en categoría: supermercado
+[03:58:43.447] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:58:43.447] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:58:43.447] Browser LOG     🔄 Cargando productos para categoría: supermercado
+[03:58:43.447] Browser LOG     📡 Intentando conectar a API...
+[03:58:43.447] Browser LOG     ✅ Datos recibidos de API: {"data":[{"barcode":"7751731006825","categoria":"supermercado","descripcion":null,"id_numerico":"7751731006825","imagen":null,"nombre":"agua con gas","precio":5.8,"stock":6},{"barcode":"7751731006603","categoria":"supermercado","descripcion":null,"id_numerico":"7751731006603","imagen":null,"nombre":"gaseosa fanta","precio":5.8,"stock":6},{"barcode":"7750241000587","categoria":"supermercado","descripcion":null,"id_numerico":"5555555555","imagen":null,"nombre":"Inca Kola 500ml","precio":3.5,"stock":100}],"success":true,"total":3}
+[03:58:43.447] Browser LOG     📦 3 productos cargados de la API
+[03:58:50.796] Server  LOG     🎨 Renderizando Navbar - categorias: 0 "loading:" true
+[03:58:50.902] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:58:50.902] Browser WARN    Endpoint de estadísticas no disponible: 404
+[03:58:52.009] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:58:56.005] Server  LOG     🔄 Cargando productos desde: "http://localhost:3001/api/productos"
+[03:58:56.131] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:58:56.131] Browser LOG     🔍 Iniciando carga de categorías...
+[03:58:56.131] Browser LOG     📡 Respuesta de API: 200
+[03:58:56.131] Browser LOG     📦 Datos recibidos: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[03:58:56.131] Browser LOG     ✅ 5 categorías cargadas
+[03:59:00.634] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:59:00.634] Browser LOG     🔄 Cargando productos para categoría: jugueteria
+[03:59:00.634] Browser LOG     📡 Intentando conectar a API...
+[03:59:00.634] Browser LOG     ✅ Datos recibidos de API: {"data":[{"barcode":"7501056330316","categoria":"jugueteria","descripcion":"","id_numerico":"7501056330316","imagen":"","nombre":"crema ","precio":5.8,"stock":6}],"success":true,"total":1}
+[03:59:00.634] Browser LOG     📦 1 productos cargados de la API
+[03:59:10.807] Server  LOG     🎨 Renderizando Navbar - categorias: 0 "loading:" true
+[03:59:10.926] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:59:10.926] Browser WARN    Endpoint de estadísticas no disponible: 404
+[03:59:12.160] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:59:20.120] Server  LOG     🔄 Cargando productos desde: "http://localhost:3001/api/productos"
+[03:59:20.261] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:59:20.262] Browser LOG     🔍 Iniciando carga de categorías...
+[03:59:20.262] Browser LOG     📡 Respuesta de API: 200
+[03:59:20.262] Browser LOG     📦 Datos recibidos: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[03:59:20.262] Browser LOG     ✅ 5 categorías cargadas
+[03:59:44.511] Browser LOG     🖱️ Click en CATEGORÍAS, estado actual: false
+[03:59:44.511] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:59:45.443] Browser LOG     🎯 Click en categoría: jugueteria
+[03:59:45.443] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:59:45.443] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:59:45.443] Browser LOG     🔄 Cargando productos para categoría: jugueteria
+[03:59:45.444] Browser LOG     📡 Intentando conectar a API...
+[03:59:45.444] Browser LOG     ✅ Datos recibidos de API: {"data":[{"barcode":"7501056330316","categoria":"jugueteria","descripcion":"","id_numerico":"7501056330316","imagen":"","nombre":"juguete de pesca","precio":5.8,"stock":6}],"success":true,"total":1}
+[03:59:45.444] Browser LOG     📦 1 productos cargados de la API
+[04:00:10.302] Server  LOG     🔄 Cargando productos desde: "http://localhost:3001/api/productos"
+[04:00:10.433] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[04:00:10.433] Browser LOG     🔍 Iniciando carga de categorías...
+[04:00:10.433] Browser LOG     📡 Respuesta de API: 200
+[04:00:10.433] Browser LOG     📦 Datos recibidos: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[04:00:10.433] Browser LOG     ✅ 5 categorías cargadas
+[04:00:14.333] Server  ERROR   C:\Users\User\ecommerce-project\frontend\node_modules\next\dist\server\dev\on-demand-entry-handler.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[04:00:14.336] Server  ERROR   C:\Users\User\ecommerce-project\frontend\node_modules\next\dist\server\dev\hot-reloader-turbopack.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[04:00:14.337] Server  ERROR   C:\Users\User\ecommerce-project\frontend\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[04:00:14.339] Server  ERROR   C:\Users\User\ecommerce-project\frontend\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[04:00:14.340] Server  ERROR   C:\Users\User\ecommerce-project\frontend\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[04:00:14.342] Server  ERROR   PageNotFoundError: Cannot find module for page: /productos
+[04:00:14.360] Server  LOG     🎨 Renderizando Navbar - categorias: 0 "loading:" true
+[04:00:14.623] Browser LOG     🎨 Renderizando Navbar - categorias: 0 loading: true
+[04:00:14.623] Browser LOG     🔄 useEffect - Iniciando carga de categorías
+[04:00:14.623] Browser LOG     📡 Fetching categorías...
+[04:00:14.623] Browser LOG     🎨 Renderizando Navbar - categorias: 0 loading: true
+[04:00:14.623] Browser LOG     📊 Response status: 200
+[04:00:14.623] Browser LOG     📦 Datos recibidos de API: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[04:00:14.623] Browser LOG     ✅ 5 categorías cargadas: [{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}]
+[04:00:14.623] Browser LOG     🏁 Loading finalizado
+[04:00:14.623] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[04:00:18.189] Server  LOG     🔄 Cargando productos desde: "http://localhost:3001/api/productos"
+[04:00:18.324] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[04:00:18.324] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[04:00:18.324] Browser LOG     🔍 Iniciando carga de categorías...
+[04:00:18.324] Browser LOG     📡 Respuesta de API: 200
+[04:00:18.324] Browser LOG     📦 Datos recibidos: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[04:00:18.324] Browser LOG     ✅ 5 categorías cargadas
+[04:00:20.623] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[04:00:20.623] Browser LOG     🔄 Cargando productos para categoría: electrodomesticos
+[04:00:20.623] Browser LOG     📡 Intentando conectar a API...
+[04:00:20.623] Browser LOG     ✅ Datos recibidos de API: {"data":[],"success":true,"total":0}
+[04:00:20.623] Browser LOG     📦 0 productos cargados de la API
+[04:00:22.102] Server  LOG     🔄 Cargando productos desde: "http://localhost:3001/api/productos"
+[04:00:22.234] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[04:00:22.234] Browser LOG     🔍 Iniciando carga de categorías...
+[04:00:22.234] Browser LOG     📡 Respuesta de API: 200
+[04:00:22.234] Browser LOG     📦 Datos recibidos: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[04:00:22.234] Browser LOG     ✅ 5 categorías cargadas
+[04:00:23.752] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[04:00:23.753] Browser LOG     🔄 Cargando productos para categoría: jugueteria
+[04:00:23.753] Browser LOG     📡 Intentando conectar a API...
+[04:00:23.753] Browser LOG     ✅ Datos recibidos de API: {"data":[{"barcode":"7501056330316","categoria":"jugueteria","descripcion":"","id_numerico":"7501056330316","imagen":"","nombre":"juguete de pesca","precio":5.8,"stock":6}],"success":true,"total":1}
+[04:00:23.753] Browser LOG     📦 1 productos cargados de la API
+[04:00:24.380] Server  LOG     🔄 Cargando productos desde: "http://localhost:3001/api/productos"
+[04:00:24.504] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[04:00:24.504] Browser LOG     🔍 Iniciando carga de categorías...
+[04:00:24.504] Browser LOG     📡 Respuesta de API: 200
+[04:00:24.504] Browser LOG     📦 Datos recibidos: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[04:00:24.504] Browser LOG     ✅ 5 categorías cargadas
+[04:00:25.966] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[04:00:25.966] Browser LOG     🔄 Cargando productos para categoría: tecnologia
+[04:00:25.966] Browser LOG     📡 Intentando conectar a API...
+[04:00:25.966] Browser LOG     ✅ Datos recibidos de API: {"data":[],"success":true,"total":0}
+[04:00:25.966] Browser LOG     📦 0 productos cargados de la API
+[04:00:26.877] Server  LOG     🔄 Cargando productos desde: "http://localhost:3001/api/productos"
+[04:00:27.005] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[04:00:27.005] Browser LOG     🔍 Iniciando carga de categorías...
+[04:00:27.005] Browser LOG     📡 Respuesta de API: 200
+[04:00:27.005] Browser LOG     📦 Datos recibidos: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[04:00:27.005] Browser LOG     ✅ 5 categorías cargadas
+[04:00:28.116] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[04:00:28.116] Browser LOG     🔄 Cargando productos para categoría: bebidas
+[04:00:28.116] Browser LOG     📡 Intentando conectar a API...
+[04:00:28.116] Browser LOG     ✅ Datos recibidos de API: {"data":[{"barcode":"7750241000594","categoria":"bebidas","descripcion":null,"id_numerico":"6666666666","imagen":null,"nombre":"Gaseosa Coca-Cola 500ml","precio":3.2,"stock":80},{"barcode":"7751731006283","categoria":"bebidas","descripcion":null,"id_numerico":"7751731006283","imagen":null,"nombre":"gaseosa inka","precio":5.8,"stock":5}],"success":true,"total":2}
+[04:00:28.116] Browser LOG     📦 2 productos cargados de la API
+[04:00:29.000] Server  LOG     🔄 Cargando productos desde: "http://localhost:3001/api/productos"
+[04:00:29.125] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[04:00:29.125] Browser LOG     🔍 Iniciando carga de categorías...
+[04:00:29.125] Browser LOG     📡 Respuesta de API: 200
+[04:00:29.125] Browser LOG     📦 Datos recibidos: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[04:00:29.125] Browser LOG     ✅ 5 categorías cargadas
+[04:00:30.205] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[04:00:30.205] Browser LOG     🔄 Cargando productos para categoría: supermercado
+[04:00:30.205] Browser LOG     📡 Intentando conectar a API...
+[04:00:30.205] Browser LOG     ✅ Datos recibidos de API: {"data":[{"barcode":"7751731006825","categoria":"supermercado","descripcion":null,"id_numerico":"7751731006825","imagen":null,"nombre":"agua con gas","precio":5.8,"stock":6},{"barcode":"7751731006603","categoria":"supermercado","descripcion":null,"id_numerico":"7751731006603","imagen":null,"nombre":"gaseosa fanta","precio":5.8,"stock":6},{"barcode":"7750241000587","categoria":"supermercado","descripcion":null,"id_numerico":"5555555555","imagen":null,"nombre":"Inca Kola 500ml","precio":3.5,"stock":100}],"success":true,"total":3}
+[04:00:30.205] Browser LOG     📦 3 productos cargados de la API
+[04:00:32.632] Server  LOG     🔄 Cargando productos desde: "http://localhost:3001/api/productos"
+[04:00:32.759] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[04:00:32.759] Browser LOG     🔍 Iniciando carga de categorías...
+[04:00:32.759] Browser LOG     📡 Respuesta de API: 200
+[04:00:32.759] Browser LOG     📦 Datos recibidos: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[04:00:32.759] Browser LOG     ✅ 5 categorías cargadas
+[04:00:33.793] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[04:00:33.793] Browser LOG     🔄 Cargando productos para categoría: bebidas
+[04:00:33.793] Browser LOG     📡 Intentando conectar a API...
+[04:00:33.793] Browser LOG     ✅ Datos recibidos de API: {"data":[{"barcode":"7750241000594","categoria":"bebidas","descripcion":null,"id_numerico":"6666666666","imagen":null,"nombre":"Gaseosa Coca-Cola 500ml","precio":3.2,"stock":80},{"barcode":"7751731006283","categoria":"bebidas","descripcion":null,"id_numerico":"7751731006283","imagen":null,"nombre":"gaseosa inka","precio":5.8,"stock":5}],"success":true,"total":2}
+[04:00:33.793] Browser LOG     📦 2 productos cargados de la API
+[04:00:35.695] Server  LOG     🔄 Cargando productos desde: "http://localhost:3001/api/productos"
+[04:00:35.825] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[04:00:35.825] Browser LOG     🔍 Iniciando carga de categorías...
+[04:00:35.825] Browser LOG     📡 Respuesta de API: 200
+[04:00:35.825] Browser LOG     📦 Datos recibidos: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[04:00:35.825] Browser LOG     ✅ 5 categorías cargadas
+[04:00:36.955] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[04:00:36.955] Browser LOG     🔄 Cargando productos para categoría: supermercado
+[04:00:36.955] Browser LOG     📡 Intentando conectar a API...
+[04:00:36.955] Browser LOG     ✅ Datos recibidos de API: {"data":[{"barcode":"7751731006825","categoria":"supermercado","descripcion":null,"id_numerico":"7751731006825","imagen":null,"nombre":"agua con gas","precio":5.8,"stock":6},{"barcode":"7751731006603","categoria":"supermercado","descripcion":null,"id_numerico":"7751731006603","imagen":null,"nombre":"gaseosa fanta","precio":5.8,"stock":6},{"barcode":"7750241000587","categoria":"supermercado","descripcion":null,"id_numerico":"5555555555","imagen":null,"nombre":"Inca Kola 500ml","precio":3.5,"stock":100}],"success":true,"total":3}
+[04:00:36.955] Browser LOG     📦 3 productos cargados de la API
+[04:00:44.973] Server  LOG     🔄 Cargando productos desde: "http://localhost:3001/api/productos"
+[04:00:45.098] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[04:00:45.098] Browser LOG     🔍 Iniciando carga de categorías...
+[04:00:45.098] Browser LOG     📡 Respuesta de API: 200
+[04:00:45.098] Browser LOG     📦 Datos recibidos: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[04:00:45.098] Browser LOG     ✅ 5 categorías cargadas

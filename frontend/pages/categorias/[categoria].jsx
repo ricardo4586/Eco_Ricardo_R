@@ -1,4 +1,4 @@
-// frontend/pages/categorias/[categoria].jsx - VERSIÓN CON RESPALDO
+// frontend/pages/categorias/[categoria].jsx - VERSIÓN CORREGIDA
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -15,6 +15,9 @@ export default function CategoriaPage() {
   const [error, setError] = useState(null);
   const [usandoDatosEjemplo, setUsandoDatosEjemplo] = useState(false);
 
+  // Configuración de API - CORREGIDA
+  const API_BASE_URL = 'http://localhost:3000/api';
+
   useEffect(() => {
     if (categoria) {
       console.log('🔄 Cargando productos para categoría:', categoria);
@@ -23,28 +26,30 @@ export default function CategoriaPage() {
     }
   }, [categoria]);
 
-  // Datos de ejemplo como respaldo
+  // Datos de ejemplo como respaldo - ACTUALIZADOS con minúsculas
   const datosEjemplo = {
     supermercado: [
-      { barcode: 'SM001', nombre: 'Arroz Integral', precio: 2.50, stock: 50, categoria: 'supermercado', descripcion: 'Arroz integral de grano largo' },
-      { barcode: 'SM002', nombre: 'Aceite de Oliva', precio: 8.99, stock: 30, categoria: 'supermercado', descripcion: 'Aceite de oliva extra virgen' },
-      { barcode: 'SM003', nombre: 'Pasta Integral', precio: 1.75, stock: 40, categoria: 'supermercado', descripcion: 'Pasta de trigo integral' },
+      { barcode: '1234567890123', id_numerico: 'SM001', nombre: 'Arroz Integral', precio: 2.50, stock: 50, categoria: 'supermercado', descripcion: 'Arroz integral de grano largo' },
+      { barcode: '1234567890124', id_numerico: 'SM002', nombre: 'Aceite de Oliva', precio: 8.99, stock: 30, categoria: 'supermercado', descripcion: 'Aceite de oliva extra virgen' },
+      { barcode: '1234567890125', id_numerico: 'SM003', nombre: 'Pasta Integral', precio: 1.75, stock: 40, categoria: 'supermercado', descripcion: 'Pasta de trigo integral' },
     ],
     electrodomesticos: [
-      { barcode: 'EL001', nombre: 'Licuadora Oster', precio: 45.99, stock: 15, categoria: 'electrodomesticos', descripcion: 'Licuadora de 600W' },
-      { barcode: 'EL002', nombre: 'Microondas Samsung', precio: 120.00, stock: 8, categoria: 'electrodomesticos', descripcion: 'Microondas digital' },
+      { barcode: '1234567890126', id_numerico: 'EL001', nombre: 'Licuadora Oster', precio: 45.99, stock: 15, categoria: 'electrodomesticos', descripcion: 'Licuadora de 600W' },
+      { barcode: '1234567890127', id_numerico: 'EL002', nombre: 'Microondas Samsung', precio: 120.00, stock: 8, categoria: 'electrodomesticos', descripcion: 'Microondas digital' },
     ],
     tecnologia: [
-      { barcode: 'TEC001', nombre: 'Smartphone Samsung', precio: 299.99, stock: 25, categoria: 'tecnologia', descripcion: 'Smartphone Android 128GB' },
-      { barcode: 'TEC002', nombre: 'Laptop HP', precio: 599.99, stock: 12, categoria: 'tecnologia', descripcion: 'Laptop 15.6" 8GB RAM' },
+      { barcode: '1234567890128', id_numerico: 'TEC001', nombre: 'Smartphone Samsung', precio: 299.99, stock: 25, categoria: 'tecnologia', descripcion: 'Smartphone Android 128GB' },
+      { barcode: '1234567890129', id_numerico: 'TEC002', nombre: 'Laptop HP', precio: 599.99, stock: 12, categoria: 'tecnologia', descripcion: 'Laptop 15.6" 8GB RAM' },
     ],
     jugueteria: [
-      { barcode: 'JUG001', nombre: 'Lego Classic', precio: 24.99, stock: 35, categoria: 'jugueteria', descripcion: 'Set de construcción Lego' },
-      { barcode: 'JUG002', nombre: 'Muñeca Barbie', precio: 19.99, stock: 20, categoria: 'jugueteria', descripcion: 'Muñeca Barbie Fashion' },
+      { barcode: '1234567890130', id_numerico: 'JUG001', nombre: 'Lego Classic', precio: 24.99, stock: 35, categoria: 'jugueteria', descripcion: 'Set de construcción Lego' },
+      { barcode: '1234567890131', id_numerico: 'JUG002', nombre: 'Muñeca Barbie', precio: 19.99, stock: 20, categoria: 'jugueteria', descripcion: 'Muñeca Barbie Fashion' },
     ],
     bebidas: [
-      { barcode: 'BEB001', nombre: 'Agua Mineral', precio: 0.75, stock: 100, categoria: 'bebidas', descripcion: 'Agua mineral natural 500ml' },
-      { barcode: 'BEB002', nombre: 'Jugo de Naranja', precio: 3.25, stock: 40, categoria: 'bebidas', descripcion: 'Jugo de naranja natural 1L' },
+      { barcode: '7750241000587', id_numerico: '5555555555', nombre: 'Inca Kola 500ml', precio: 3.50, stock: 100, categoria: 'bebidas', descripcion: 'Refresco de sabor único' },
+      { barcode: '7750241000594', id_numerico: '6666666666', nombre: 'Gaseosa Coca-Cola 500ml', precio: 3.20, stock: 80, categoria: 'bebidas', descripcion: 'Refresco de cola' },
+      { barcode: '1234567890132', id_numerico: 'BEB001', nombre: 'Agua Mineral', precio: 0.75, stock: 100, categoria: 'bebidas', descripcion: 'Agua mineral natural 500ml' },
+      { barcode: '1234567890133', id_numerico: 'BEB002', nombre: 'Jugo de Naranja', precio: 3.25, stock: 40, categoria: 'bebidas', descripcion: 'Jugo de naranja natural 1L' },
     ]
   };
 
@@ -55,7 +60,9 @@ export default function CategoriaPage() {
       setUsandoDatosEjemplo(false);
       
       console.log('📡 Intentando conectar a API...');
-      const response = await fetch(`/api/productos/categoria/${categoria}`);
+      
+      // ✅ RUTA CORREGIDA - Usa la URL completa del backend
+      const response = await fetch(`${API_BASE_URL}/productos/categoria/${categoria}`);
       
       if (!response.ok) {
         console.log('⚠️ API no disponible, usando datos de ejemplo');
@@ -67,6 +74,7 @@ export default function CategoriaPage() {
       
       if (data.success) {
         setProductos(data.data || []);
+        console.log(`📦 ${data.data?.length || 0} productos cargados de la API`);
       } else {
         throw new Error('Estructura de datos inválida');
       }
@@ -87,7 +95,8 @@ export default function CategoriaPage() {
 
   const fetchCategoriaInfo = async () => {
     try {
-      const response = await fetch('/api/categorias');
+      // ✅ RUTA CORREGIDA - Usa la URL completa del backend
+      const response = await fetch(`${API_BASE_URL}/categorias`);
       const data = await response.json();
       if (data.success) {
         const cat = data.data.find(c => c.id === categoria);
@@ -95,10 +104,20 @@ export default function CategoriaPage() {
       }
     } catch (error) {
       console.error('Error fetching category info:', error);
+      // Si falla, usar datos locales
+      const categoriasLocales = [
+        { id: 'supermercado', nombre: 'Supermercado', icono: '🛒', color: 'bg-green-500', description: 'Productos de supermercado y despensa' },
+        { id: 'electrodomesticos', nombre: 'Electrodomésticos', icono: '🏠', color: 'bg-blue-500', description: 'Electrodomésticos para el hogar' },
+        { id: 'jugueteria', nombre: 'Juguetería', icono: '🧸', color: 'bg-orange-500', description: 'Juguetes y entretenimiento' },
+        { id: 'tecnologia', nombre: 'Tecnología', icono: '💻', color: 'bg-purple-500', description: 'Tecnología y electrónica' },
+        { id: 'bebidas', nombre: 'Bebidas', icono: '🥤', color: 'bg-red-500', description: 'Bebidas y refrescos' },
+      ];
+      const cat = categoriasLocales.find(c => c.id === categoria);
+      setCategoriaInfo(cat);
     }
   };
 
-  // Función para ordenar productos (mantener igual)
+  // Función para ordenar productos
   const getSortedProducts = () => {
     let sorted = [...productos];
     
@@ -131,7 +150,8 @@ export default function CategoriaPage() {
     return sorted;
   };
 
-  const categorias = [
+  // Categorías locales como respaldo
+  const categoriasLocales = [
     { id: 'supermercado', nombre: 'Supermercado', icono: '🛒', color: 'bg-green-500', description: 'Productos de supermercado y despensa' },
     { id: 'electrodomesticos', nombre: 'Electrodomésticos', icono: '🏠', color: 'bg-blue-500', description: 'Electrodomésticos para el hogar' },
     { id: 'jugueteria', nombre: 'Juguetería', icono: '🧸', color: 'bg-orange-500', description: 'Juguetes y entretenimiento' },
@@ -139,7 +159,7 @@ export default function CategoriaPage() {
     { id: 'bebidas', nombre: 'Bebidas', icono: '🥤', color: 'bg-red-500', description: 'Bebidas y refrescos' },
   ];
 
-  const categoriaActual = categoriaInfo || categorias.find(cat => cat.id === categoria);
+  const categoriaActual = categoriaInfo || categoriasLocales.find(cat => cat.id === categoria);
   const productosFiltrados = getSortedProducts();
 
   if (loading) {
