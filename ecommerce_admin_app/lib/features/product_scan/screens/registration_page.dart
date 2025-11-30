@@ -6,11 +6,11 @@ import 'package:ecommerce_admin_app/features/auth/screens/login_page.dart';
 import 'package:ecommerce_admin_app/features/product_scan/screens/scanner_view.dart'; // Reutilizamos el scanner
 
 // Esta clase es la pantalla de registro exclusiva para el rol Admin
-class AdminRegistrationPage extends StatefulWidget { // Nombre de clase corregido
+class AdminRegistrationPage extends StatefulWidget {
   const AdminRegistrationPage({super.key});
 
   @override
-  State<AdminRegistrationPage> createState() => _AdminRegistrationPageState(); // Estado corregido
+  State<AdminRegistrationPage> createState() => _AdminRegistrationPageState();
 }
 
 class _AdminRegistrationPageState extends State<AdminRegistrationPage> {
@@ -25,6 +25,15 @@ class _AdminRegistrationPageState extends State<AdminRegistrationPage> {
   bool _isRegistering = false;
   final _formKey = GlobalKey<FormState>();
 
+  // NUEVO: Variables para categorías
+  String _selectedCategory = 'supermercado';
+  final List<Map<String, String>> _categories = [
+    {'id': 'supermercado', 'name': 'Supermercado 🛒'},
+    {'id': 'electrodomesticos', 'name': 'Electrodomésticos 🏠'},
+    {'id': 'jugueteria', 'name': 'Juguetería 🧸'},
+    {'id': 'tecnologia', 'name': 'Tecnología 💻'},
+    {'id': 'bebidas', 'name': 'Bebidas 🥤'},
+  ];
 
   Future<void> _scanBarcode() async {
     // Navega a la vista del escáner y espera el resultado del código de barras
@@ -57,6 +66,8 @@ class _AdminRegistrationPageState extends State<AdminRegistrationPage> {
       _nameController.clear();
       _priceController.clear();
       _stockController.clear();
+      // NUEVO: Resetear categoría a valor por defecto
+      _selectedCategory = 'supermercado';
     }
   }
 
@@ -74,13 +85,13 @@ class _AdminRegistrationPageState extends State<AdminRegistrationPage> {
       name: _nameController.text,
       price: double.tryParse(_priceController.text) ?? 0.0,
       stock: int.tryParse(_stockController.text) ?? 0,
+      category: _selectedCategory, // NUEVO: Incluir categoría
     );
     
     // --- MANEJO DE ERRORES DE LA API ---
     try {
       // Llama al servicio de API para registrar el producto
-      // Ahora registerProduct devuelve el objeto Product recién creado
-      final registeredProduct = await apiService.registerProduct(newProduct); 
+      final registeredProduct = await apiService.registerProduct(newProduct);
       
       if (mounted) {
         // Registro exitoso
@@ -112,7 +123,6 @@ class _AdminRegistrationPageState extends State<AdminRegistrationPage> {
         setState(() { _isRegistering = false; });
       }
     }
-    // --- FIN CORRECCIÓN ---
   }
   
   // --- WIDGET PARA MOSTRAR EL FORMULARIO DE REGISTRO ---
@@ -163,6 +173,33 @@ class _AdminRegistrationPageState extends State<AdminRegistrationPage> {
             ),
             validator: (value) => int.tryParse(value!) == null ? 'Ingrese un stock válido' : null,
           ),
+          // NUEVO: Selector de categoría
+          const SizedBox(height: 10),
+          DropdownButtonFormField<String>(
+            value: _selectedCategory,
+            decoration: const InputDecoration(
+              labelText: 'Categoría *',
+              border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+              prefixIcon: Icon(Icons.category),
+            ),
+            items: _categories.map((category) {
+              return DropdownMenuItem<String>(
+                value: category['id'],
+                child: Text(category['name']!),
+              );
+            }).toList(),
+            onChanged: (value) {
+              setState(() {
+                _selectedCategory = value!;
+              });
+            },
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Por favor selecciona una categoría';
+              }
+              return null;
+            },
+          ),
           const SizedBox(height: 30),
           ElevatedButton.icon(
             onPressed: _isRegistering ? null : _registerNewProduct,
@@ -181,6 +218,33 @@ class _AdminRegistrationPageState extends State<AdminRegistrationPage> {
         ],
       ),
     );
+  }
+
+  // NUEVO: Función para obtener el nombre de la categoría
+  String _getCategoryName(String categoryId) {
+    final category = _categories.firstWhere(
+      (cat) => cat['id'] == categoryId,
+      orElse: () => {'name': 'Desconocida'},
+    );
+    return category['name']!;
+  }
+
+  // NUEVO: Función para obtener el color de la categoría
+  Color _getCategoryColor(String category) {
+    switch (category) {
+      case 'supermercado':
+        return Colors.green;
+      case 'electrodomesticos':
+        return Colors.blue;
+      case 'jugueteria':
+        return Colors.orange;
+      case 'tecnologia':
+        return Colors.purple;
+      case 'bebidas':
+        return Colors.red;
+      default:
+        return Colors.grey;
+    }
   }
   
   @override
@@ -249,11 +313,32 @@ class _AdminRegistrationPageState extends State<AdminRegistrationPage> {
                               '¡PRODUCTO ENCONTRADO!', 
                               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.green)
                             ),
+                            // NUEVO: Badge de categoría
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                              decoration: BoxDecoration(
+                                color: _getCategoryColor(_existingProduct!.category).withOpacity(0.1),
+                                borderRadius: BorderRadius.circular(20),
+                                border: Border.all(
+                                  color: _getCategoryColor(_existingProduct!.category),
+                                  width: 1,
+                                ),
+                              ),
+                              child: Text(
+                                _getCategoryName(_existingProduct!.category),
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: _getCategoryColor(_existingProduct!.category),
+                                ),
+                              ),
+                            ),
                             const Divider(height: 20),
                             Text('Código: ${_existingProduct!.barcode}', style: const TextStyle(fontWeight: FontWeight.bold)),
                             Text('Nombre: ${_existingProduct!.name}'),
                             Text('Precio: \$${_existingProduct!.price.toStringAsFixed(2)}'),
                             Text('Stock: ${_existingProduct!.stock} unidades'),
+                            // NUEVO: Mostrar categoría del producto existente
+                            Text('Categoría: ${_getCategoryName(_existingProduct!.category)}'),
                             const SizedBox(height: 10),
                             const Text(
                               'Este producto ya está en la base de datos.',

@@ -140,7 +140,7 @@ class ApiService {
     }
   }
 
-  // Registrar nuevo producto (SOLO ADMIN)
+  // Registrar nuevo producto (SOLO ADMIN) - ACTUALIZADO CON CATEGORÍA
   Future<Product> registerProduct(Product product) async {
     if (_authToken == null) {
       throw Exception("Error: No autenticado. Inicia sesión primero.");
@@ -154,13 +154,14 @@ class ApiService {
     final url = Uri.parse('$baseUrl/productos/registrar');
     
     try {
-      // Preparar datos para el servidor (claves en español)
+      // NUEVO: Preparar datos para el servidor INCLUYENDO CATEGORÍA
       final productData = {
         'barcode': product.barcode,
         'id_numerico': product.barcode, // Usamos el barcode como id_numerico
         'nombre': product.name,         
         'precio': product.price,
         'stock': product.stock,
+        'categoria': product.category, // NUEVO: Incluir categoría
       };
       
       // Logs de depuración
@@ -182,6 +183,7 @@ class ApiService {
         
         if (data['success'] == true && data['producto'] != null) {
           print('✅ Producto registrado exitosamente');
+          print('🏷️  Categoría: ${data['producto']['categoria']}');
           return Product.fromJson(data['producto']);
         }
         throw Exception('Registro exitoso, pero el servidor no devolvió los datos del producto.');
@@ -209,7 +211,7 @@ class ApiService {
     }
   }
 
-  // Obtener catálogo completo de productos (PÚBLICO)
+  // Obtener catálogo completo de productos (PÚBLICO) - ACTUALIZADO
   Future<List<Product>> getProductCatalog() async {
     final url = Uri.parse('$baseUrl/productos');
     
@@ -237,6 +239,105 @@ class ApiService {
     }
   }
 
+  // NUEVO: Obtener productos por categoría
+  Future<List<Product>> getProductsByCategory(String category) async {
+    final url = Uri.parse('$baseUrl/productos/categoria/$category');
+    
+    try {
+      print('Obteniendo productos de categoría: $category');
+      final response = await http.get(url).timeout(const Duration(seconds: 10));
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        if (data['success'] == true && data['data'] != null) {
+          List<dynamic> productsJson = data['data'];
+          final products = productsJson.map((json) => Product.fromJson(json)).toList();
+          print('✅ Productos por categoría obtenidos: ${products.length} productos en $category');
+          return products;
+        }
+      }
+      
+      throw Exception('Error al cargar productos de la categoría $category');
+      
+    } on TimeoutException {
+      throw Exception('Tiempo de espera agotado al cargar productos por categoría.');
+    } catch (e) {
+      print('Error al cargar productos por categoría: $e');
+      throw Exception('Error de red al cargar productos por categoría.');
+    }
+  }
+
+  // NUEVO: Obtener todas las categorías disponibles
+  Future<List<Map<String, String>>> getCategories() async {
+    final url = Uri.parse('$baseUrl/categorias');
+    
+    try {
+      print('Obteniendo lista de categorías...');
+      final response = await http.get(url).timeout(const Duration(seconds: 10));
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        if (data['success'] == true && data['data'] != null) {
+          List<dynamic> categoriesJson = data['data'];
+          final categories = categoriesJson.map((json) => {
+            'id': json['id'] as String,
+            'name': json['nombre'] as String,
+            'icon': json['icono'] as String? ?? '📦'
+          }).toList();
+          print('✅ Categorías obtenidas: ${categories.length} categorías');
+          return categories;
+        }
+      }
+      
+      throw Exception('Error al cargar las categorías');
+      
+    } on TimeoutException {
+      throw Exception('Tiempo de espera agotado al cargar categorías.');
+    } catch (e) {
+      print('Error al cargar categorías: $e');
+      // En caso de error, retornar categorías por defecto
+      return [
+        {'id': 'supermercado', 'name': 'Supermercado', 'icon': '🛒'},
+        {'id': 'electrodomesticos', 'name': 'Electrodomésticos', 'icon': '🏠'},
+        {'id': 'jugueteria', 'name': 'Juguetería', 'icon': '🧸'},
+        {'id': 'tecnologia', 'name': 'Tecnología', 'icon': '💻'},
+        {'id': 'bebidas', 'name': 'Bebidas', 'icon': '🥤'},
+      ];
+    }
+  }
+
+  // NUEVO: Obtener catálogo filtrado por categoría
+  Future<List<Product>> getProductCatalogByCategory(String? category) async {
+    if (category == null || category.isEmpty) {
+      return getProductCatalog();
+    }
+    
+    final url = Uri.parse('$baseUrl/productos?categoria=$category');
+    
+    try {
+      print('Obteniendo catálogo filtrado por categoría: $category');
+      final response = await http.get(url).timeout(const Duration(seconds: 10));
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        if (data['success'] == true && data['data'] != null) {
+          List<dynamic> productsJson = data['data'];
+          final products = productsJson.map((json) => Product.fromJson(json)).toList();
+          print('✅ Catálogo filtrado obtenido: ${products.length} productos en $category');
+          return products;
+        }
+      }
+      
+      throw Exception('Error al cargar el catálogo filtrado');
+      
+    } on TimeoutException {
+      throw Exception('Tiempo de espera agotado al cargar el catálogo filtrado.');
+    } catch (e) {
+      print('Error al cargar catálogo filtrado: $e');
+      throw Exception('Error de red al cargar el catálogo filtrado.');
+    }
+  }
+
   // -------------------------------------------------------------------
   // 3. VALIDACIONES Y UTILIDADES
   // -------------------------------------------------------------------
@@ -255,6 +356,24 @@ class ApiService {
       return response.statusCode == 200;
     } catch (e) {
       return false;
+    }
+  }
+
+  // NUEVO: Obtener nombre amigable de categoría
+  String getCategoryDisplayName(String categoryId) {
+    switch (categoryId) {
+      case 'supermercado':
+        return 'Supermercado 🛒';
+      case 'electrodomesticos':
+        return 'Electrodomésticos 🏠';
+      case 'jugueteria':
+        return 'Juguetería 🧸';
+      case 'tecnologia':
+        return 'Tecnología 💻';
+      case 'bebidas':
+        return 'Bebidas 🥤';
+      default:
+        return 'Desconocida 📦';
     }
   }
 

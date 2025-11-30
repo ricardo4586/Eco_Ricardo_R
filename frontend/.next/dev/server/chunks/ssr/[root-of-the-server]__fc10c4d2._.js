@@ -162,7 +162,7 @@ module.exports = mod;
 "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx [ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-// components/Layout/Navbar.jsx - CORREGIDO
+// components/Layout/Navbar.jsx - VERSIÓN CON DEBUG
 __turbopack_context__.s([
     "default",
     ()=>__TURBOPACK__default__export__
@@ -182,10 +182,88 @@ const Navbar = ()=>{
     const { isLoggedIn, isAdmin, logout, user } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$context$2f$AuthContext$2e$jsx__$5b$ssr$5d$__$28$ecmascript$29$__["useAuth"])();
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
     const [searchTerm, setSearchTerm] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])('');
-    const [isMenuOpen, setIsMenuOpen] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(false);
+    const [isCategoriesOpen, setIsCategoriesOpen] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(false);
+    const [categorias, setCategorias] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])([]);
+    const [loadingCategorias, setLoadingCategorias] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(true);
+    const dropdownRef = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useRef"])(null);
+    const categoriesButtonRef = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useRef"])(null);
+    // Cargar categorías al montar el componente
+    (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useEffect"])(()=>{
+        console.log('🔄 useEffect - Iniciando carga de categorías');
+        fetchCategorias();
+    }, []);
+    // Cerrar dropdown al hacer click fuera
+    (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useEffect"])(()=>{
+        const handleClickOutside = (event)=>{
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target) && categoriesButtonRef.current && !categoriesButtonRef.current.contains(event.target)) {
+                setIsCategoriesOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return ()=>{
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+    const fetchCategorias = async ()=>{
+        try {
+            console.log('📡 Fetching categorías...');
+            // Usar URL relativa
+            const res = await fetch('/api/categorias');
+            console.log('📊 Response status:', res.status);
+            if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status}`);
+            }
+            const data = await res.json();
+            console.log('📦 Datos recibidos de API:', data);
+            if (data.success && Array.isArray(data.data)) {
+                console.log(`✅ ${data.data.length} categorías cargadas:`, data.data);
+                setCategorias(data.data);
+            } else {
+                console.warn('⚠️ Estructura de datos inválida:', data);
+                throw new Error('Estructura de datos inválida');
+            }
+        } catch (err) {
+            console.error('❌ Error cargando categorías:', err);
+            // Categorías por defecto
+            const defaultCats = [
+                {
+                    id: 'supermercado',
+                    nombre: 'Supermercado',
+                    icono: '🛒'
+                },
+                {
+                    id: 'electrodomesticos',
+                    nombre: 'Electrodomésticos',
+                    icono: '🏠'
+                },
+                {
+                    id: 'jugueteria',
+                    nombre: 'Juguetería',
+                    icono: '🧸'
+                },
+                {
+                    id: 'tecnologia',
+                    nombre: 'Tecnología',
+                    icono: '💻'
+                },
+                {
+                    id: 'bebidas',
+                    nombre: 'Bebidas',
+                    icono: '🥤'
+                }
+            ];
+            console.log('🔄 Usando categorías por defecto:', defaultCats);
+            setCategorias(defaultCats);
+        } finally{
+            setLoadingCategorias(false);
+            console.log('🏁 Loading finalizado');
+        }
+    };
     const handleSearch = (e)=>{
         e.preventDefault();
-        console.log(`Búsqueda: ${searchTerm}`);
+        if (searchTerm.trim()) {
+            router.push(`/busqueda?q=${encodeURIComponent(searchTerm)}`);
+        }
     };
     const handleAuthAction = ()=>{
         if (isLoggedIn) {
@@ -194,7 +272,12 @@ const Navbar = ()=>{
             router.push('/login');
         }
     };
-    // Iconos SVG inline
+    const handleCategoryClick = (categoriaId)=>{
+        console.log('🎯 Click en categoría:', categoriaId);
+        setIsCategoriesOpen(false);
+        router.push(`/categorias/${categoriaId}`);
+    };
+    // Iconos SVG (mantener igual)
     const MenuIcon = ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("svg", {
             width: "20",
             height: "20",
@@ -208,12 +291,12 @@ const Navbar = ()=>{
                 d: "M4 6h16M4 12h16M4 18h16"
             }, void 0, false, {
                 fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                lineNumber: 31,
+                lineNumber: 107,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         }, void 0, false, {
             fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-            lineNumber: 30,
+            lineNumber: 106,
             columnNumber: 5
         }, ("TURBOPACK compile-time value", void 0));
     const SearchIcon = ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("svg", {
@@ -229,12 +312,12 @@ const Navbar = ()=>{
                 d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
             }, void 0, false, {
                 fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                lineNumber: 37,
+                lineNumber: 113,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         }, void 0, false, {
             fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-            lineNumber: 36,
+            lineNumber: 112,
             columnNumber: 5
         }, ("TURBOPACK compile-time value", void 0));
     const UserIcon = ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("svg", {
@@ -250,12 +333,12 @@ const Navbar = ()=>{
                 d: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
             }, void 0, false, {
                 fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                lineNumber: 43,
+                lineNumber: 119,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         }, void 0, false, {
             fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-            lineNumber: 42,
+            lineNumber: 118,
             columnNumber: 5
         }, ("TURBOPACK compile-time value", void 0));
     const LogoutIcon = ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("svg", {
@@ -271,12 +354,12 @@ const Navbar = ()=>{
                 d: "M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
             }, void 0, false, {
                 fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                lineNumber: 49,
+                lineNumber: 125,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         }, void 0, false, {
             fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-            lineNumber: 48,
+            lineNumber: 124,
             columnNumber: 5
         }, ("TURBOPACK compile-time value", void 0));
     const HeartIcon = ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("svg", {
@@ -292,12 +375,12 @@ const Navbar = ()=>{
                 d: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
             }, void 0, false, {
                 fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                lineNumber: 55,
+                lineNumber: 131,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         }, void 0, false, {
             fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-            lineNumber: 54,
+            lineNumber: 130,
             columnNumber: 5
         }, ("TURBOPACK compile-time value", void 0));
     const CartIcon = ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("svg", {
@@ -313,12 +396,12 @@ const Navbar = ()=>{
                 d: "M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
             }, void 0, false, {
                 fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                lineNumber: 61,
+                lineNumber: 137,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         }, void 0, false, {
             fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-            lineNumber: 60,
+            lineNumber: 136,
             columnNumber: 5
         }, ("TURBOPACK compile-time value", void 0));
     const ChartIcon = ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("svg", {
@@ -334,14 +417,36 @@ const Navbar = ()=>{
                 d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
             }, void 0, false, {
                 fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                lineNumber: 67,
+                lineNumber: 143,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         }, void 0, false, {
             fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-            lineNumber: 66,
+            lineNumber: 142,
             columnNumber: 5
         }, ("TURBOPACK compile-time value", void 0));
+    const ChevronDownIcon = ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("svg", {
+            width: "16",
+            height: "16",
+            viewBox: "0 0 24 24",
+            fill: "none",
+            stroke: "currentColor",
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("path", {
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                strokeWidth: 2,
+                d: "M19 9l-7 7-7-7"
+            }, void 0, false, {
+                fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
+                lineNumber: 149,
+                columnNumber: 7
+            }, ("TURBOPACK compile-time value", void 0))
+        }, void 0, false, {
+            fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
+            lineNumber: 148,
+            columnNumber: 5
+        }, ("TURBOPACK compile-time value", void 0));
+    console.log('🎨 Renderizando Navbar - categorias:', categorias.length, 'loading:', loadingCategorias);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("header", {
         className: "bg-white sticky top-0 z-50 border-b border-gray-200 shadow-sm",
         children: [
@@ -351,70 +456,143 @@ const Navbar = ()=>{
                     className: "max-w-7xl mx-auto flex items-center justify-between",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                            className: "flex items-center space-x-4",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
-                                    className: "bg-white text-gray-800 px-4 py-1.5 rounded-full font-bold text-sm flex items-center shadow-md hover:bg-gray-50 transition",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(MenuIcon, {}, void 0, false, {
-                                            fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                            lineNumber: 79,
-                                            columnNumber: 15
-                                        }, ("TURBOPACK compile-time value", void 0)),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
-                                            className: "ml-1",
-                                            children: "CATEGORÍAS"
-                                        }, void 0, false, {
-                                            fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                            lineNumber: 80,
-                                            columnNumber: 15
-                                        }, ("TURBOPACK compile-time value", void 0))
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                    lineNumber: 78,
-                                    columnNumber: 13
-                                }, ("TURBOPACK compile-time value", void 0)),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
-                                    className: "hidden md:inline-block text-gray-800 text-sm cursor-pointer hover:underline",
-                                    children: "Entrega rápida"
-                                }, void 0, false, {
-                                    fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                    lineNumber: 82,
-                                    columnNumber: 13
-                                }, ("TURBOPACK compile-time value", void 0))
-                            ]
-                        }, void 0, true, {
+                            className: "flex items-center",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                className: "relative",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
+                                        ref: categoriesButtonRef,
+                                        className: "bg-white text-gray-800 px-4 py-2 rounded-full font-bold text-sm flex items-center shadow-md hover:bg-gray-50 transition-all duration-200 hover:shadow-lg border border-yellow-300",
+                                        onClick: ()=>{
+                                            console.log('🖱️ Click en CATEGORÍAS, estado actual:', isCategoriesOpen);
+                                            setIsCategoriesOpen(!isCategoriesOpen);
+                                        },
+                                        "aria-expanded": isCategoriesOpen,
+                                        "aria-haspopup": "true",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(MenuIcon, {}, void 0, false, {
+                                                fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
+                                                lineNumber: 176,
+                                                columnNumber: 17
+                                            }, ("TURBOPACK compile-time value", void 0)),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
+                                                className: "ml-2",
+                                                children: "CATEGORÍAS"
+                                            }, void 0, false, {
+                                                fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
+                                                lineNumber: 177,
+                                                columnNumber: 17
+                                            }, ("TURBOPACK compile-time value", void 0)),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                                className: `ml-2 transition-transform duration-200 ${isCategoriesOpen ? 'rotate-180' : ''}`,
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(ChevronDownIcon, {}, void 0, false, {
+                                                    fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
+                                                    lineNumber: 179,
+                                                    columnNumber: 19
+                                                }, ("TURBOPACK compile-time value", void 0))
+                                            }, void 0, false, {
+                                                fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
+                                                lineNumber: 178,
+                                                columnNumber: 17
+                                            }, ("TURBOPACK compile-time value", void 0))
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
+                                        lineNumber: 166,
+                                        columnNumber: 15
+                                    }, ("TURBOPACK compile-time value", void 0)),
+                                    isCategoriesOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                        ref: dropdownRef,
+                                        className: "absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-200 z-50",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                                className: "px-4 py-3 border-b border-gray-200",
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h3", {
+                                                    className: "font-bold text-gray-900 text-base",
+                                                    children: "CATEGORÍAS"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
+                                                    lineNumber: 192,
+                                                    columnNumber: 21
+                                                }, ("TURBOPACK compile-time value", void 0))
+                                            }, void 0, false, {
+                                                fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
+                                                lineNumber: 191,
+                                                columnNumber: 19
+                                            }, ("TURBOPACK compile-time value", void 0)),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                                className: "py-2",
+                                                children: loadingCategorias ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                                    className: "px-4 py-3 text-gray-500 text-sm",
+                                                    children: "Cargando categorías..."
+                                                }, void 0, false, {
+                                                    fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
+                                                    lineNumber: 198,
+                                                    columnNumber: 23
+                                                }, ("TURBOPACK compile-time value", void 0)) : categorias.length > 0 ? categorias.map((categoria)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
+                                                        onClick: ()=>handleCategoryClick(categoria.id),
+                                                        className: "w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors duration-150 border-b border-gray-100 last:border-b-0 text-gray-700 hover:text-blue-600 text-sm font-medium",
+                                                        children: categoria.nombre
+                                                    }, categoria.id, false, {
+                                                        fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
+                                                        lineNumber: 201,
+                                                        columnNumber: 25
+                                                    }, ("TURBOPACK compile-time value", void 0))) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                                    className: "px-4 py-3 text-gray-500 text-sm",
+                                                    children: "No hay categorías disponibles"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
+                                                    lineNumber: 210,
+                                                    columnNumber: 23
+                                                }, ("TURBOPACK compile-time value", void 0))
+                                            }, void 0, false, {
+                                                fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
+                                                lineNumber: 196,
+                                                columnNumber: 19
+                                            }, ("TURBOPACK compile-time value", void 0))
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
+                                        lineNumber: 185,
+                                        columnNumber: 17
+                                    }, ("TURBOPACK compile-time value", void 0))
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
+                                lineNumber: 165,
+                                columnNumber: 13
+                            }, ("TURBOPACK compile-time value", void 0))
+                        }, void 0, false, {
                             fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                            lineNumber: 77,
+                            lineNumber: 162,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                             className: "flex items-center space-x-4",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
-                                    className: "lg:hidden p-1",
+                                    className: "lg:hidden p-1 text-gray-800 hover:text-indigo-600 transition",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(SearchIcon, {}, void 0, false, {
                                         fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                        lineNumber: 91,
+                                        lineNumber: 224,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                    lineNumber: 90,
+                                    lineNumber: 223,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
                                     onClick: handleAuthAction,
-                                    className: "flex items-center text-gray-800 hover:text-indigo-600 transition text-sm font-medium",
+                                    className: "flex items-center text-gray-800 hover:text-indigo-600 transition text-sm font-semibold",
                                     children: [
                                         isLoggedIn ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(LogoutIcon, {}, void 0, false, {
                                             fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                            lineNumber: 99,
+                                            lineNumber: 232,
                                             columnNumber: 29
                                         }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(UserIcon, {}, void 0, false, {
                                             fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                            lineNumber: 99,
+                                            lineNumber: 232,
                                             columnNumber: 46
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
@@ -422,25 +600,25 @@ const Navbar = ()=>{
                                             children: isLoggedIn ? isAdmin ? 'Admin' : `Hola, ${user?.name || 'Usuario'}` : 'Inicia sesión'
                                         }, void 0, false, {
                                             fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                            lineNumber: 100,
+                                            lineNumber: 233,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                    lineNumber: 95,
+                                    lineNumber: 228,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
                                     className: "hidden md:block p-1 text-gray-800 hover:text-red-600 transition",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(HeartIcon, {}, void 0, false, {
                                         fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                        lineNumber: 107,
+                                        lineNumber: 240,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                    lineNumber: 106,
+                                    lineNumber: 239,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -450,12 +628,12 @@ const Navbar = ()=>{
                                             className: "p-1 text-gray-800 hover:text-indigo-600 transition",
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(CartIcon, {}, void 0, false, {
                                                 fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                                lineNumber: 113,
+                                                lineNumber: 246,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0))
                                         }, void 0, false, {
                                             fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                            lineNumber: 112,
+                                            lineNumber: 245,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -463,30 +641,30 @@ const Navbar = ()=>{
                                             children: "3"
                                         }, void 0, false, {
                                             fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                            lineNumber: 115,
+                                            lineNumber: 248,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                    lineNumber: 111,
+                                    lineNumber: 244,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                            lineNumber: 88,
+                            lineNumber: 221,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                    lineNumber: 75,
+                    lineNumber: 159,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                lineNumber: 74,
+                lineNumber: 158,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -503,12 +681,12 @@ const Navbar = ()=>{
                                     children: "ECOM.CLONE"
                                 }, void 0, false, {
                                     fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                    lineNumber: 128,
+                                    lineNumber: 261,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                lineNumber: 127,
+                                lineNumber: 260,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -527,7 +705,7 @@ const Navbar = ()=>{
                                                 className: "flex-grow px-4 py-2 text-base focus:outline-none placeholder-gray-500"
                                             }, void 0, false, {
                                                 fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                                lineNumber: 137,
+                                                lineNumber: 270,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
@@ -535,28 +713,28 @@ const Navbar = ()=>{
                                                 className: "bg-indigo-600 text-white px-6 hover:bg-indigo-700 transition flex items-center justify-center",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(SearchIcon, {}, void 0, false, {
                                                     fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                                    lineNumber: 148,
+                                                    lineNumber: 281,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                                lineNumber: 144,
+                                                lineNumber: 277,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                        lineNumber: 136,
+                                        lineNumber: 269,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                    lineNumber: 135,
+                                    lineNumber: 268,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                lineNumber: 134,
+                                lineNumber: 267,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             isAdmin && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$next$2f$link$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -565,26 +743,26 @@ const Navbar = ()=>{
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(ChartIcon, {}, void 0, false, {
                                         fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                        lineNumber: 160,
+                                        lineNumber: 293,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
                                         children: "ADMIN"
                                     }, void 0, false, {
                                         fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                        lineNumber: 161,
+                                        lineNumber: 294,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                lineNumber: 156,
+                                lineNumber: 289,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                        lineNumber: 125,
+                        lineNumber: 258,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -602,7 +780,7 @@ const Navbar = ()=>{
                                         className: "flex-grow px-4 py-2 text-base focus:outline-none placeholder-gray-500"
                                     }, void 0, false, {
                                         fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                        lineNumber: 170,
+                                        lineNumber: 303,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
@@ -610,40 +788,40 @@ const Navbar = ()=>{
                                         className: "bg-indigo-600 text-white px-4 hover:bg-indigo-700 transition flex items-center justify-center",
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(SearchIcon, {}, void 0, false, {
                                             fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                            lineNumber: 181,
+                                            lineNumber: 314,
                                             columnNumber: 17
                                         }, ("TURBOPACK compile-time value", void 0))
                                     }, void 0, false, {
                                         fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                        lineNumber: 177,
+                                        lineNumber: 310,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                                lineNumber: 169,
+                                lineNumber: 302,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
                             fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                            lineNumber: 168,
+                            lineNumber: 301,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                        lineNumber: 167,
+                        lineNumber: 300,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-                lineNumber: 124,
+                lineNumber: 257,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/ecommerce-project/frontend/components/Layout/Navbar.jsx",
-        lineNumber: 72,
+        lineNumber: 156,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };

@@ -1,193 +1,328 @@
-[00:00:00.785] Server  LOG      ✓ Ready in 523ms
-[00:11:53.598] Server  ERROR   Warning: Each child in a list should have a unique "key" prop.
+[00:00:00.790] Server  LOG      ✓ Ready in 520ms
+[00:00:02.314] Server  LOG     🎨 Renderizando Navbar - categorias: 0 "loading:" true
+[00:00:02.709] Browser LOG     🎨 Renderizando Navbar - categorias: 0 loading: true
+[00:00:02.709] Browser LOG     🔄 useEffect - Iniciando carga de categorías
+[00:00:02.709] Browser LOG     📡 Fetching categorías...
+[00:00:02.709] Browser LOG     🎨 Renderizando Navbar - categorias: 0 loading: true
+[00:00:02.709] Browser ERROR   Warning: Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.%s 
 
-Check the top-level render call using <div>. See https://reactjs.org/link/warning-keys for more information.
-    at ProductCard (C:\Users\User\ecommerce-project\frontend\components\Product\ProductCard.jsx:7:24)
-    at HomePage (C:\Users\User\ecommerce-project\frontend\pages\index.jsx:5:21)
+Check the render method of `GestionProductos`.  
+    at tr
+    at GestionProductos (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__3d16c903._.js:973:187)
     at main
     at div
-    at AuthProvider (C:\Users\User\ecommerce-project\frontend\context\AuthContext.jsx:9:32)
-    at MyApp (C:\Users\User\ecommerce-project\frontend\pages\_app.jsx:6:33)
-    at StyleRegistry (C:\Users\User\ecommerce-project\frontend\node_modules\styled-jsx\dist\index\index.js:449:36)
-    at PathnameContextProviderAdapter (webpack://next/src/shared/lib/router/adapters.tsx:70:3)
-    at AppContainer (webpack://next/src/server/render.tsx:737:27)
-    at AppContainerWithIsomorphicFiberStructure (webpack://next/src/server/render.tsx:785:11)
-    at div
-    at Body (webpack://next/src/server/render.tsx:1254:19)
-[00:11:53.603] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:11:53.607] Server  ERROR   TypeError: price.toFixed is not a function
-[00:11:53.609] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:11:53.611] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
-[00:11:53.613] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:11:53.616] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
-[00:11:53.918] Browser ERROR   uncaughtError: TypeError: price.toFixed is not a function
-[00:14:24.136] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:14:24.139] Server  ERROR   TypeError: price.toFixed is not a function
-[00:14:24.140] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:14:24.141] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
-[00:14:24.142] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:14:24.145] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
-[00:14:24.225] Browser ERROR   uncaughtError: TypeError: price.toFixed is not a function
-[00:14:24.995] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:14:24.998] Server  ERROR   TypeError: price.toFixed is not a function
-[00:14:24.999] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:14:25.000] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
-[00:14:25.001] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:14:25.003] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
-[00:14:25.076] Browser ERROR   uncaughtError: TypeError: price.toFixed is not a function
-[00:14:25.772] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:14:25.775] Server  ERROR   TypeError: price.toFixed is not a function
-[00:14:25.776] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:14:25.777] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
-[00:14:25.778] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:14:25.780] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
-[00:14:25.863] Browser ERROR   uncaughtError: TypeError: price.toFixed is not a function
-[00:14:26.323] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:14:26.325] Server  ERROR   TypeError: price.toFixed is not a function
-[00:14:26.326] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:14:26.328] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
-[00:14:26.328] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:14:26.330] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
-[00:14:26.403] Browser ERROR   uncaughtError: TypeError: price.toFixed is not a function
-[00:14:26.938] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:14:26.940] Server  ERROR   TypeError: price.toFixed is not a function
-[00:14:26.941] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:14:26.942] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
-[00:14:26.943] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:14:26.945] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
-[00:14:27.015] Browser ERROR   uncaughtError: TypeError: price.toFixed is not a function
-[00:16:26.133] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:16:26.135] Server  ERROR   TypeError: price.toFixed is not a function
-[00:16:26.136] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:16:26.138] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
-[00:16:26.139] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:16:26.141] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
-[00:16:26.216] Browser ERROR   uncaughtError: TypeError: price.toFixed is not a function
-[00:16:26.856] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:16:26.858] Server  ERROR   TypeError: price.toFixed is not a function
-[00:16:26.860] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:16:26.862] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
-[00:16:26.862] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:16:26.864] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
-[00:16:26.939] Browser ERROR   uncaughtError: TypeError: price.toFixed is not a function
-[00:16:27.368] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:16:27.371] Server  ERROR   TypeError: price.toFixed is not a function
-[00:16:27.372] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:16:27.373] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
-[00:16:27.374] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:16:27.376] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
-[00:16:27.448] Browser ERROR   uncaughtError: TypeError: price.toFixed is not a function
-[00:16:47.304] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:16:47.306] Server  ERROR   TypeError: price.toFixed is not a function
-[00:16:47.307] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:16:47.309] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
-[00:16:47.310] Server  ERROR   C:\Users\User\ecommerce-project\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__1a34bf17._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:16:47.312] Server  ERROR    ⨯ TypeError: price.toFixed is not a function
-[00:16:47.386] Browser ERROR   uncaughtError: TypeError: price.toFixed is not a function
-[00:20:44.433] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:20:44.597] Server  LOG      ✓ Compiled in 135ms
-[00:20:45.872] Browser ERROR   Warning: Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.%s 
-
-Check the render method of `HomePage`.  
-    at ProductCard (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:766:22)
-    at HomePage (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:1155:26)
-    at main
-    at div
-    at AuthProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:776:26)
-    at MyApp (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:1477:27)
+    at CartProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:1043:26)
+    at AuthProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:776:26)
+    at App (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:2444:27)
     at PathnameContextProviderAdapter (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_shared_lib_9481b9fe._.js:6256:27)
     at PagesDevOverlayErrorBoundary (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:1292:27)
     at PagesDevOverlayBridge (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:2170:26)
     at Container (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3499:27)
     at AppContainer (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3636:26)
     at Root (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3862:27)
-[00:26:04.654] Browser ERROR   Warning: Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.%s 
+[00:00:02.709] Browser LOG     📊 Response status: 200
+[00:00:02.709] Browser LOG     📦 Datos recibidos de API: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[00:00:02.709] Browser LOG     ✅ 5 categorías cargadas: [{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}]
+[00:00:02.709] Browser LOG     🏁 Loading finalizado
+[00:00:02.709] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[00:00:02.709] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[00:00:02.709] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:00:02.743] Server  LOG     🔄 Cargando productos desde: "http://localhost:3001/api/productos"
+[00:00:02.880] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[00:00:02.880] Browser LOG     🔍 Iniciando carga de categorías...
+[00:00:02.880] Browser LOG     📡 Respuesta de API: 200
+[00:00:02.880] Browser LOG     📦 Datos recibidos: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[00:00:02.880] Browser LOG     ✅ 5 categorías cargadas
+[00:00:03.942] Server  LOG     🎨 Renderizando Navbar - categorias: 0 "loading:" true
+[00:00:03.948] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[00:00:04.056] Browser WARN    Endpoint de estadísticas no disponible: 404
+[00:00:04.056] Browser ERROR   Warning: Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.%s 
 
-Check the render method of `HomePage`.  
-    at ProductCard (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:766:22)
-    at HomePage (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:1155:26)
+Check the render method of `Dashboard`.  
+    at div
+    at Dashboard (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__36d11395._.js:959:187)
     at main
     at div
-    at AuthProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:776:26)
-    at MyApp (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:1477:27)
+    at CartProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:1043:26)
+    at AuthProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:776:26)
+    at App (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:2444:27)
     at PathnameContextProviderAdapter (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_shared_lib_9481b9fe._.js:6256:27)
     at PagesDevOverlayErrorBoundary (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:1292:27)
     at PagesDevOverlayBridge (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:2170:26)
     at Container (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3499:27)
     at AppContainer (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3636:26)
     at Root (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3862:27)
-[00:27:32.415] Browser ERROR   Warning: Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.%s 
-
-Check the render method of `HomePage`.  
-    at ProductCard (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:766:22)
-    at HomePage (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:1155:26)
+[00:00:05.117] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[00:00:09.315] Browser ERROR   Warning: A component is changing an uncontrolled input to be controlled. This is likely caused by the value changing from undefined to a defined value, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info: https://reactjs.org/link/controlled-components%s 
+    at input
+    at div
+    at div
+    at form
+    at div
+    at div
+    at div
+    at div
+    at GestionProductos (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__3d16c903._.js:973:187)
     at main
     at div
-    at AuthProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:776:26)
-    at MyApp (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:1477:27)
+    at CartProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:1043:26)
+    at AuthProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:776:26)
+    at App (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:2444:27)
     at PathnameContextProviderAdapter (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_shared_lib_9481b9fe._.js:6256:27)
     at PagesDevOverlayErrorBoundary (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:1292:27)
     at PagesDevOverlayBridge (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:2170:26)
     at Container (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3499:27)
     at AppContainer (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3636:26)
     at Root (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3862:27)
-[00:28:26.149] Browser ERROR   Warning: Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.%s 
+[00:00:16.156] Server  LOG     🎨 Renderizando Navbar - categorias: 0 "loading:" true
+[00:00:17.297] Browser ERROR   Error saving product: {}
+[00:00:17.297] Browser LOG     Datos que se intentaron enviar: {"barcode":"SM001","categoria":"Supermercado","descripcion":"Arroz integral de grano largo, perfecto para una alimentación saludable","id_numerico":"011","nombre":"Arroz Integral","precio":2.5,"stock":50}
+[00:00:57.673] Server  LOG     🎨 Renderizando Navbar - categorias: 0 "loading:" true
+[00:00:57.864] Server  LOG     🔄 Cargando productos desde: "http://localhost:3001/api/productos"
+[00:00:58.001] Browser LOG     🎨 Renderizando Navbar - categorias: 0 loading: true
+[00:00:58.001] Browser LOG     🔄 useEffect - Iniciando carga de categorías
+[00:00:58.001] Browser LOG     📡 Fetching categorías...
+[00:00:58.001] Browser LOG     🎨 Renderizando Navbar - categorias: 0 loading: true
+[00:00:58.001] Browser LOG     📊 Response status: 200
+[00:00:58.001] Browser LOG     📦 Datos recibidos de API: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[00:00:58.001] Browser LOG     ✅ 5 categorías cargadas: [{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}]
+[00:00:58.001] Browser LOG     🏁 Loading finalizado
+[00:00:58.001] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[00:00:58.001] Browser ERROR   Warning: Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.%s 
 
-Check the render method of `HomePage`.  
-    at ProductCard (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:766:22)
-    at HomePage (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:1155:26)
+Check the render method of `GestionProductos`.  
+    at tr
+    at GestionProductos (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__3d16c903._.js:973:187)
     at main
     at div
-    at AuthProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:776:26)
-    at MyApp (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:1477:27)
+    at CartProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:1043:26)
+    at AuthProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:776:26)
+    at App (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:2444:27)
     at PathnameContextProviderAdapter (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_shared_lib_9481b9fe._.js:6256:27)
     at PagesDevOverlayErrorBoundary (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:1292:27)
     at PagesDevOverlayBridge (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:2170:26)
     at Container (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3499:27)
     at AppContainer (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3636:26)
     at Root (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3862:27)
-[00:54:37.931] Browser ERROR   Warning: Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.%s 
+[00:00:58.001] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[00:00:58.001] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:00:58.001] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[00:00:58.001] Browser LOG     🔍 Iniciando carga de categorías...
+[00:00:58.001] Browser LOG     📡 Respuesta de API: 200
+[00:00:58.001] Browser LOG     📦 Datos recibidos: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[00:00:58.001] Browser LOG     ✅ 5 categorías cargadas
+[00:00:59.081] Server  LOG     🎨 Renderizando Navbar - categorias: 0 "loading:" true
+[00:00:59.188] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[00:00:59.188] Browser WARN    Endpoint de estadísticas no disponible: 404
+[00:00:59.188] Browser ERROR   Warning: Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.%s 
 
-Check the render method of `HomePage`.  
-    at ProductCard (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:766:22)
-    at HomePage (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:1155:26)
+Check the render method of `Dashboard`.  
+    at div
+    at Dashboard (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__36d11395._.js:959:187)
     at main
     at div
-    at AuthProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:776:26)
-    at MyApp (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:1477:27)
+    at CartProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:1043:26)
+    at AuthProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:776:26)
+    at App (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:2444:27)
     at PathnameContextProviderAdapter (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_shared_lib_9481b9fe._.js:6256:27)
     at PagesDevOverlayErrorBoundary (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:1292:27)
     at PagesDevOverlayBridge (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:2170:26)
     at Container (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3499:27)
     at AppContainer (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3636:26)
     at Root (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3862:27)
-[01:10:26.594] Browser ERROR   Warning: Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.%s 
-
-Check the render method of `HomePage`.  
-    at ProductCard (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:766:22)
-    at HomePage (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:1155:26)
+[00:01:02.741] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[00:01:12.123] Browser ERROR   Warning: A component is changing an uncontrolled input to be controlled. This is likely caused by the value changing from undefined to a defined value, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info: https://reactjs.org/link/controlled-components%s 
+    at input
+    at div
+    at div
+    at form
+    at div
+    at div
+    at div
+    at div
+    at GestionProductos (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__3d16c903._.js:973:187)
     at main
     at div
-    at AuthProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:776:26)
-    at MyApp (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:1477:27)
+    at CartProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:1043:26)
+    at AuthProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:776:26)
+    at App (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:2444:27)
     at PathnameContextProviderAdapter (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_shared_lib_9481b9fe._.js:6256:27)
     at PagesDevOverlayErrorBoundary (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:1292:27)
     at PagesDevOverlayBridge (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:2170:26)
     at Container (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3499:27)
     at AppContainer (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3636:26)
     at Root (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3862:27)
-[01:21:55.401] Browser ERROR   Warning: Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.%s 
+[00:01:29.900] Server  LOG     🎨 Renderizando Navbar - categorias: 0 "loading:" true
+[00:01:30.923] Browser ERROR   Error saving product: {}
+[00:01:30.924] Browser LOG     Datos que se intentaron enviar: {"barcode":"SM001","categoria":"Supermercado","descripcion":"Arroz integral de grano largo, perfecto para una alimentación saludable","id_numerico":"001","imagen":"https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/396e9/MainBefore.jpg","nombre":"Arroz Integral","precio":2.5,"stock":"51"}
+[03:05:52.901] Server  LOG     🎨 Renderizando Navbar - categorias: 0 "loading:" true
+[03:05:53.151] Server  LOG     🔄 Cargando productos desde: "http://localhost:3001/api/productos"
+[03:05:53.295] Browser LOG     🎨 Renderizando Navbar - categorias: 0 loading: true
+[03:05:53.295] Browser LOG     🔄 useEffect - Iniciando carga de categorías
+[03:05:53.295] Browser LOG     📡 Fetching categorías...
+[03:05:53.295] Browser LOG     🎨 Renderizando Navbar - categorias: 0 loading: true
+[03:05:53.295] Browser LOG     📊 Response status: 200
+[03:05:53.295] Browser LOG     📦 Datos recibidos de API: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[03:05:53.295] Browser LOG     ✅ 5 categorías cargadas: [{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}]
+[03:05:53.295] Browser LOG     🏁 Loading finalizado
+[03:05:53.295] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:05:53.295] Browser ERROR   Warning: Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.%s 
 
-Check the render method of `HomePage`.  
-    at ProductCard (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:766:22)
-    at HomePage (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__02f8712b._.js:1155:26)
+Check the render method of `GestionProductos`.  
+    at tr
+    at GestionProductos (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__3d16c903._.js:973:187)
     at main
     at div
-    at AuthProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:776:26)
-    at MyApp (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__c5d431d8._.js:1477:27)
+    at CartProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:1043:26)
+    at AuthProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:776:26)
+    at App (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:2444:27)
     at PathnameContextProviderAdapter (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_shared_lib_9481b9fe._.js:6256:27)
     at PagesDevOverlayErrorBoundary (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:1292:27)
     at PagesDevOverlayBridge (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:2170:26)
     at Container (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3499:27)
     at AppContainer (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3636:26)
     at Root (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3862:27)
+[03:05:53.295] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:05:53.295] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[03:05:53.295] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:05:53.295] Browser LOG     🔍 Iniciando carga de categorías...
+[03:05:53.295] Browser LOG     📡 Respuesta de API: 200
+[03:05:53.295] Browser LOG     📦 Datos recibidos: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[03:05:53.295] Browser LOG     ✅ 5 categorías cargadas
+[03:05:54.209] Server  LOG     🎨 Renderizando Navbar - categorias: 0 "loading:" true
+[03:05:54.320] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:05:54.320] Browser WARN    Endpoint de estadísticas no disponible: 404
+[03:05:54.320] Browser ERROR   Warning: Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.%s 
+
+Check the render method of `Dashboard`.  
+    at div
+    at Dashboard (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__36d11395._.js:959:187)
+    at main
+    at div
+    at CartProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:1043:26)
+    at AuthProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:776:26)
+    at App (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:2444:27)
+    at PathnameContextProviderAdapter (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_shared_lib_9481b9fe._.js:6256:27)
+    at PagesDevOverlayErrorBoundary (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:1292:27)
+    at PagesDevOverlayBridge (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:2170:26)
+    at Container (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3499:27)
+    at AppContainer (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3636:26)
+    at Root (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3862:27)
+[03:05:55.704] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:06:00.336] Browser ERROR   Warning: A component is changing an uncontrolled input to be controlled. This is likely caused by the value changing from undefined to a defined value, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info: https://reactjs.org/link/controlled-components%s 
+    at input
+    at div
+    at div
+    at form
+    at div
+    at div
+    at div
+    at div
+    at GestionProductos (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__3d16c903._.js:973:187)
+    at main
+    at div
+    at CartProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:1043:26)
+    at AuthProvider (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:776:26)
+    at App (http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__118cc2f2._.js:2444:27)
+    at PathnameContextProviderAdapter (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_shared_lib_9481b9fe._.js:6256:27)
+    at PagesDevOverlayErrorBoundary (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:1292:27)
+    at PagesDevOverlayBridge (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_d1f0502b._.js:2170:26)
+    at Container (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3499:27)
+    at AppContainer (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3636:26)
+    at Root (http://localhost:3001/_next/static/chunks/2ee5b_next_dist_client_04bcc601._.js:3862:27)
+[03:06:12.634] Server  LOG     🎨 Renderizando Navbar - categorias: 0 "loading:" true
+[03:06:13.912] Browser ERROR   Error saving product: {}
+[03:06:13.912] Browser LOG     Datos que se intentaron enviar: {"barcode":"SM001","categoria":"Supermercado","descripcion":"Arroz integral de grano largo, perfecto para una alimentación saludable","id_numerico":"001","imagen":"https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/396e9/MainBefore.jpg","nombre":"Arroz Integral","precio":2.5,"stock":50}
+[03:19:21.815] Server  LOG     🔄 Cargando productos desde: "http://localhost:3001/api/productos"
+[03:19:21.950] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:19:21.950] Browser LOG     🔍 Iniciando carga de categorías...
+[03:19:21.950] Browser LOG     📡 Respuesta de API: 200
+[03:19:21.950] Browser LOG     📦 Datos recibidos: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[03:19:21.950] Browser LOG     ✅ 5 categorías cargadas
+[03:19:28.179] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:19:29.349] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:19:30.540] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:19:33.149] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:19:34.930] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:19:35.463] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:19:37.991] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:19:42.685] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:19:44.064] Server  LOG     🔄 Cargando productos desde: "http://localhost:3001/api/productos"
+[03:19:44.196] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:19:44.196] Browser LOG     🔍 Iniciando carga de categorías...
+[03:19:44.196] Browser LOG     📡 Respuesta de API: 200
+[03:19:44.196] Browser LOG     📦 Datos recibidos: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[03:19:44.196] Browser LOG     ✅ 5 categorías cargadas
+[03:19:46.261] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:19:49.096] Server  LOG     🔄 Cargando productos desde: "http://localhost:3001/api/productos"
+[03:19:49.225] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:19:49.225] Browser LOG     🔍 Iniciando carga de categorías...
+[03:19:49.225] Browser LOG     📡 Respuesta de API: 200
+[03:19:49.225] Browser LOG     📦 Datos recibidos: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[03:19:49.225] Browser LOG     ✅ 5 categorías cargadas
+[03:19:51.739] Server  LOG     📥 Solicitud para categoría: "jugueteria"
+[03:19:51.739] Server  LOG     ✅ Devolviendo 2 productos para jugueteria
+[03:19:51.842] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:19:51.842] Browser LOG     🔄 Cargando productos para categoría: jugueteria
+[03:19:51.842] Browser LOG     📡 Intentando conectar a API...
+[03:19:51.842] Browser LOG     ✅ Datos recibidos de API: {"categoria":"jugueteria","count":2,"data":[{"barcode":"JUG001","categoria":"jugueteria","descripcion":"Set de construcción Lego con 221 piezas","nombre":"Set Lego Classic","precio":24.99,"stock":35},{"barcode":"JUG002","categoria":"jugueteria","descripcion":"Muñeca Barbie con 3 cambios de vestuario","nombre":"Muñeca Barbie Fashion","precio":19.99,"stock":20}],"success":true}
+[03:19:53.964] Server  LOG     📥 Solicitud para categoría: "supermercado"
+[03:19:53.964] Server  LOG     ✅ Devolviendo 3 productos para supermercado
+[03:19:53.971] Server  LOG     📥 Solicitud para categoría: "electrodomesticos"
+[03:19:53.971] Server  LOG     ✅ Devolviendo 2 productos para electrodomesticos
+[03:19:53.977] Server  LOG     📥 Solicitud para categoría: "jugueteria"
+[03:19:53.977] Server  LOG     ✅ Devolviendo 2 productos para jugueteria
+[03:19:53.984] Server  LOG     📥 Solicitud para categoría: "tecnologia"
+[03:19:53.984] Server  LOG     ✅ Devolviendo 2 productos para tecnologia
+[03:19:53.992] Server  LOG     📥 Solicitud para categoría: "bebidas"
+[03:19:53.992] Server  LOG     ✅ Devolviendo 2 productos para bebidas
+[03:19:54.060] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:19:54.060] Browser LOG     🔄 Cargando categorías para página principal...
+[03:19:54.060] Browser LOG     📦 Categorías recibidas: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[03:19:54.447] Server  LOG     🔄 Cargando productos desde: "http://localhost:3001/api/productos"
+[03:19:54.576] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:19:54.576] Browser LOG     🔍 Iniciando carga de categorías...
+[03:19:54.576] Browser LOG     📡 Respuesta de API: 200
+[03:19:54.576] Browser LOG     📦 Datos recibidos: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[03:19:54.576] Browser LOG     ✅ 5 categorías cargadas
+[03:21:14.223] Server  LOG     🎨 Renderizando Navbar - categorias: 0 "loading:" true
+[03:21:14.331] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:21:14.331] Browser WARN    Endpoint de estadísticas no disponible: 404
+[03:21:28.118] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:21:44.489] Server  LOG     🎨 Renderizando Navbar - categorias: 0 "loading:" true
+[03:21:44.598] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:21:44.598] Browser WARN    Endpoint de estadísticas no disponible: 404
+[03:28:42.877] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:28:51.260] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:28:51.260] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:28:52.489] Server  LOG     🔄 Cargando productos desde: "http://localhost:3001/api/productos"
+[03:28:52.615] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:28:52.615] Browser LOG     🔍 Iniciando carga de categorías...
+[03:28:52.615] Browser LOG     📡 Respuesta de API: 200
+[03:28:52.615] Browser LOG     📦 Datos recibidos: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[03:28:52.615] Browser LOG     ✅ 5 categorías cargadas
+[03:30:15.407] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:30:23.463] Server  LOG     🔄 Cargando productos desde: "http://localhost:3001/api/productos"
+[03:30:23.471] Server  LOG     🎨 Renderizando Navbar - categorias: 0 "loading:" true
+[03:30:23.613] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:30:23.614] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:30:23.614] Browser WARN    Endpoint de estadísticas no disponible: 404
+[03:30:23.614] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:30:23.614] Browser LOG     🔍 Iniciando carga de categorías...
+[03:30:23.614] Browser LOG     📡 Respuesta de API: 200
+[03:30:23.614] Browser LOG     📦 Datos recibidos: {"count":5,"data":[{"descripcion":"Productos de supermercado","icono":"🛒","id":"supermercado","nombre":"Supermercado"},{"descripcion":"Electrodomésticos para el hogar","icono":"🏠","id":"electrodomesticos","nombre":"Electrodomésticos"},{"descripcion":"Juguetes para todas las edades","icono":"🧸","id":"jugueteria","nombre":"Juguetería"},{"descripcion":"Tecnología y electrónica","icono":"💻","id":"tecnologia","nombre":"Tecnología"},{"descripcion":"Bebidas y refrescos","icono":"🥤","id":"bebidas","nombre":"Bebidas"}],"success":true}
+[03:30:23.614] Browser LOG     ✅ 5 categorías cargadas
+[03:30:24.605] Server  LOG     🎨 Renderizando Navbar - categorias: 0 "loading:" true
+[03:30:24.726] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:30:24.726] Browser WARN    Endpoint de estadísticas no disponible: 404
+[03:30:25.823] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:30:34.962] Server  LOG     🎨 Renderizando Navbar - categorias: 0 "loading:" true
+[03:30:36.494] Browser ERROR   Error saving product: {}
+[03:30:36.494] Browser LOG     Datos que se intentaron enviar: {"barcode":"SM001","categoria":"Electrónica","descripcion":"Arroz integral de grano largo, perfecto para una alimentación saludable","id_numerico":"0001","nombre":"Arroz Integral","precio":2.5,"stock":50}
+[03:35:16.643] Server  LOG      ✓ Compiled in 186ms
+[03:35:17.359] Browser LOG     Refreshing page data due to server-side change
+[03:35:17.359] Browser LOG     🎨 Renderizando Navbar - categorias: 5 loading: false
+[03:36:03.395] Browser LOG     🔍 Enviando a: http://localhost:3000/api/productos/SM001 Método: PUT
+[03:36:03.395] Browser LOG     📦 Datos: {"barcode":"1322321231322","categoria":"supermercado","descripcion":"Arroz integral de grano largo, perfecto para una alimentación saludable","id_numerico":"0001","imagen":"https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/396e9/MainBefore.jpg","nombre":"Arroz Integral","precio":2.5,"stock":50}
+[03:36:03.395] Browser LOG     📨 Respuesta del servidor: {"success":false,"message":"Endpoint no encontrado: PUT /api/productos/SM001"}
+[03:36:03.395] Browser ERROR   ❌ Error saving product: {}

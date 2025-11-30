@@ -25,6 +25,15 @@ class _AdminRegistrationPageState extends State<AdminRegistrationPage> {
   bool _isRegistering = false;
   final _formKey = GlobalKey<FormState>();
 
+  // NUEVO: Variables para categorías
+  String _selectedCategory = 'supermercado';
+  final List<Map<String, String>> _categories = [
+    {'id': 'supermercado', 'name': 'Supermercado 🛒'},
+    {'id': 'electrodomesticos', 'name': 'Electrodomésticos 🏠'},
+    {'id': 'jugueteria', 'name': 'Juguetería 🧸'},
+    {'id': 'tecnologia', 'name': 'Tecnología 💻'},
+    {'id': 'bebidas', 'name': 'Bebidas 🥤'},
+  ];
 
   Future<void> _scanBarcode() async {
     // Navega a la vista del escáner y espera el resultado del código de barras
@@ -57,6 +66,8 @@ class _AdminRegistrationPageState extends State<AdminRegistrationPage> {
       _nameController.clear();
       _priceController.clear();
       _stockController.clear();
+      // NUEVO: Resetear categoría a valor por defecto
+      _selectedCategory = 'supermercado';
     }
   }
 
@@ -74,6 +85,7 @@ class _AdminRegistrationPageState extends State<AdminRegistrationPage> {
       name: _nameController.text,
       price: double.tryParse(_priceController.text) ?? 0.0,
       stock: int.tryParse(_stockController.text) ?? 0,
+      category: _selectedCategory, // NUEVO: Incluir categoría
     );
     
     // --- MANEJO DE ERRORES DE LA API ---
@@ -160,6 +172,33 @@ class _AdminRegistrationPageState extends State<AdminRegistrationPage> {
                 border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10)))
             ),
             validator: (value) => int.tryParse(value!) == null ? 'Ingrese un stock válido' : null,
+          ),
+          // NUEVO: Selector de categoría
+          const SizedBox(height: 10),
+          DropdownButtonFormField<String>(
+            value: _selectedCategory,
+            decoration: const InputDecoration(
+              labelText: 'Categoría *',
+              border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+              prefixIcon: Icon(Icons.category),
+            ),
+            items: _categories.map((category) {
+              return DropdownMenuItem<String>(
+                value: category['id'],
+                child: Text(category['name']!),
+              );
+            }).toList(),
+            onChanged: (value) {
+              setState(() {
+                _selectedCategory = value!;
+              });
+            },
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Por favor selecciona una categoría';
+              }
+              return null;
+            },
           ),
           const SizedBox(height: 30),
           ElevatedButton.icon(
@@ -252,6 +291,8 @@ class _AdminRegistrationPageState extends State<AdminRegistrationPage> {
                             Text('Nombre: ${_existingProduct!.name}'),
                             Text('Precio: \$${_existingProduct!.price.toStringAsFixed(2)}'),
                             Text('Stock: ${_existingProduct!.stock} unidades'),
+                            // NUEVO: Mostrar categoría del producto existente
+                            Text('Categoría: ${_getCategoryName(_existingProduct!.category)}'),
                             const SizedBox(height: 10),
                             const Text(
                               'Este producto ya está en la base de datos.',
@@ -269,5 +310,14 @@ class _AdminRegistrationPageState extends State<AdminRegistrationPage> {
         ),
       ),
     );
+  }
+
+  // NUEVO: Función helper para obtener el nombre de la categoría
+  String _getCategoryName(String categoryId) {
+    final category = _categories.firstWhere(
+      (cat) => cat['id'] == categoryId,
+      orElse: () => {'name': 'Desconocida'},
+    );
+    return category['name']!;
   }
 }

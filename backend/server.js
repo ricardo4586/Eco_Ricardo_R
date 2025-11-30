@@ -40,6 +40,7 @@ CREATE TABLE productos (
     nombre VARCHAR(255) NOT NULL,
     precio NUMERIC(10, 2) NOT NULL CHECK (precio >= 0),
     stock INTEGER NOT NULL CHECK (stock >= 0),
+    categoria VARCHAR(50) DEFAULT 'supermercado',
     fecha_registro TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -66,13 +67,13 @@ ON CONFLICT (email) DO NOTHING;
 -- ----------------------------------------------------
 -- 4. INSERTAR PRODUCTOS INICIALES
 -- ----------------------------------------------------
-INSERT INTO productos (barcode, id_numerico, nombre, precio, stock) VALUES
-('7750241000587', '5555555555', 'Inca Kola 500ml', 3.50, 100),
-('7750241000594', '6666666666', 'Gaseosa Coca-Cola 500ml', 3.20, 80)
+INSERT INTO productos (barcode, id_numerico, nombre, precio, stock, categoria) VALUES
+('7750241000587', '5555555555', 'Inca Kola 500ml', 3.50, 100, 'bebidas'),
+('7750241000594', '6666666666', 'Gaseosa Coca-Cola 500ml', 3.20, 80, 'bebidas')
 ON CONFLICT (barcode) DO NOTHING;
 `;
 
-// Función para inicializar la base de datos
+// Función para inicializar y actualizar la base de datos
 async function initializeDatabase() {
     let client;
     try {
@@ -101,6 +102,9 @@ async function initializeDatabase() {
             console.log(`📊 Productos creados: ${productsCount.rows[0].count}`);
         } else {
             console.log('✅ Las tablas ya existen, omitiendo inicialización');
+            
+            // Verificar y actualizar esquema si es necesario
+            await updateDatabaseSchema(client);
         }
 
     } catch (err) {
@@ -118,6 +122,36 @@ async function initializeDatabase() {
         }
     } finally {
         if (client) client.release();
+    }
+}
+
+// Función para actualizar el esquema de la base de datos
+async function updateDatabaseSchema(client) {
+    try {
+        // Verificar si la columna categoría ya existe
+        const checkQuery = `
+            SELECT column_name 
+            FROM information_schema.columns 
+            WHERE table_name='productos' AND column_name='categoria'
+        `;
+        const result = await client.query(checkQuery);
+        
+        if (result.rows.length === 0) {
+            // Agregar columna categoría si no existe
+            await client.query(`ALTER TABLE productos ADD COLUMN categoria VARCHAR(50) DEFAULT 'supermercado'`);
+            console.log('✅ Columna categoría agregada a la tabla productos');
+            
+            // Actualizar productos existentes con categorías
+            await client.query(`
+                UPDATE productos SET categoria = 'bebidas' 
+                WHERE nombre ILIKE '%gaseosa%' OR nombre ILIKE '%cola%' OR nombre ILIKE '%inka%'
+            `);
+            console.log('✅ Productos existentes actualizados con categorías');
+        } else {
+            console.log('✅ La columna categoría ya existe');
+        }
+    } catch (error) {
+        console.log('ℹ️ Error al verificar/actualizar esquema:', error.message);
     }
 }
 
@@ -205,7 +239,18 @@ function validarEAN13(barcode) {
 // Ruta: GET /api/productos - Catálogo público
 app.get('/api/productos', async (req, res) => {
     try {
-        const result = await pool.query('SELECT barcode, nombre, precio FROM productos ORDER BY nombre ASC');
+        const { categoria } = req.query;
+        let query = 'SELECT barcode, nombre, precio, stock, categoria FROM productos';
+        let params = [];
+        
+        if (categoria) {
+            query += ' WHERE categoria = $1';
+            params.push(categoria);
+        }
+        
+        query += ' ORDER BY nombre ASC';
+        
+        const result = await pool.query(query, params);
         
         // CORRECCIÓN: Convertir precios a números
         const productosConPreciosNumericos = result.rows.map(producto => ({
@@ -227,7 +272,7 @@ app.get('/api/productos', async (req, res) => {
             try {
                 await initializeDatabase();
                 // Reintentar la consulta
-                const retryResult = await pool.query('SELECT barcode, nombre, precio FROM productos ORDER BY nombre ASC');
+                const retryResult = await pool.query('SELECT barcode, nombre, precio, stock, categoria FROM productos ORDER BY nombre ASC');
                 
                 // CORRECCIÓN: También convertir en el reintento
                 const productosRetry = retryResult.rows.map(producto => ({
@@ -250,6 +295,63 @@ app.get('/api/productos', async (req, res) => {
             message: 'Error interno del servidor al obtener el catálogo.',
             errorCode: error.code || '500_DB_FAIL'
         });
+    }
+});
+
+// Ruta: GET /api/categorias - Obtener todas las categorías
+app.get('/api/categorias', async (req, res) => {
+    try {
+        const categorias = [
+            { id: 'supermercado', nombre: 'Supermercado', icono: '🛒' },
+            { id: 'electrodomesticos', nombre: 'Electrodomésticos', icono: '🏠' },
+            { id: 'jugueteria', nombre: 'Juguetería', icono: '🧸' },
+            { id: 'tecnologia', nombre: 'Tecnología', icono: '💻' },
+            { id: 'bebidas', nombre: 'Bebidas', icono: '🥤' }
+        ];
+        
+        return res.status(200).json({
+            success: true,
+            data: categorias
+        });
+    } catch (error) {
+        console.error('Error al obtener categorías:', error);
+        return res.status(500).json({ success: false, message: 'Error interno del servidor.' });
+    }
+});
+
+// Ruta: GET /api/productos/categoria/:categoria - Productos por categoría
+app.get('/api/productos/categoria/:categoria', async (req, res) => {
+    try {
+        const { categoria } = req.params;
+        
+        // Validar categoría
+        const categoriasPermitidas = ['supermercado', 'electrodomesticos', 'jugueteria', 'tecnologia', 'bebidas'];
+        if (!categoriasPermitidas.includes(categoria)) {
+            return res.status(400).json({
+                success: false,
+                message: 'Categoría no válida'
+            });
+        }
+
+        const result = await pool.query(
+            'SELECT barcode, nombre, precio, stock, categoria FROM productos WHERE categoria = $1 ORDER BY nombre ASC',
+            [categoria]
+        );
+        
+        // Convertir precios a números
+        const productos = result.rows.map(producto => ({
+            ...producto,
+            precio: Number(producto.precio)
+        }));
+        
+        return res.status(200).json({
+            success: true,
+            data: productos,
+            total: result.rows.length
+        });
+    } catch (error) {
+        console.error('Error al obtener productos por categoría:', error);
+        return res.status(500).json({ success: false, message: 'Error interno del servidor.' });
     }
 });
 
@@ -293,7 +395,7 @@ app.get('/api/productos/buscar/:barcode', authenticateUser, async (req, res) => 
 
     try {
         const result = await pool.query(
-            'SELECT barcode, nombre, precio, stock FROM productos WHERE barcode = $1',
+            'SELECT barcode, nombre, precio, stock, categoria FROM productos WHERE barcode = $1',
             [barcode]
         );
         
@@ -305,7 +407,8 @@ app.get('/api/productos/buscar/:barcode', authenticateUser, async (req, res) => 
                 barcode: producto.barcode,
                 nombre: producto.nombre,
                 precio: Number(producto.precio),  // ← Convertir a número
-                stock: Number(producto.stock)     // ← Convertir a número
+                stock: Number(producto.stock),     // ← Convertir a número
+                categoria: producto.categoria      // ← Nueva campo
             };
 
             console.log(`[DB Búsqueda] Código ${barcode} ENCONTRADO:`, productoFormateado);
@@ -332,14 +435,25 @@ app.get('/api/productos/buscar/:barcode', authenticateUser, async (req, res) => 
 // ==================== RUTAS DE ADMIN =====================
 // =======================================================
 
-// Ruta: POST /api/productos/registrar
+// Ruta: POST /api/productos/registrar - ACTUALIZADA CON CATEGORÍA
 app.post('/api/productos/registrar', authenticateAdmin, async (req, res) => {
-    const { barcode, id_numerico, nombre, precio, stock } = req.body;
+    // AGREGAR categoría al destructuring
+    const { barcode, id_numerico, nombre, precio, stock, categoria } = req.body;
 
-    if (!barcode || !id_numerico || !nombre || !precio || !stock) {
+    // AGREGAR validación de categoría
+    if (!barcode || !id_numerico || !nombre || !precio || !stock || !categoria) {
         return res.status(400).json({
             success: false,
-            message: 'Faltan campos obligatorios del producto.'
+            message: 'Faltan campos obligatorios del producto (incluyendo categoría).'
+        });
+    }
+
+    // Validar que la categoría sea una de las permitidas
+    const categoriasPermitidas = ['supermercado', 'electrodomesticos', 'jugueteria', 'tecnologia', 'bebidas'];
+    if (!categoriasPermitidas.includes(categoria)) {
+        return res.status(400).json({
+            success: false,
+            message: 'Categoría no válida. Use: supermercado, electrodomesticos, jugueteria, tecnologia, bebidas'
         });
     }
 
@@ -363,22 +477,24 @@ app.post('/api/productos/registrar', authenticateAdmin, async (req, res) => {
         const precioNumerico = parseFloat(precio);
         const stockNumerico = parseInt(stock, 10);
 
+        // ACTUALIZAR la query para incluir categoría
         const insertQuery = `
-            INSERT INTO productos (barcode, id_numerico, nombre, precio, stock)
-            VALUES ($1, $2, $3, $4, $5)
-            RETURNING barcode, nombre, precio, stock, fecha_registro;
+            INSERT INTO productos (barcode, id_numerico, nombre, precio, stock, categoria)
+            VALUES ($1, $2, $3, $4, $5, $6)
+            RETURNING barcode, nombre, precio, stock, categoria, fecha_registro;
         `;
         const result = await pool.query(insertQuery, [
             barcode,
             id_numerico,
             nombre,
             precioNumerico, // ← Ya convertido a número
-            stockNumerico   // ← Ya convertido a número
+            stockNumerico,  // ← Ya convertido a número
+            categoria       // ← Nuevo parámetro
         ]);
 
         const newProduct = result.rows[0];
 
-        console.log(`[DB] Nuevo producto registrado: ${newProduct.nombre} - Código: ${newProduct.barcode}`);
+        console.log(`[DB] Nuevo producto registrado: ${newProduct.nombre} - Categoría: ${newProduct.categoria}`);
         console.log(`[DB] Tipo de precio insertado:`, typeof newProduct.precio);
 
         res.status(201).json({
@@ -414,9 +530,13 @@ async function startServer() {
         console.log(`  Staff: staff@ecommerce.com / password456`);
         console.log('\n📊 Endpoints disponibles:');
         console.log(`  GET  /api/productos - Catálogo público`);
+        console.log(`  GET  /api/categorias - Lista de categorías`);
+        console.log(`  GET  /api/productos/categoria/:categoria - Productos por categoría`);
         console.log(`  POST /api/login - Iniciar sesión`);
         console.log(`  GET  /api/productos/buscar/:barcode - Buscar producto (requiere auth)`);
         console.log(`  POST /api/productos/registrar - Registrar producto (solo admin)`);
+        console.log('\n🏷️  Categorías disponibles:');
+        console.log(`  supermercado, electrodomesticos, jugueteria, tecnologia, bebidas`);
     });
 }
 

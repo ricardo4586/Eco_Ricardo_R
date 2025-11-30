@@ -2,5 +2,15 @@
   "/": "pages/index.js",
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
-  "/_error": "pages/_error.js"
+  "/_error": "pages/_error.js",
+  "/admin/dashboard": "pages/admin/dashboard.js",
+  "/admin/productos": "pages/admin/productos.js",
+  "/api/categorias": "pages/api/categorias.js",
+  "/api/productos": "pages/api/productos.js",
+  "/api/productos/categoria/[categoria]": "pages/api/productos/categoria/[categoria].js",
+  "/carrito": "pages/carrito.js",
+  "/categorias": "pages/categorias.js",
+  "/categorias/[categoria]": "pages/categorias/[categoria].js",
+  "/favoritos": "pages/favoritos.js",
+  "/login": "pages/login.js"
 }

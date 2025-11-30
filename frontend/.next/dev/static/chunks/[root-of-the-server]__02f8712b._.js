@@ -763,7 +763,9 @@ var _this = ("TURBOPACK compile-time value", void 0);
 ;
 ;
 var ProductCard = function(param) {
-    var name = param.name, price = param.price, barcode = param.barcode;
+    var product = param.product;
+    // Recibimos el objeto product completo en lugar de propiedades individuales
+    var _ref = product || {}, name = _ref.name, price = _ref.price, barcode = _ref.barcode, categoria = _ref.categoria;
     // Función segura para formatear el precio
     var formatPrice = function(priceValue) {
         if (priceValue === null || priceValue === undefined || priceValue === '') {
@@ -783,6 +785,28 @@ var ProductCard = function(param) {
             return 'N/A';
         }
     };
+    // Función para obtener el ícono de categoría
+    var getCategoryIcon = function(category) {
+        var icons = {
+            supermercado: '🛒',
+            electrodomesticos: '🏠',
+            jugueteria: '🧸',
+            tecnologia: '💻',
+            bebidas: '🥤'
+        };
+        return icons[category] || '📦';
+    };
+    // Función para obtener el color de categoría
+    var getCategoryColor = function(category) {
+        var colors = {
+            supermercado: 'bg-green-100 text-green-800 border-green-200',
+            electrodomesticos: 'bg-blue-100 text-blue-800 border-blue-200',
+            jugueteria: 'bg-orange-100 text-orange-800 border-orange-200',
+            tecnologia: 'bg-purple-100 text-purple-800 border-purple-200',
+            bebidas: 'bg-red-100 text-red-800 border-red-200'
+        };
+        return colors[category] || 'bg-gray-100 text-gray-800 border-gray-200';
+    };
     var formattedPrice = formatPrice(price);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 overflow-hidden border border-gray-100",
@@ -793,18 +817,43 @@ var ProductCard = function(param) {
                 className: "w-full h-48 object-cover"
             }, void 0, false, {
                 fileName: "[project]/ecommerce-project/frontend/components/Product/ProductCard.jsx",
-                lineNumber: 37,
+                lineNumber: 64,
                 columnNumber: 13
             }, _this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "p-5",
                 children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex justify-between items-start mb-2",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                            className: "inline-flex items-center px-2 py-1 rounded-full text-xs font-medium border ".concat(getCategoryColor(categoria)),
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    className: "mr-1",
+                                    children: getCategoryIcon(categoria)
+                                }, void 0, false, {
+                                    fileName: "[project]/ecommerce-project/frontend/components/Product/ProductCard.jsx",
+                                    lineNumber: 73,
+                                    columnNumber: 25
+                                }, _this),
+                                categoria || 'Sin categoría'
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/ecommerce-project/frontend/components/Product/ProductCard.jsx",
+                            lineNumber: 72,
+                            columnNumber: 21
+                        }, _this)
+                    }, void 0, false, {
+                        fileName: "[project]/ecommerce-project/frontend/components/Product/ProductCard.jsx",
+                        lineNumber: 71,
+                        columnNumber: 17
+                    }, _this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                         className: "text-xl font-semibold text-gray-800 truncate mb-1",
                         children: name
                     }, void 0, false, {
                         fileName: "[project]/ecommerce-project/frontend/components/Product/ProductCard.jsx",
-                        lineNumber: 43,
+                        lineNumber: 78,
                         columnNumber: 17
                     }, _this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -815,48 +864,55 @@ var ProductCard = function(param) {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/ecommerce-project/frontend/components/Product/ProductCard.jsx",
-                        lineNumber: 45,
+                        lineNumber: 79,
                         columnNumber: 17
                     }, _this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-sm text-gray-500",
-                        children: [
-                            "Código: ",
-                            barcode
-                        ]
-                    }, void 0, true, {
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "space-y-1 mb-3",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            className: "text-sm text-gray-500",
+                            children: [
+                                "Código: ",
+                                barcode
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/ecommerce-project/frontend/components/Product/ProductCard.jsx",
+                            lineNumber: 82,
+                            columnNumber: 21
+                        }, _this)
+                    }, void 0, false, {
                         fileName: "[project]/ecommerce-project/frontend/components/Product/ProductCard.jsx",
-                        lineNumber: 46,
+                        lineNumber: 81,
                         columnNumber: 17
                     }, _this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                        className: "mt-4 w-full bg-green-500 text-white py-2 rounded-lg font-semibold hover:bg-green-600 transition flex items-center justify-center",
+                        className: "mt-2 w-full bg-green-500 text-white py-2 rounded-lg font-semibold hover:bg-green-600 transition flex items-center justify-center",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shopping$2d$cart$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ShoppingCart$3e$__["ShoppingCart"], {
                                 size: 18,
                                 className: "mr-2"
                             }, void 0, false, {
                                 fileName: "[project]/ecommerce-project/frontend/components/Product/ProductCard.jsx",
-                                lineNumber: 48,
+                                lineNumber: 86,
                                 columnNumber: 21
                             }, _this),
                             "Agregar al Carrito"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/ecommerce-project/frontend/components/Product/ProductCard.jsx",
-                        lineNumber: 47,
+                        lineNumber: 85,
                         columnNumber: 17
                     }, _this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/ecommerce-project/frontend/components/Product/ProductCard.jsx",
-                lineNumber: 42,
+                lineNumber: 69,
                 columnNumber: 13
             }, _this)
         ]
     }, void 0, true, {
         fileName: "[project]/ecommerce-project/frontend/components/Product/ProductCard.jsx",
-        lineNumber: 36,
+        lineNumber: 63,
         columnNumber: 9
     }, _this);
 };
@@ -1132,126 +1188,540 @@ if ((0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$
 "[project]/ecommerce-project/frontend/pages/index.jsx [client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
+// frontend/pages/index.jsx
 __turbopack_context__.s([
     "__N_SSP",
     ()=>__N_SSP,
     "default",
     ()=>__TURBOPACK__default__export__
 ]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f40$swc$2f$helpers$2f$esm$2f$_async_to_generator$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/ecommerce-project/frontend/node_modules/@swc/helpers/esm/_async_to_generator.js [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f40$swc$2f$helpers$2f$esm$2f$_sliced_to_array$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/ecommerce-project/frontend/node_modules/@swc/helpers/esm/_sliced_to_array.js [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f40$swc$2f$helpers$2f$esm$2f$_to_consumable_array$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/ecommerce-project/frontend/node_modules/@swc/helpers/esm/_to_consumable_array.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f40$swc$2f$helpers$2f$esm$2f$_type_of$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/ecommerce-project/frontend/node_modules/@swc/helpers/esm/_type_of.js [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$tslib$2f$tslib$2e$es6$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__$3c$export__$5f$_generator__as__$5f3e$__ = __turbopack_context__.i("[project]/ecommerce-project/frontend/node_modules/tslib/tslib.es6.mjs [client] (ecmascript) <export __generator as _>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/ecommerce-project/frontend/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/ecommerce-project/frontend/node_modules/react/index.js [client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$components$2f$Product$2f$ProductCard$2e$jsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/ecommerce-project/frontend/components/Product/ProductCard.jsx [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/ecommerce-project/frontend/node_modules/next/link.js [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$components$2f$Product$2f$ProductCard$2e$jsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/ecommerce-project/frontend/components/Product/ProductCard.jsx [client] (ecmascript)"); // ✅ Ruta correcta
 var __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$components$2f$shared$2f$PromoCarousel$2e$jsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/ecommerce-project/frontend/components/shared/PromoCarousel.jsx [client] (ecmascript)");
 ;
 ;
 ;
+;
+;
 var _this = ("TURBOPACK compile-time value", void 0);
+;
+var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
 ;
 var HomePage = function(param) {
     var products = param.products, error = param.error;
+    _s();
+    var _useState = (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f40$swc$2f$helpers$2f$esm$2f$_sliced_to_array$2e$js__$5b$client$5d$__$28$ecmascript$29$__["_"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])([]), 2), categorias = _useState[0], setCategorias = _useState[1];
+    var _useState1 = (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f40$swc$2f$helpers$2f$esm$2f$_sliced_to_array$2e$js__$5b$client$5d$__$28$ecmascript$29$__["_"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(true), 2), loadingCategorias = _useState1[0], setLoadingCategorias = _useState1[1];
+    var _useState2 = (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f40$swc$2f$helpers$2f$esm$2f$_sliced_to_array$2e$js__$5b$client$5d$__$28$ecmascript$29$__["_"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(null), 2), categoriasError = _useState2[0], setCategoriasError = _useState2[1];
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "HomePage.useEffect": function() {
+            fetchCategorias();
+        }
+    }["HomePage.useEffect"], []);
+    var fetchCategorias = function() {
+        return (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f40$swc$2f$helpers$2f$esm$2f$_async_to_generator$2e$js__$5b$client$5d$__$28$ecmascript$29$__["_"])(function() {
+            var res, data, err, categoriasDefault;
+            return (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$tslib$2f$tslib$2e$es6$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__$3c$export__$5f$_generator__as__$5f3e$__["_"])(this, function(_state) {
+                switch(_state.label){
+                    case 0:
+                        _state.trys.push([
+                            0,
+                            3,
+                            4,
+                            5
+                        ]);
+                        console.log('🔍 Iniciando carga de categorías...');
+                        return [
+                            4,
+                            fetch('/api/categorias')
+                        ];
+                    case 1:
+                        res = _state.sent();
+                        console.log('📡 Respuesta de API:', res.status);
+                        if (!res.ok) {
+                            throw new Error("Error HTTP: ".concat(res.status));
+                        }
+                        return [
+                            4,
+                            res.json()
+                        ];
+                    case 2:
+                        data = _state.sent();
+                        console.log('📦 Datos recibidos:', data);
+                        if (data.success && Array.isArray(data.data)) {
+                            console.log("✅ ".concat(data.data.length, " categorías cargadas"));
+                            setCategorias(data.data);
+                        } else {
+                            throw new Error('Estructura de datos inválida de la API');
+                        }
+                        return [
+                            3,
+                            5
+                        ];
+                    case 3:
+                        err = _state.sent();
+                        console.error('❌ Error cargando categorías:', err);
+                        setCategoriasError(err.message);
+                        // Categorías de respaldo
+                        categoriasDefault = [
+                            {
+                                id: 'supermercado',
+                                nombre: 'Supermercado',
+                                icono: '🛒'
+                            },
+                            {
+                                id: 'electrodomesticos',
+                                nombre: 'Electrodomésticos',
+                                icono: '🏠'
+                            },
+                            {
+                                id: 'jugueteria',
+                                nombre: 'Juguetería',
+                                icono: '🧸'
+                            },
+                            {
+                                id: 'tecnologia',
+                                nombre: 'Tecnología',
+                                icono: '💻'
+                            },
+                            {
+                                id: 'bebidas',
+                                nombre: 'Bebidas',
+                                icono: '🥤'
+                            }
+                        ];
+                        setCategorias(categoriasDefault);
+                        return [
+                            3,
+                            5
+                        ];
+                    case 4:
+                        setLoadingCategorias(false);
+                        return [
+                            7
+                        ];
+                    case 5:
+                        return [
+                            2
+                        ];
+                }
+            });
+        })();
+    };
+    // Función para contar productos por categoría
+    var contarProductosPorCategoria = function(categoriaId) {
+        if (!products || !Array.isArray(products)) return 0;
+        return products.filter(function(product) {
+            return product.categoria === categoriaId;
+        }).length;
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "page-container",
+        className: "min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$components$2f$shared$2f$PromoCarousel$2e$jsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
-                lineNumber: 8,
+                lineNumber: 65,
                 columnNumber: 7
             }, _this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "container-custom py-8",
+                className: "max-w-7xl mx-auto px-4 py-8",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "page-header",
+                        className: "text-center mb-12",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                className: "page-title",
+                                className: "text-4xl font-bold text-gray-900 mb-4",
                                 children: "Catálogo de Productos"
                             }, void 0, false, {
                                 fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
-                                lineNumber: 14,
+                                lineNumber: 71,
                                 columnNumber: 11
                             }, _this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "page-subtitle",
-                                children: "Descubre nuestra selección de productos tecnológicos al mejor precio"
+                                className: "text-xl text-gray-600",
+                                children: "Descubre nuestra selección de productos al mejor precio"
                             }, void 0, false, {
                                 fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
-                                lineNumber: 15,
+                                lineNumber: 74,
                                 columnNumber: 11
                             }, _this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
-                        lineNumber: 13,
+                        lineNumber: 70,
                         columnNumber: 9
                     }, _this),
-                    error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "error-message mb-8",
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
+                        className: "mb-16",
                         children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
-                                children: "Error al cargar productos:"
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex justify-between items-center mb-8",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                        className: "text-3xl font-bold text-gray-900",
+                                        children: "Nuestras Categorías"
+                                    }, void 0, false, {
+                                        fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                        lineNumber: 82,
+                                        columnNumber: 13
+                                    }, _this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
+                                        href: "/categorias",
+                                        className: "text-blue-600 hover:text-blue-800 font-semibold text-lg transition-colors",
+                                        children: "Ver todas →"
+                                    }, void 0, false, {
+                                        fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                        lineNumber: 83,
+                                        columnNumber: 13
+                                    }, _this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                lineNumber: 81,
+                                columnNumber: 11
+                            }, _this),
+                            categoriasError && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "text-yellow-800",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                            children: "Nota:"
+                                        }, void 0, false, {
+                                            fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                            lineNumber: 95,
+                                            columnNumber: 17
+                                        }, _this),
+                                        " ",
+                                        categoriasError,
+                                        ". Mostrando categorías por defecto."
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                    lineNumber: 94,
+                                    columnNumber: 15
+                                }, _this)
                             }, void 0, false, {
                                 fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
-                                lineNumber: 23,
+                                lineNumber: 93,
                                 columnNumber: 13
                             }, _this),
-                            " ",
-                            error
+                            loadingCategorias ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6",
+                                children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f40$swc$2f$helpers$2f$esm$2f$_to_consumable_array$2e$js__$5b$client$5d$__$28$ecmascript$29$__["_"])(Array(5)).map(function(_, i) {
+                                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "bg-white rounded-xl shadow-sm p-6 animate-pulse",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "bg-gray-300 rounded-lg w-16 h-16 mx-auto mb-4"
+                                            }, void 0, false, {
+                                                fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                                lineNumber: 105,
+                                                columnNumber: 19
+                                            }, _this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "bg-gray-300 rounded h-4 w-3/4 mx-auto mb-2"
+                                            }, void 0, false, {
+                                                fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                                lineNumber: 106,
+                                                columnNumber: 19
+                                            }, _this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "bg-gray-200 rounded h-3 w-1/2 mx-auto"
+                                            }, void 0, false, {
+                                                fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                                lineNumber: 107,
+                                                columnNumber: 19
+                                            }, _this)
+                                        ]
+                                    }, i, true, {
+                                        fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                        lineNumber: 104,
+                                        columnNumber: 17
+                                    }, _this);
+                                })
+                            }, void 0, false, {
+                                fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                lineNumber: 102,
+                                columnNumber: 13
+                            }, _this) : categorias.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6",
+                                children: categorias.map(function(categoria) {
+                                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
+                                        href: "/categorias/".concat(categoria.id),
+                                        className: "block bg-white rounded-xl shadow-sm border-2 border-transparent hover:border-blue-500 hover:shadow-xl transition-all duration-300 p-6 text-center group transform hover:-translate-y-1",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "text-5xl mb-4 group-hover:scale-110 transition-transform duration-300",
+                                                children: categoria.icono || '📦'
+                                            }, void 0, false, {
+                                                fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                                lineNumber: 119,
+                                                columnNumber: 19
+                                            }, _this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                className: "font-bold text-gray-900 text-lg group-hover:text-blue-600 transition-colors mb-2",
+                                                children: categoria.nombre
+                                            }, void 0, false, {
+                                                fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                                lineNumber: 122,
+                                                columnNumber: 19
+                                            }, _this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                className: "text-sm text-gray-500 font-medium",
+                                                children: [
+                                                    contarProductosPorCategoria(categoria.id),
+                                                    " productos"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                                lineNumber: 125,
+                                                columnNumber: 19
+                                            }, _this)
+                                        ]
+                                    }, categoria.id, true, {
+                                        fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                        lineNumber: 114,
+                                        columnNumber: 17
+                                    }, _this);
+                                })
+                            }, void 0, false, {
+                                fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                lineNumber: 112,
+                                columnNumber: 13
+                            }, _this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "text-center py-12 bg-white rounded-xl shadow-sm",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "text-6xl mb-4",
+                                        children: "📭"
+                                    }, void 0, false, {
+                                        fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                        lineNumber: 133,
+                                        columnNumber: 15
+                                    }, _this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                        className: "text-xl font-semibold text-gray-900 mb-2",
+                                        children: "No hay categorías disponibles"
+                                    }, void 0, false, {
+                                        fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                        lineNumber: 134,
+                                        columnNumber: 15
+                                    }, _this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "text-gray-500",
+                                        children: "Las categorías se cargarán pronto"
+                                    }, void 0, false, {
+                                        fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                        lineNumber: 137,
+                                        columnNumber: 15
+                                    }, _this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                lineNumber: 132,
+                                columnNumber: 13
+                            }, _this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
-                        lineNumber: 22,
-                        columnNumber: 11
+                        lineNumber: 80,
+                        columnNumber: 9
                     }, _this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "products-grid",
-                        children: products && products.length > 0 ? products.map(function(product) {
-                            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$components$2f$Product$2f$ProductCard$2e$jsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {
-                                name: product.nombre,
-                                price: product.precio,
-                                barcode: product.barcode
-                            }, product.id, false, {
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex justify-between items-center mb-8",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                        className: "text-3xl font-bold text-gray-900",
+                                        children: "Productos Destacados"
+                                    }, void 0, false, {
+                                        fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                        lineNumber: 147,
+                                        columnNumber: 13
+                                    }, _this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        className: "text-gray-600 font-medium",
+                                        children: [
+                                            (products === null || products === void 0 ? void 0 : products.length) || 0,
+                                            " productos disponibles"
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                        lineNumber: 148,
+                                        columnNumber: 13
+                                    }, _this)
+                                ]
+                            }, void 0, true, {
                                 fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
-                                lineNumber: 31,
-                                columnNumber: 15
-                            }, _this);
-                        }) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "col-span-full text-center py-12",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "text-gray-500 text-lg",
-                                children: "No hay productos disponibles en este momento"
+                                lineNumber: 146,
+                                columnNumber: 11
+                            }, _this),
+                            error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "bg-red-50 border border-red-200 rounded-lg p-4 mb-8",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "flex items-center",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "text-red-500 mr-3",
+                                            children: "⚠️"
+                                        }, void 0, false, {
+                                            fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                            lineNumber: 157,
+                                            columnNumber: 17
+                                        }, _this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                                    className: "text-red-800",
+                                                    children: "Error al cargar productos:"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                                    lineNumber: 159,
+                                                    columnNumber: 19
+                                                }, _this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                    className: "text-red-700 mt-1",
+                                                    children: error
+                                                }, void 0, false, {
+                                                    fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                                    lineNumber: 160,
+                                                    columnNumber: 19
+                                                }, _this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                            lineNumber: 158,
+                                            columnNumber: 17
+                                        }, _this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                    lineNumber: 156,
+                                    columnNumber: 15
+                                }, _this)
                             }, void 0, false, {
                                 fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
-                                lineNumber: 40,
-                                columnNumber: 15
+                                lineNumber: 155,
+                                columnNumber: 13
+                            }, _this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6",
+                                children: products && products.length > 0 ? products.slice(0, 8).map(function(product) {
+                                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$components$2f$Product$2f$ProductCard$2e$jsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {
+                                        product: product
+                                    }, product.id || product.barcode, false, {
+                                        fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                        lineNumber: 170,
+                                        columnNumber: 17
+                                    }, _this);
+                                }) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "col-span-full text-center py-16 bg-white rounded-xl shadow-sm",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "text-6xl mb-4",
+                                            children: "😴"
+                                        }, void 0, false, {
+                                            fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                            lineNumber: 177,
+                                            columnNumber: 17
+                                        }, _this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                            className: "text-2xl font-semibold text-gray-900 mb-2",
+                                            children: "No hay productos disponibles"
+                                        }, void 0, false, {
+                                            fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                            lineNumber: 178,
+                                            columnNumber: 17
+                                        }, _this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: "text-gray-600 text-lg",
+                                            children: "Vuelve pronto para ver nuestro catálogo"
+                                        }, void 0, false, {
+                                            fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                            lineNumber: 181,
+                                            columnNumber: 17
+                                        }, _this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                    lineNumber: 176,
+                                    columnNumber: 15
+                                }, _this)
+                            }, void 0, false, {
+                                fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                lineNumber: 167,
+                                columnNumber: 11
+                            }, _this),
+                            products && products.length > 8 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "text-center mt-12",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
+                                    href: "/productos",
+                                    className: "inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors duration-300 shadow-lg hover:shadow-xl",
+                                    children: [
+                                        "Ver todos los productos",
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                            className: "ml-3 w-5 h-5",
+                                            fill: "none",
+                                            stroke: "currentColor",
+                                            viewBox: "0 0 24 24",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$ecommerce$2d$project$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                strokeLinecap: "round",
+                                                strokeLinejoin: "round",
+                                                strokeWidth: 2,
+                                                d: "M9 5l7 7-7 7"
+                                            }, void 0, false, {
+                                                fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                                lineNumber: 197,
+                                                columnNumber: 19
+                                            }, _this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                            lineNumber: 196,
+                                            columnNumber: 17
+                                        }, _this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                    lineNumber: 191,
+                                    columnNumber: 15
+                                }, _this)
+                            }, void 0, false, {
+                                fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
+                                lineNumber: 190,
+                                columnNumber: 13
                             }, _this)
-                        }, void 0, false, {
-                            fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
-                            lineNumber: 39,
-                            columnNumber: 13
-                        }, _this)
-                    }, void 0, false, {
+                        ]
+                    }, void 0, true, {
                         fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
-                        lineNumber: 28,
+                        lineNumber: 145,
                         columnNumber: 9
                     }, _this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
-                lineNumber: 11,
+                lineNumber: 68,
                 columnNumber: 7
             }, _this)
         ]
     }, void 0, true, {
         fileName: "[project]/ecommerce-project/frontend/pages/index.jsx",
-        lineNumber: 7,
+        lineNumber: 64,
         columnNumber: 5
     }, _this);
 };
+_s(HomePage, "sAbDFLRSUhJ9yGNaVsNmNUA4VX4=");
 _c = HomePage;
 var __N_SSP = true;
 const __TURBOPACK__default__export__ = HomePage;
