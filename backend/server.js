@@ -1,13 +1,13 @@
-// Archivo: server.js - Versión Final con PostgreSQL y Roles
+// Archivo: server.js - Versión Final con PostgreSQL y Roles (ACTUALIZADO PARA DATABASE_URL)
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const { Pool } = require('pg'); // Cliente de PostgreSQL
 const fs = require('fs').promises; // Para leer el archivo SQL
-require('dotenv').config(); // Para cargar variables de entorno (DB_USER, DB_PASSWORD, etc.)
+require('dotenv').config(); // Para cargar variables de entorno
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000; // Usa el puerto de Render si existe, sino 3000
 
 // Configuración de Middlewares
 app.use(cors());
@@ -15,16 +15,19 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // =======================================================
-// ==================== CONEXIÓN A POSTGRESQL ============
+// ==================== CONEXIÓN A POSTGRESQL (ACTUALIZADA) ============
 // =======================================================
 
-// Configuración de la conexión usando variables de entorno
+// 🔑 CAMBIO CLAVE: Usar la cadena completa DATABASE_URL para la conexión.
+// Esto evita el error ENOTFOUND que ocurre al usar DB_HOST interno.
 const pool = new Pool({
-    user: process.env.DB_USER,
-    host: process.env.DB_HOST,
-    database: process.env.DB_NAME,
-    password: process.env.DB_PASSWORD,
-    port: process.env.DB_PORT,
+    // Usa la variable DATABASE_URL de Railway
+    connectionString: process.env.DATABASE_URL,
+    
+    // Configuración SSL necesaria para que Render se conecte a Railway
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
 // Script SQL para inicializar la base de datos
@@ -110,12 +113,16 @@ async function initializeDatabase() {
         }
 
     } catch (err) {
+        // La nueva lógica debe manejar el error de conexión si ocurre aquí.
         console.error('❌ Error de conexión a PostgreSQL:', err.message);
+        console.error('💡 Asegúrese de que la variable DATABASE_URL esté configurada correctamente en Render.');
         
         // Error específico para tabla no existe
         if (err.code === '42P01') {
             console.log('💡 Ejecutando script de creación de tablas...');
             try {
+                // Hay que asegurar que la variable DATABASE_URL está configurada en Render con el host público.
+                // Si el error 42P01 (tabla no existe) ocurre, significa que la conexión SÍ se estableció.
                 await client.query(initSQL);
                 console.log('✅ Tablas creadas exitosamente');
             } catch (initError) {
@@ -412,9 +419,9 @@ app.get('/api/productos/buscar/:barcode', authenticateUser, async (req, res) => 
                 id_numerico: producto.id_numerico,
                 nombre: producto.nombre,
                 descripcion: producto.descripcion,
-                precio: Number(producto.precio),  // ← Convertir a número
-                stock: Number(producto.stock),     // ← Convertir a número
-                categoria: producto.categoria,     // ← Nuevo campo
+                precio: Number(producto.precio), 
+                stock: Number(producto.stock), 
+                categoria: producto.categoria, 
                 imagen: producto.imagen
             };
 
@@ -423,7 +430,7 @@ app.get('/api/productos/buscar/:barcode', authenticateUser, async (req, res) => 
             return res.status(200).json({
                 success: true,
                 message: 'Producto encontrado',
-                data: productoFormateado  // ← Enviar el objeto formateado
+                data: productoFormateado 
             });
         } else {
             console.log(`[DB Búsqueda] Código ${barcode} NO encontrado.`);
@@ -689,20 +696,20 @@ async function startServer() {
     app.listen(PORT, () => {
         console.log(`🚀 Servidor Express ejecutándose en http://localhost:${PORT}`);
         console.log('\n🔑 Credenciales de prueba (PostgreSQL):');
-        console.log(`  Admin: admin@ecommerce.com / password123`);
-        console.log(`  Staff: staff@ecommerce.com / password456`);
+        console.log(`  Admin: admin@ecommerce.com / password123`);
+        console.log(`  Staff: staff@ecommerce.com / password456`);
         console.log('\n📊 Endpoints disponibles:');
-        console.log(`  GET  /api/productos - Catálogo público`);
-        console.log(`  GET  /api/categorias - Lista de categorías`);
-        console.log(`  GET  /api/productos/categoria/:categoria - Productos por categoría`);
-        console.log(`  POST /api/login - Iniciar sesión`);
-        console.log(`  GET  /api/productos/buscar/:barcode - Buscar producto (requiere auth)`);
-        console.log(`  POST /api/productos/registrar - Registrar producto (solo admin)`);
-        console.log(`  PUT  /api/productos/:barcode - Actualizar producto (solo admin)`);
-        console.log(`  DELETE /api/productos/:barcode - Eliminar producto (solo admin)`);
-        console.log(`  GET  /api/productos/admin/list - Lista completa admin (solo admin)`);
-        console.log('\n🏷️  Categorías disponibles:');
-        console.log(`  supermercado, electrodomesticos, jugueteria, tecnologia, bebidas`);
+        console.log(`  GET  /api/productos - Catálogo público`);
+        console.log(`  GET  /api/categorias - Lista de categorías`);
+        console.log(`  GET  /api/productos/categoria/:categoria - Productos por categoría`);
+        console.log(`  POST /api/login - Iniciar sesión`);
+        console.log(`  GET  /api/productos/buscar/:barcode - Buscar producto (requiere auth)`);
+        console.log(`  POST /api/productos/registrar - Registrar producto (solo admin)`);
+        console.log(`  PUT  /api/productos/:barcode - Actualizar producto (solo admin)`);
+        console.log(`  DELETE /api/productos/:barcode - Eliminar producto (solo admin)`);
+        console.log(`  GET  /api/productos/admin/list - Lista completa admin (solo admin)`);
+        console.log('\n🏷️  Categorías disponibles:');
+        console.log(`  supermercado, electrodomesticos, jugueteria, tecnologia, bebidas`);
     });
 }
 
